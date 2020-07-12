@@ -1,0 +1,70 @@
+{   
+    "copyright": "©2019 All Rights Reserved. Work property of individual clients. Please do not reproduce",
+    "brand": {
+        "src":"/assets/brand/logo.png",
+        "to": "/home",
+        "alt": "logo"
+    },
+    "links":[
+        {
+            "page": "home", 
+            "to": "/home"
+            
+        },
+        {
+            "page": "gallery", 
+            "to": "/gallery"
+            
+        },
+        {
+            "page": "packages ", 
+            "to": "/packages"
+            
+        }, 
+        {
+            "page": "about", 
+            "to": "/about"
+            
+        }, 
+        {
+            "page": "testimonials", 
+            "to": "/testimonials"
+        }, 
+        {
+            "page": "contact", 
+            "to": "/contact"
+        }, 
+        {
+            "page": "blog", 
+            "to": "/blog"
+        }
+    ],
+    
+        "socialLinks": [
+            {
+                "site": "instogram", 
+                "to": "https://www.instagram.com/", 
+                "icon": "instogram"
+            },
+            {
+                "site": "facebook", 
+                "to": "https://www.facebook.com/", 
+                "icon": "facebook"
+            },
+            {
+                "site": "youtube", 
+                "to": "https://www.youtube.com/", 
+                "icon": "youtube"
+            },
+            {
+                "site": "pintrest", 
+                "to": "https://www.pintrest.com/", 
+                "icon": "pintrest"
+            },
+            {
+                "site": "twitter", 
+                "to": "https://www.twitter.com/", 
+                "icon": "twitter"
+            }
+        ]
+}

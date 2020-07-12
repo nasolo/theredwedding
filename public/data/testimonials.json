@@ -1,0 +1,223 @@
+{
+    "bg":"/assets/images/testimonials/quotesbg.png",
+    "testimonies": [{
+        "id": 1,
+        "quote": "Red Weddings built something remarkable for me and I love it...",
+        "name": "ASTRA NOWLAND",
+        "subTitle": "just married",
+        "media": [
+            [
+                "assets/images/testimonials/media/bloom-blossom-bouquet-bridal-640w.jpg 640w",
+                "assets/images/testimonials/media/bloom-blossom-bouquet-bridal-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/groom-kissing-bride-neck-640w.jpg 640w",
+                "assets/images/testimonials/media/groom-kissing-bride-neck-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/newly-married-couple-hugging-each-other-640w.jpg 640w",
+                "assets/images/testimonials/media/newly-married-couple-hugging-each-other-1024w.jpg 1024"
+            ],
+            [
+                "assets/images/testimonials/media/photo-of-woman-wearing-bridal-gown-640w.jpg 640w",
+                "assets/images/testimonials/medial/photo-of-woman-wearing-bridal-gown-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-in-red-and-gold-sari-dress-640w.jpg 640w",
+                "assets/images/testimonials/media/woman-in-red-and-gold-sari-dress-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-in-white-long-sleeve-dress-holding-bouquet-of-flowers-640w.jpg 640w",
+                "assets/images/testimonials/media/woman-in-white-long-sleeve-dress-holding-bouquet-of-flowers-1024w.jpg 1024w"
+            ],
+            [
+            "assets/images/testimonials/media/woman-outside-dress-happy-640w.jpg 640w",
+            "assets/images/testimonials/media/woman-outside-dress-happy-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-standing-on-volkswagen-beetle-640w.jpg 1024w",
+                "assets/images/testimonials/media/woman-standing-on-volkswagen-beetle-1024w.jpg 640w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-wearing-white-dress-with-black-manicure-640w.jpg 640w",
+                "assets/images/testimonials/media/women-s-green-and-white-floral-long-dress-1024w.jpg 1024w"
+            ]
+        ]
+    },
+    {
+        "id": 2,
+        "quote": "Red  built something remarkable for me and I love it...",
+        "name": "ASTRA ",
+        "subTitle": "just sdsd",
+        "media": [
+            [
+                "assets/images/testimonials/media/bloom-blossom-bouquet-bridal-640w.jpg 640w",
+                "assets/images/testimonials/media/bloom-blossom-bouquet-bridal-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/groom-kissing-bride-neck-640w.jpg 640w",
+                "assets/images/testimonials/media/groom-kissing-bride-neck-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/newly-married-couple-hugging-each-other-640w.jpg 640w",
+                "assets/images/testimonials/media/newly-married-couple-hugging-each-other-1024w.jpg 1024"
+            ],
+            [
+                "assets/images/testimonials/media/photo-of-woman-wearing-bridal-gown-640w.jpg 640w",
+                "assets/images/testimonials/medial/photo-of-woman-wearing-bridal-gown-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-in-red-and-gold-sari-dress-640w.jpg 640w",
+                "assets/images/testimonials/media/woman-in-red-and-gold-sari-dress-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-in-white-long-sleeve-dress-holding-bouquet-of-flowers-640w.jpg 640w",
+                "assets/images/testimonials/media/woman-in-white-long-sleeve-dress-holding-bouquet-of-flowers-1024w.jpg 1024w"
+            ],
+            [
+            "assets/images/testimonials/media/woman-outside-dress-happy-640w.jpg 640w",
+            "assets/images/testimonials/media/woman-outside-dress-happy-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-standing-on-volkswagen-beetle-640w.jpg 1024w",
+                "assets/images/testimonials/media/woman-standing-on-volkswagen-beetle-1024w.jpg 640w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-wearing-white-dress-with-black-manicure-640w.jpg 640w",
+                "assets/images/testimonials/media/women-s-green-and-white-floral-long-dress-1024w.jpg 1024w"
+            ]
+        ]
+    },
+    {
+        "id": 3,
+        "quote": "something remarkable for me and I love it...",
+        "name": "ASTRA ",
+        "subTitle": "just sdsd",
+        "media": [
+            [
+                "assets/images/testimonials/media/bloom-blossom-bouquet-bridal-640w.jpg 640w",
+                "assets/images/testimonials/media/bloom-blossom-bouquet-bridal-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/groom-kissing-bride-neck-640w.jpg 640w",
+                "assets/images/testimonials/media/groom-kissing-bride-neck-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/newly-married-couple-hugging-each-other-640w.jpg 640w",
+                "assets/images/testimonials/media/newly-married-couple-hugging-each-other-1024w.jpg 1024"
+            ],
+            [
+                "assets/images/testimonials/media/photo-of-woman-wearing-bridal-gown-640w.jpg 640w",
+                "assets/images/testimonials/medial/photo-of-woman-wearing-bridal-gown-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-in-red-and-gold-sari-dress-640w.jpg 640w",
+                "assets/images/testimonials/media/woman-in-red-and-gold-sari-dress-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-in-white-long-sleeve-dress-holding-bouquet-of-flowers-640w.jpg 640w",
+                "assets/images/testimonials/media/woman-in-white-long-sleeve-dress-holding-bouquet-of-flowers-1024w.jpg 1024w"
+            ],
+            [
+            "assets/images/testimonials/media/woman-outside-dress-happy-640w.jpg 640w",
+            "assets/images/testimonials/media/woman-outside-dress-happy-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-standing-on-volkswagen-beetle-640w.jpg 1024w",
+                "assets/images/testimonials/media/woman-standing-on-volkswagen-beetle-1024w.jpg 640w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-wearing-white-dress-with-black-manicure-640w.jpg 640w",
+                "assets/images/testimonials/media/women-s-green-and-white-floral-long-dress-1024w.jpg 1024w"
+            ]
+        ]
+    },
+    {
+        "id": 4,
+        "quote": "something remarkable for me and I love it...",
+        "name": "ASTRA ",
+        "subTitle": "just sdsd",
+        "media": [
+            [
+                "assets/images/testimonials/media/bloom-blossom-bouquet-bridal-640w.jpg 640w",
+                "assets/images/testimonials/media/bloom-blossom-bouquet-bridal-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/groom-kissing-bride-neck-640w.jpg 640w",
+                "assets/images/testimonials/media/groom-kissing-bride-neck-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/newly-married-couple-hugging-each-other-640w.jpg 640w",
+                "assets/images/testimonials/media/newly-married-couple-hugging-each-other-1024w.jpg 1024"
+            ],
+            [
+                "assets/images/testimonials/media/photo-of-woman-wearing-bridal-gown-640w.jpg 640w",
+                "assets/images/testimonials/medial/photo-of-woman-wearing-bridal-gown-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-in-red-and-gold-sari-dress-640w.jpg 640w",
+                "assets/images/testimonials/media/woman-in-red-and-gold-sari-dress-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-in-white-long-sleeve-dress-holding-bouquet-of-flowers-640w.jpg 640w",
+                "assets/images/testimonials/media/woman-in-white-long-sleeve-dress-holding-bouquet-of-flowers-1024w.jpg 1024w"
+            ],
+            [
+            "assets/images/testimonials/media/woman-outside-dress-happy-640w.jpg 640w",
+            "assets/images/testimonials/media/woman-outside-dress-happy-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-standing-on-volkswagen-beetle-640w.jpg 1024w",
+                "assets/images/testimonials/media/woman-standing-on-volkswagen-beetle-1024w.jpg 640w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-wearing-white-dress-with-black-manicure-640w.jpg 640w",
+                "assets/images/testimonials/media/women-s-green-and-white-floral-long-dress-1024w.jpg 1024w"
+            ]
+        ]
+    },
+    {
+        "id": 5,
+        "quote": "something remarkable for me and I love it...",
+        "name": "ASTRA ",
+        "subTitle": "just sdsd",
+        "media": [
+            [
+                "assets/images/testimonials/media/bloom-blossom-bouquet-bridal-640w.jpg 640w",
+                "assets/images/testimonials/media/bloom-blossom-bouquet-bridal-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/groom-kissing-bride-neck-640w.jpg 640w",
+                "assets/images/testimonials/media/groom-kissing-bride-neck-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/newly-married-couple-hugging-each-other-640w.jpg 640w",
+                "assets/images/testimonials/media/newly-married-couple-hugging-each-other-1024w.jpg 1024"
+            ],
+            [
+                "assets/images/testimonials/media/photo-of-woman-wearing-bridal-gown-640w.jpg 640w",
+                "assets/images/testimonials/medial/photo-of-woman-wearing-bridal-gown-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-in-red-and-gold-sari-dress-640w.jpg 640w",
+                "assets/images/testimonials/media/woman-in-red-and-gold-sari-dress-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-in-white-long-sleeve-dress-holding-bouquet-of-flowers-640w.jpg 640w",
+                "assets/images/testimonials/media/woman-in-white-long-sleeve-dress-holding-bouquet-of-flowers-1024w.jpg 1024w"
+            ],
+            [
+            "assets/images/testimonials/media/woman-outside-dress-happy-640w.jpg 640w",
+            "assets/images/testimonials/media/woman-outside-dress-happy-1024w.jpg 1024w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-standing-on-volkswagen-beetle-640w.jpg 1024w",
+                "assets/images/testimonials/media/woman-standing-on-volkswagen-beetle-1024w.jpg 640w"
+            ],
+            [
+                "assets/images/testimonials/media/woman-wearing-white-dress-with-black-manicure-640w.jpg 640w",
+                "assets/images/testimonials/media/women-s-green-and-white-floral-long-dress-1024w.jpg 1024w"
+            ]
+        ]
+    }]
+}

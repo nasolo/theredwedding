@@ -1,0 +1,25 @@
+import styled from "styled-components";
+import Icon from "../../../../../components/icon";
+
+
+
+const LeftChevron = styled(Icon).attrs(props =>({
+    className: "leftchevron"
+}))`
+
+    max-height: 3rem;
+    max-width: 3rem;
+    z-index: 200;
+    fill: gainsboro;
+    margin: auto auto auto 0;
+    
+    
+
+`
+
+export default LeftChevron
+
+
+LeftChevron.defaultProps ={
+    icon: "leftchevron"
+}

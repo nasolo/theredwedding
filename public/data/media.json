@@ -1,0 +1,290 @@
+{
+  "filterIcons":[
+    {
+      "id": "cinema-DA4A8A25",
+      "text": "Cinematography",
+      "icon": "Cinematography",
+      "filterTags": 
+        [
+          "cinematography", 
+          "filmmaking",
+          "film",
+          "cinema",
+          "animation",
+          "filmmaker",
+          "cinematographer",
+          "filming",
+          "art",
+          "motion-picture",
+          "movie",
+          "artistic",
+          "filmography",
+          "choreography",
+          "theatrical",
+          "visuals",
+          "videography"
+        ]
+  },
+  {
+    "id": "photo-165FAA33",
+    "text": "Photography",
+    "icon": "photography",
+    "filterTags": 
+      [
+        "Photography",
+        "camera",
+        "photographic film",
+        "solarize",
+        "exposure",
+        "image",
+        "lens",
+        "focus",
+        "camera",
+        "photo",
+        "digital photography",
+        "collage",
+        "imagery",
+        "gallery"
+      ]
+  },
+  {
+    "id":"drones-B99DA8AF",
+    "text": "Drones",
+    "icon": "Drones",
+    "filterTags": 
+      [
+        "drone",
+        "aerial",
+        "areial view"
+      ]
+  },
+  {
+    "id": "sound-ABE7F507",
+    "text": "Live Sound",
+    "icon": "music",
+    "filterTags": 
+      [
+        "Live Sound",
+        "live Performance",
+        "live",
+        "band",
+        "singer",
+        "MC",
+        "Master of Cerimony",
+        "musical performance",
+        "live band",
+        "live singing",
+        "singing",
+        "music",
+        "Live Music",
+        "concert",
+        "live concert",
+        "live show",
+        "stage",
+        "stage show",
+        "music stage show"
+        ]
+  },
+  {
+    "id":"experience-0399A7D1",
+    "text": "Experience",
+    "icon": "experience",
+    "filterTags": 
+      [
+        "experience",
+        "encounter",
+        "event",
+        "live events"
+      ]
+
+  },
+  {
+    "id": "display-2ABB4933",
+    "text": "Display",
+    "icon": "display",
+    "filterTags": 
+      [
+        "display",
+        "television",
+        "advertisement",
+        "advertise",
+        "screens",
+        "lighting",
+        "hdtv"
+    ]
+  }
+],
+  "shareIcons": [
+    {
+    "text": "Share Image",
+    "icon": "camera"
+  },
+  {
+    "text": "Share Gallery",
+    "icon": "gallery"
+  },
+  {
+    "text": "Share Favourites",
+    "icon": "star"
+  }
+],
+  "media": [{
+      "id": 1,
+      "url": [
+        "assets/images/large/bucharest-wedding-photographer-fotograf-botez-bucuresti-1589820.jpg"
+      ],
+      "likes": 0,
+      "tags": [
+        "photographer",
+        "wedding"
+      ]
+    },
+    {
+      "id": 2,
+      "url": ["assets/images/large/man-and-woman-kissing-948185.jpg"],
+      "likes": 0,
+      "tags": [
+        "woman",
+        "man",
+        "kissing"
+      ]
+    },
+    {
+      "id": 3,
+      "url": ["assets/images/large/man-and-woman-kissing-2253870.jpg"],
+      "likes": 0,
+      "tags": [
+        "woman",
+        "man",
+        "kissing"
+      ]
+    },
+    {
+      "id": 3,
+      "url": [
+                "assets/images/large/man-and-woman-standing-in-front-of-brown-grass-field-kissing-1573007.jpg",
+                "assets/images/large/man-and-woman-standing-in-front-of-brown-grass-field-kissing-small.jpg"
+              ],
+      "likes": 0,
+      "tags": [
+        "woman",
+        "man",
+        "standing",
+        "grass",
+        "field",
+        "kissing"
+      ]
+    },
+    {
+      "id": 4,
+      "url": ["assets/images/large/wedding.png"],
+      "likes": 0,
+      "tags": [
+        "wedding"
+      ]
+    },
+    {
+      "id": 5,
+      "url": [
+              "assets/images/large/woman-in-white-bridal-gown-meditating-157757.jpg",
+              "assets/images/large/woman-in-white-bridal-gown-meditating-small.jpg"
+            ],
+      "likes": 0,
+      "tags": [
+        "woman",
+        "white",
+        "bridal",
+        "gown"
+      ]
+    },
+    {
+      "id": 6,
+      "url": "assets/video/Pexels_1.mp4",
+      "likes": 0,
+      "poster": ["assets/images/large/photo-of-women-wearing-masks-787961.jpg"],
+      "tags": [
+        "woman",
+        "white",
+        "bridal",
+        "gown"
+      ]
+    },
+    {
+      "id": 7,
+      "url": "assets/video/Pexels_2.mp4",
+      "likes": 0,
+      "poster": ["assets/images/large/woman-sitting-beside-man-3407978.jpg"],
+      "tags": [
+        "woman",
+        "man",
+        "kissing"
+      ]
+    },
+    {
+      "id": 8,
+      "url": "assets/video/Pexels_4.mp4",
+      "likes": 0,
+      "tags": [
+        "woman",
+        "man",
+        "gown"
+      ]
+    },
+    {
+      "id": 9,
+      "url": "assets/video/video1.mp4",
+      "likes": 0,
+      "tags": [
+        "catholic",
+        "church",
+        "wedding",
+        "bide",
+        "groom"
+      ]
+    },
+    {
+      "id": 9,
+      "url": "assets/video/production_video.mp4",
+      "poster": ["assets/images/large/architecture-auditorium-blue-bright-colours-382297.jpg"],
+      "likes": 0,
+      "tags": [
+        "catholic",
+        "dancing",
+        "church",
+        "wedding",
+        "bide",
+        "groom",
+        "party"
+      ]
+    },
+    {
+      "id": 10,
+      "url": "https://www.youtube.com/watch?v=oUFJJNQGwhk",
+      "poster": ["assets/images/large/pink-and-red-roses-centerpiece-near-silverwares-1045541.jpg"],
+      "likes": 0,
+      "tags": [
+        "catholic",
+        "dancing",
+        "church",
+        "wedding",
+        "sad",
+        "groom",
+        "pictures"
+      ]
+    },
+    {
+      "id": 10,
+      "url": "https://www.facebook.com/facebook/videos/10153231379946729/",
+      "poster": ["assets/images/large/pink-and-red-roses-centerpiece-near-silverwares-1045541.jpg"],
+      "likes": 0,
+      "tags": [
+        "catholic",
+        "dancing",
+        "church",
+        "wedding",
+        "sad",
+        "groom",
+        "pictures"
+      ]
+    }]
+  }
