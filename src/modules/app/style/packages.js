@@ -2,6 +2,7 @@ import React from 'react'
 import Box from '../../../elements/Box'
 import styled from 'styled-components'
 import { useRouteMatch } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 
 
@@ -21,7 +22,7 @@ const StyledPackages = styled(Box).attrs(props=>({
 `
 
 
-const Packages = ({children, path, contents, ...rest}) =>{
+const Packages = ({children, path, contents, variants, ...rest}) =>{
 
     const match = useRouteMatch({
         path: path,
@@ -29,8 +30,17 @@ const Packages = ({children, path, contents, ...rest}) =>{
         sensitive: true
       });
 
+      const as = variants ? motion.div : "div"
+
     return(
-        <StyledPackages {...rest}>
+        <StyledPackages 
+            {...rest}
+            variants={variants}
+            as={as}
+            initial="enter"
+            animate="center"
+            exit="exit"
+        >
             {contents}
         </StyledPackages>
     )

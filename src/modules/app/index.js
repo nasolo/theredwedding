@@ -52,14 +52,14 @@ const AppContainer = (props) => {
                 {
                     gallery &&
 
-                    <Gallery contents={props.gallery} path={gallery.to}/>
+                    <Gallery contents={props.gallery} path={gallery.to} variants={variants}/>
 
                 }
 
                 {
                     packages &&
 
-                    <Packages  contents={props.packages} path={packages.to}/>
+                    <Packages  contents={props.packages} path={packages.to} variants={variants}/>
 
                 }
 

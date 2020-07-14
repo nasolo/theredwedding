@@ -14,6 +14,8 @@ const variants = {
     },
     center: {
       y: 0,
+      scale: 1,
+      opacity: 1,
       transition: {
         type: "spring", 
         stiffness: 200, 
@@ -24,6 +26,7 @@ const variants = {
     exit: (direction) => {
       return {
         scale: .8,
+        opacity: 0,
         transition: {
           type: "spring", 
           stiffness: 200, 

@@ -35,9 +35,7 @@ const Testimonies = ({children, path, contents, variants, ...rest}) =>{
             initial="enter"
             animate="center"
             exit="exit"
-            
         >
-
             {contents}
         </StyledTestimonies>
     )
