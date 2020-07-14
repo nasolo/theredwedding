@@ -1,10 +1,11 @@
+import React from 'react'
 import Box from '../../../elements/Box'
 import styled from 'styled-components'
+import { useRouteMatch } from 'react-router-dom';
 
 
-const Gallery = styled(Box).attrs(props=>({
-    className: "gallery",
-    children: props.contents
+const StyledGallery = styled(Box).attrs(props=>({
+    className: "gallery"
 }))`
 
     overflow: hidden;
@@ -16,5 +17,24 @@ const Gallery = styled(Box).attrs(props=>({
 
 `
 
+const Gallery = ({children, contents, path, ...rest}) => {
+
+    console.log(path)
+
+    const match = useRouteMatch({
+        path: path,
+        strict: true,
+        sensitive: true
+      });
+
+
+    return (
+        
+
+        <StyledGallery {...rest}>
+            {contents}
+        </StyledGallery>
+    )
+}
 
 export default Gallery

@@ -17,7 +17,7 @@ const NavItem = ({
             variants={variants}
             className={className}
         > 
-            <NavList.Link  key={`${position}-nav-link`} href={to} {...rest}>        
+            <NavList.Link  key={`${position}-nav-link`} to={to} {...rest}>        
                 {children}
             </NavList.Link>
         </NavList.Item>

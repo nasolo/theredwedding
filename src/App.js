@@ -1,4 +1,8 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/home'
@@ -23,15 +27,20 @@ function App() {
   return (
   <ThemeProvider theme={mainTheme}>
     <GlobalStyle />
+<Router>
+
     <MainNavigation />
       <AppContainer
         home={<Home/>}
         gallery={<Gallery/>}
         packages={<Packages/>}
-        aboutUs={<AboutUs/>}
+        about={<AboutUs/>}
         testimonies={<Testimonials/>}
       />
+</Router>
       </ThemeProvider>
+  
+
     
   );
 }

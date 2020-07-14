@@ -1,9 +1,4 @@
 import React from 'react'
-import { 
-    BrowserRouter as Router,
-    Redirect,
-    useParams
-} from "react-router-dom";
 import Container from './style/container'
 import Home from './style/home'
 import Gallery from './style/gallery'
@@ -15,8 +10,8 @@ import Testimonies from './style/testimonials'
 import { useDispatch, shallowEqual, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchAppApi } from './redux/actionCreators'
-import { RouteTransition, AnimatedRoutes } from '../../components/routeTransitions'
-import { direction } from '../../pages/home/redux/actions';
+import { AnimatedRoutes } from '../../components/routeTransitions'
+import variants from './routeAnimations'
 
 const AppContainer = (props) => {
 
@@ -27,7 +22,7 @@ const AppContainer = (props) => {
         gallery,
         packages,
         about,
-        testimonies,
+        testimonials,
         contact,
         blog,
         direction
@@ -39,17 +34,52 @@ const AppContainer = (props) => {
 
     return (
         <Container className="container-fluid">
-        <Router>
-            <Redirect from="/" to="/home"/>
+  
+            
             <AnimatedRoutes exitBeforeEnter initial={false} direction={direction}>
-                { home &&
-                <RouteTransition exact direction={direction} path={`${home.to}`} key={home.id}>
-                    <Home contents={props.home}/>
-                </RouteTransition>
+               
+                {
+                    home &&
+              
+                    <Home 
+                        contents={props.home} 
+                        path={home.to} 
+                        variants={variants}
+                    />
+              
                 }
+
+                {
+                    gallery &&
+
+                    <Gallery contents={props.gallery} path={gallery.to}/>
+
+                }
+
+                {
+                    packages &&
+
+                    <Packages  contents={props.packages} path={packages.to}/>
+
+                }
+
+                {
+                    packages &&
+
+                    <About  contents={props.about} path={about.to} variants={variants}/>
+
+                }
+                {
+                    testimonials &&
+
+                    <Testimonies contents={props.testimonies} path={testimonials.to} variants={variants}/>
+                }
+
+
+
             </AnimatedRoutes>
         
-        </Router>
+    
         </Container>
     )
 }

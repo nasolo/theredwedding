@@ -10,6 +10,7 @@ const Container = styled(Box)`
     margin: 0;
     z-index: 1;
     position: relative;
+    background-color: black;
 
     .home{
         grid-column: 1/13;
@@ -19,39 +20,39 @@ const Container = styled(Box)`
     }
     .gallery{
         grid-column: 1/13;
-        grid-row: 2;
+        grid-row: 1;
         position: relative;
         display: flex;
 
     }
     .packages{
         grid-column: 1/13;
-        grid-row: 3; 
+        grid-row: 1; 
     }
     .about{
         grid-column: 1/13;
-        grid-row: 4;
+        grid-row: 1;
 
     }
 
     .tesimonials{
         grid-column: 1/13;
-        grid-row: 5;
+        grid-row: 1;
 
     }
     .contact{
         grid-column: 1/13;
-        grid-row: 6;
+        grid-row: 1;
 
     }
     .chat{
         grid-column: 1/13;
-        grid-row: 7;
+        grid-row: 1;
 
     }
     .Terms{
         grid-column: 1/13;
-        grid-row: 8;
+        grid-row: 1;
     }
 
 

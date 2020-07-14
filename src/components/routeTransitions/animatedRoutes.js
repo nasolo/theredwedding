@@ -6,17 +6,13 @@ import {Switch, useLocation } from 'react-router-dom'
 
  const AnimatedRoutes = ({
     children,
-    exitBeforeEnter = true,
-    initial = false,
-    direction
+    initial = false
   }) => {
 
     const location = useLocation()
 
-    console.log(location)
-
     return (
-      <AnimatePresence exitBeforeEnter={exitBeforeEnter} initial={initial} custom={direction}>
+      <AnimatePresence initial={initial} custom={location}>
         <Switch location={location} key={location.pathname}>
           {children}
         </Switch>

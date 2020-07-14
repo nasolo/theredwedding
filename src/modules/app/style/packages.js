@@ -1,11 +1,12 @@
+import React from 'react'
 import Box from '../../../elements/Box'
 import styled from 'styled-components'
-import { display } from 'styled-system'
+import { useRouteMatch } from 'react-router-dom'
 
 
-const Packages = styled(Box).attrs(props=>({
-    className: "packages",
-    children: props.contents
+
+const StyledPackages = styled(Box).attrs(props=>({
+    className: "packages"
 }))`
 
     background-color: ${({theme}) => theme.colors.blacks[0]};
@@ -18,6 +19,24 @@ const Packages = styled(Box).attrs(props=>({
     z-index: 1;
     
 `
+
+
+const Packages = ({children, path, contents, ...rest}) =>{
+
+    const match = useRouteMatch({
+        path: path,
+        strict: true,
+        sensitive: true
+      });
+
+    return(
+        <StyledPackages {...rest}>
+            {contents}
+        </StyledPackages>
+    )
+
+}
+
 
 
 export default Packages
