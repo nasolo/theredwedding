@@ -12,6 +12,7 @@ import { useEffect } from 'react'
 import { fetchAppApi } from './redux/actionCreators'
 import { AnimatedRoutes } from '../../components/routeTransitions'
 import variants from './routeAnimations'
+import { Redirect } from 'react-router-dom'
 
 const AppContainer = (props) => {
 
@@ -37,7 +38,6 @@ const AppContainer = (props) => {
   
             
             <AnimatedRoutes exitBeforeEnter initial={false} direction={direction}>
-               
                 {
                     home &&
               

@@ -1,6 +1,6 @@
 import React from 'react'
 import { AnimatePresence } from 'framer-motion'
-import {Switch, useLocation } from 'react-router-dom'
+import {Switch, useLocation, Route, Redirect } from 'react-router-dom'
 
 
 
@@ -14,6 +14,9 @@ import {Switch, useLocation } from 'react-router-dom'
     return (
       <AnimatePresence initial={initial} custom={location}>
         <Switch location={location} key={location.pathname}>
+          <Route exact path="/">
+                  <Redirect to="/home" />
+          </Route>
           {children}
         </Switch>
       </AnimatePresence>
