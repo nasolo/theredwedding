@@ -11,7 +11,7 @@ const InnerWrapper = styled(Box).attrs(props =>({
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    padding: 1rem 1rem;
+    padding: ${({padding}) => padding || "1rem 1rem 0 1rem"};
     flex-direction: column;
 
 `

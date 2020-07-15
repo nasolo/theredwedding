@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {motion, AnimatePresence } from "framer-motion"
 
 import SideMenu from '../../style/sidemenu'
@@ -8,13 +8,18 @@ import AsideLinks from '../components/asideLinks'
 import Copyright from '../components/copyright'
 import { sideDraweVarients, parent, siblings } from '../animations/sideDrawer'
 import Navbar from '../../../../elements/navbar/index';
+import { useLocation } from 'react-router-dom'
 
 
  
 
 const SideDrawer = ({links, social, copyright, isOpen, toggle}) => {
 
-  
+const location = useLocation()
+
+useEffect(() => {
+    isOpen && toggle()
+}, [location])
 
 return (
 <AnimatePresence custom={isOpen}>
