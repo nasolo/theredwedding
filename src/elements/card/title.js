@@ -7,7 +7,7 @@ import css from '@styled-system/css'
 
 const Title = styled(Box).attrs(props =>({
     as: props.as ? props.as : "h1",
-className: `${props.as ? props.as : ""} card-title`,
+    className: `${props.as ? props.as : ""} card-title`,
     children: props.text
 }))`
 

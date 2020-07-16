@@ -20,29 +20,10 @@ import Paralax from '../../elements/paralax';
 import Drag from '../../elements/drag';
 import Chevrons from './component/chevrons';
 import handleOnDragEnd from '../../utils/actionCreators/handleDragEnd'
+import { variants } from './variants'
 
 // Bootstrap Components
 
-const variants = {
-    enter: (direction) => {
-      return {
-        x: direction > 0 ? "-100%" : "100%",
-        opacity: 0
-      };
-    },
-    center: {
-      zIndex: 1,
-      x: 0,
-      opacity: 1
-    },
-    exit: (direction) => {
-      return {
-        zIndex: 0,
-        x: direction < 0 ? "-100%" : "100%",
-        opacity: 0
-      };
-    }
-  };
 
 const CardCarousel = props => {
 
@@ -74,10 +55,7 @@ const dispatch = useDispatch()
                         initial="enter"
                         animate="center"
                         exit="exit"
-                        transition={{
-                            x: { type: "spring", stiffness: 300, damping: 200 },
-                            opacity: { duration: .5 }
-                          }}
+                       
                         key={activeId}
                     >
                         <SliderContent {...activeMedia}/>

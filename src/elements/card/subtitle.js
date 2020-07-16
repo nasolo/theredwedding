@@ -1,8 +1,9 @@
 import styled from "styled-components"
 import Box from "../Box"
+import { motion } from "framer-motion"
 
 const Subtitle = styled(Box).attrs(props =>({
-    as: "h4",
+    as: props.variants ? motion.h4 : "h4",
     className: "card-subtitle",
     children: props.text
 }))``
