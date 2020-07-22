@@ -70,7 +70,9 @@ const handleValumeChange = createAction(HANDLE.VOLUME_CHANGE, function prepare(e
 //mute toggle is handled by the reducer
 const handleToggleMuted = createAction(HANDLE.TOGGLE_MUTED, function prepare(name){
     return {
-       name
+        payload: {
+            name
+        }
     }
 })
 
@@ -142,6 +144,9 @@ const handleSeekMouseDown = createAction(HANDLE.SEEKMOUSE_DOWN, function prepare
 })
 
 const handleSeekChange = createAction(HANDLE.SEEK_CHANGE, function prepare(e, name){
+   
+
+    
     return {
       
         payload: { 
@@ -151,20 +156,24 @@ const handleSeekChange = createAction(HANDLE.SEEK_CHANGE, function prepare(e, na
     }
 })
 
-const handleSeekMouseUp = createAction(HANDLE.SEEK_MOUSEUP, function prepare(e, player, name){
-    player.seekTo(parseFloat(e.target.value))
+const handleSeekMouseUp = createAction(HANDLE.SEEK_MOUSEUP, function prepare(e, name){
     return {
            
             payload: {
                 seeking: false,
+                played: parseFloat(e.target.value),
                 name
             }
     }
 })
 
-  const handleProgress = createAction(HANDLE.PROGRESS, function prepare(name){
+  const handleProgress = createAction(HANDLE.PROGRESS, function prepare(name, {played}){
     return {
-       name
+        payload:{
+            played,
+            name
+        }
+       
     }
 })
 
@@ -175,9 +184,9 @@ const handleSeekMouseUp = createAction(HANDLE.SEEK_MOUSEUP, function prepare(e, 
     }
 })
 
-const handleDuration = createAction(HANDLE.ENDED, function prepare(duration, name){
+const handleDuration = createAction(HANDLE.ENDED, function prepare(name, duration){
+    console.log(duration, name)
     return {
-       
         payload: {
             duration,
             name

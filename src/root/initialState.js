@@ -39,7 +39,7 @@ const appInitialState = {
     videoPlayer: {
         url: null,
         pip: false,
-        controls: true,
+        controls: false,
         light: false,
         volume: 0.8,
         muted: false,

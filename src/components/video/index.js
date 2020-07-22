@@ -1,11 +1,23 @@
 import React, { useRef, useEffect} from 'react'
-import PlayerWrapper from './playerwrapper'
+import PlayerWrapper from './style/playerwrapper'
 import ReactPlayer from 'react-player'
 import config from './selectors'
 import allActions from './actions'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
+import PlayerContainer from './style/playerContainer'
+import PlayButton from './component/play'
+import { bindActionCreators } from 'redux'
+import Controls from './component/controls'
 
-const  {
+const { getPlayerConfig } = config
+ 
+const VideoPlayer = ({videoUrl, name, id, poster}) => {
+
+
+
+    const dispatch = useDispatch()
+    const playerConfig = useSelector(state=>getPlayerConfig(state, name), shallowEqual)
+    const {
       handleDuration,
       handleEnded,
       handleProgress,
@@ -13,32 +25,26 @@ const  {
       handleDisablePIP,
       handleEnablePIP,
       handlePlay,
-      load   
-    } = allActions
-
-  const { getPlayerConfig } = config
- 
-const VideoPlayer = ({videoUrl, name, id, poster}) => {
-
-
-    const dispatch = useDispatch()
-    const playerConfig = useSelector(state=>getPlayerConfig(state, name), shallowEqual)
+      load,
+      handlePlayPause
+    } = bindActionCreators(allActions, dispatch)
     const playerRef = useRef(null)
+    
     
       
      const  { url, playing, controls, light, volume, muted, loop, played, loaded, duration, playbackRate, pip } = playerConfig
 
-    console.log(playerConfig)
+     const shouldLoadVideo = videoUrl !== undefined
 
-    useEffect(
+     useEffect(
     ()=>{
-            videoUrl !== undefined & videoUrl !== null && dispatch(load(videoUrl, name, id))
+          shouldLoadVideo && load(videoUrl, name, id)
           },[videoUrl, dispatch]
       )
 
     return (
-       
-            <ReactPlayer
+      <PlayerContainer>
+          <ReactPlayer
             className="react-player"
             key={id}
             wrapper={PlayerWrapper}
@@ -57,21 +63,31 @@ const VideoPlayer = ({videoUrl, name, id, poster}) => {
             pip={pip}
             onReady={()=> console.log('onReady')}
             onStart={()=> console.log('onStart')}
-            onPlay={()=>dispatch(handlePlay(name))}
-            onEnablePIP={()=>dispatch(handleEnablePIP)}
-            onDisablePIP={()=>dispatch(handleDisablePIP)}
-            onPause={()=>dispatch(handlePause)}
+            onPlay={()=>handlePlay(name)}
+            onEnablePIP={()=>handleEnablePIP()}
+            onDisablePIP={()=>handleDisablePIP()}
+            onPause={()=>handlePause()}
             onBuffer={()=> console.log('on buffer')}
             onSeek={(e)=>console.log('onSeek', e)}
-            onEnded={()=>dispatch(handleEnded)}
+            onEnded={()=>handleEnded()}
             onError={e => console.log('onError',e)}
-            onProgress={()=>dispatch(handleProgress)}
-            onDuration={()=>dispatch(handleDuration)}
+            onProgress={(progress)=>handleProgress(name, progress)}
+            onDuration={(duration)=>handleDuration(name, duration)}
+            onClick={()=>handlePlayPause(name)}
         />
-
+          {!poster &&
+            <PlayButton
+              playing={playing}
+              onClick={() =>handlePlay(name)}
+              poster={poster}
+            />
+          }
+    
+      </PlayerContainer>
     )
 
 }
 
+VideoPlayer.Controls = Controls
 
 export default VideoPlayer

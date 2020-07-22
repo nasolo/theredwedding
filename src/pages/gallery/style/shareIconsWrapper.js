@@ -20,9 +20,9 @@ const ShareIconsWrapper = styled(Box).attrs({
     
 })`
     height: 1em;
-    width: 90%;
+    width: 100%;
     position: absolute;
-    top: 10%;
+    top: 20%;
     text-align: right;
     margin: auto;
     z-index: 1;

@@ -1,20 +1,51 @@
 import Span from '../../../elements/span'
 import styled from 'styled-components'
-import ComposeBoxHelper from '../../../utils/style/composeBox'
+import css from '@styled-system/css'
+import Box from '../../../elements/Box'
 
 
-const Wrapper = styled(Span).attrs({
-    className: "icon-box-wrapper"
+const mediaQueries =({mediaQueries})=>css({
+    [mediaQueries.lg]: {
+        flexDirection: 'row', 
+        gap: "1rem",
+    },
+    [mediaQueries.sm]: {
+        [`p`]: {
+            fontSize: ".75rem",
+
+    }
+},
+    [mediaQueries.md]: {
+        [`p`]: {
+            fontSize: "1rem !important",
+
+    }
+}
+})
+
+const Wrapper = styled(Box).attrs({
+    as: 'span',
+    className: "shareBoxWrapper"
 })`
-    ${ComposeBoxHelper}
-    
+    margin: auto;
+    cursor: pointer;
     display: flex;
-    align-content: center;
-    justify-content: center;
-    flex-flow: ${({flexFlow}) => flexFlow ? flexFlow : "row nowrap"};
-    flex-basis: ${({flexBasis}) => flexBasis ? flexBasis : "3rem"};
-    flex-grow: 1;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    ${({theme}) => mediaQueries(theme)}
+    
 
+   
+     p{
+        font-weight: 600;
+        text-align: center;
+        font-size: .65em;
+        margin-top: auto !important;
+        margin-bottom: auto !important;
+        
+    }
 `
 
 export default Wrapper

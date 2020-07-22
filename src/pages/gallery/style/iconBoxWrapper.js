@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Col from "react-bootstrap/Col";
 import ComposeBoxHelper from "../../../utils/style/composeBox";
 import css from '@styled-system/css'
 import { motion } from "framer-motion";
@@ -9,6 +8,13 @@ const flexBoxColumn = {
     lg: 9,
     sm: 12
 }
+
+const dronesIconMediaQuery =({mediaQueries})=>css({
+    [mediaQueries.lg]: {
+        maxWidth: "4rem",
+        maxHeight: "2rem",
+    }
+})
 
 const svgMediaQuery=({colors, mediaQueries})=>css({
 
@@ -27,88 +33,46 @@ const svgMediaQuery=({colors, mediaQueries})=>css({
         maxWidth: "5rem",
         maxHeight: "2rem",
         fill: colors.whites[9],
-        
-    }
-})
-
-const iconBoxMediaQueries =({colors, mediaQueries})=>css({
-   [mediaQueries.sm]:{
-       fontSize: "100%"
-   },
-   [mediaQueries.lg]:{
-        fontSize: "100%",
-        maxWidth: "7.5rem",
-        flexDirection: "row",
-        color: colors.whites[9],
-        '.active': {
-            color: "white",
+        ' &.active':{
             fill: "white"
         }
-   }
-})
-
-const dronesIconMediaQuery =({mediaQueries})=>css({
-    [mediaQueries.lg]: {
-        maxWidth: "4rem",
-        maxHeight: "2rem",
-    },
-    [mediaQueries.xl]: {
-      
     }
 })
 
-const className = "w-100 mh-100"
+const textMediaQueries = ({colors, mediaQueries}) =>css({
+    [mediaQueries.lg]:{
+        color: colors.whites[9],
+        ' &.active':{
+            color: "white"
+        }
+    }
+})
+
 
 const IconBoxWrapper = styled(motion.div).attrs({
     className: "IconBoxContainer col"
 })`
     ${ComposeBoxHelper}
     display: flex;
-    flex-flow: row nowrap;
+    flex-wrap: nowrap;
     justify-content: space-between;
-    align-items: center;
-    align-content: center;
-    margin: 1rem auto 0 auto;
     
-    
+    ${({margin, direction}) =>({
+        flexDirection: direction || "row",
+        margin: margin || "1rem auto 0 auto"
+    })};
 
-& .icon-box-wrapper {
     
-    text-align: center;
-    font-size: 70%;
-    flex-shrink: 1;
-    flex: auto;
-    font-weight: 900;
-    max-height: 3rem;
-    max-width: 3rem;
-    height: 100%;
-    width: 100%;
-    flex: 0 0 auto;
-    flex-direction: column;
-    justify-content: space-around;
-    margin: auto 1%;
-    cursor: pointer;
-    color: ${({theme})=> theme.colors.blacks[5]};
-    ${({theme})=>iconBoxMediaQueries(theme)};
-    &.active{
-        color: ${({theme})=> theme.colors.blacks[9]};
-    }
-}
 
  svg {
-    height: 100%;
-    margin: auto;
-    flex: 1 1 auto;
     min-height: 1rem;
-    max-height: 2em;
+    max-height: 1.5em;
     max-width: 4rem;
     fill: ${({theme})=> theme.colors.blacks[5]};
-    ${({theme}) => svgMediaQuery(theme)};
-
      &.active {
         fill: ${({theme})=> theme.colors.blacks[9]};
     }
-
+    ${({theme}) => svgMediaQuery(theme)};
 
 }
 .Drones-icon{
@@ -117,10 +81,12 @@ const IconBoxWrapper = styled(motion.div).attrs({
     ${({theme})=> dronesIconMediaQuery(theme)}
 }
 
-
-& p{
-    margin: auto 3%;
-   
+p{
+   color: ${({theme})=> theme.colors.blacks[5]};
+   &.active {
+        color: ${({theme})=> theme.colors.blacks[9]};
+    }
+    ${({theme}) =>textMediaQueries(theme)}
 }
 
 `
@@ -130,7 +96,6 @@ export default IconBoxWrapper
 IconBoxWrapper.defaultProps ={
     
     flexBoxColumn,
-    className 
 }
 
 //${({active, theme}) => handleMediaQueries(svgMediaQuery(active, theme))}

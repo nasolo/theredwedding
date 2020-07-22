@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import {useSelector, useDispatch, shallowEqual } from 'react-redux'
-
 //customer components and elements
 import SlideContainer from '../../elements/slidecontainer'
 
@@ -18,7 +17,7 @@ import Slider from './components/slider';
 import ShareGallery from './components/shareGallery';
 import Indicators from './components/indicators';
 import PageFooter from './components/footer';
-
+import ReactPlayer from '../../components/video'
 
 const {allMediaData, filterGalleryByTags} = allSelectors
 
@@ -28,8 +27,11 @@ const {allMediaData, filterGalleryByTags} = allSelectors
 const Gallery = props => {
 
     const dispatch = useDispatch()
+    const playerRef = useRef(null)
+
     const isDesktop = useWindowSize().width <= 990
-  
+    const Controls = ReactPlayer.Controls
+
   
 //Redux Selectors
     const makeGetAllMediaData = useMemo(allMediaData, [])
@@ -43,7 +45,7 @@ const Gallery = props => {
     
     
     //Declare component variable dependies
-    const indicatorsPerPage = isDesktop ? 5 : 8
+    const indicatorsPerPage = isDesktop ? 4 : 8
     const { next, 
             prev, 
             activeMedia,
@@ -64,9 +66,9 @@ const Gallery = props => {
       return (
         <SlideContainer className="d-flex flex-column" justifyContent="flex-end">
            
-           <Slider activeMedia={activeMedia} prev={prev} next={next} direction={direction}/>
+           <Slider playerRef={playerRef} activeMedia={activeMedia} prev={prev} next={next} direction={direction}/>
            <ShareGallery shareIcons={shareIcons}/>
-        
+            <Controls player={playerRef}/>
            <Indicators indicatorsPerPage={indicatorsPerPage} pageItems={currentPageItems} activeId={activeId} next={next} prev={prev}/>
            <PageFooter isDesktop={isDesktop}/>
                    

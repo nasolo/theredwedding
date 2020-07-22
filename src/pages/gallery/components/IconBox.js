@@ -11,7 +11,7 @@ const IconBox = ({icon, text}) => (
         className="row"
     >
             <Icon icon={icon} width="1rem" className="col-lg-6"/>
-            <IconBoxText className="col-lg-6" fontSize={12}>
+            <IconBoxText className="col-lg-6">
             {text}
         </IconBoxText>
     </IconBoxWrapper>

@@ -82,7 +82,6 @@ const videoPlayer = createReducer(appInitialState.videoPlayer, {
          },
         [handlePlay]:(state, action)=>{
 
-            console.log(action)
              return {
                  ...state,
                  ...action.payload
@@ -125,8 +124,13 @@ const videoPlayer = createReducer(appInitialState.videoPlayer, {
             }
         },
         [handleProgress]: (state, action)=>{
+         
             
-            return !state.seeking && state
+            return !state.seeking && {
+                        ...state,
+                        ...action.payload
+                    } 
+
         },
         [handleEnded]: (state, action)=>{
             return {

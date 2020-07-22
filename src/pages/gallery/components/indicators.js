@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { setActiveId } from '../redux/actions'
+import { bindActionCreators } from 'redux'
 import IndicatorWrapper from '../style/indicatorWrapper'
 import Chevron from '../../../elements/chevron'
 import Indicator from '../style/indicator'
@@ -9,6 +10,7 @@ import Indicator from '../style/indicator'
 const Indicators = ({indicatorsPerPage, pageItems, activeId, prev, next}) => {
 
     const dispatch = useDispatch()
+    const paginate = bindActionCreators(setActiveId, dispatch)
 
     return (
         <IndicatorWrapper totalItems ={indicatorsPerPage} lg={12} >                          
@@ -16,8 +18,9 @@ const Indicators = ({indicatorsPerPage, pageItems, activeId, prev, next}) => {
                 icon="leftChevron" 
                 position="absolute" 
                 left="7%" 
-                maxHeight="3rem" 
-                onClick={()=>dispatch(setActiveId(prev))} 
+                maxHeight={["2rem",null, "3rem"]}
+                onClick={()=>paginate(prev)}
+                display="inline" 
             />
 
                 {pageItems !== undefined && pageItems.map(item => {
@@ -27,13 +30,20 @@ const Indicators = ({indicatorsPerPage, pageItems, activeId, prev, next}) => {
                     <Indicator 
                         active={active} 
                         totalItems={indicatorsPerPage} 
-                        onClick={()=>dispatch(setActiveId(item))}
+                        onClick={()=>paginate(item)}
                         key={item.id}
                     />
                 )
             })}
 
-            <Chevron icon="rightChevron" position="absolute" right="7%" maxHeight="3rem" onClick={()=>dispatch(setActiveId(next))}/>
+            <Chevron 
+                display="inline" 
+                icon="rightChevron" 
+                position="absolute" 
+                right="7%"  
+                maxHeight={["2rem",null, "3rem"]} 
+                onClick={()=>paginate(next)}
+            />
     </IndicatorWrapper>
     )
 }

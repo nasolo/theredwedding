@@ -1,36 +1,8 @@
 import React from 'react'
+import ReactPlayer from 'react-player'
 import FullScreenImage from '../../../elements/imagePlaceholder'
-import { IMAGE_EXTENSTIONS,  VIDEO_PLAYER_EXTENSIONS} from '../../../utils/patterns'
+import { IMAGE_EXTENSTIONS } from '../../../utils/patterns'
 import VideoPlayer from '../../../components/video'
-
-
-const validateExtension = exp =>{
-   const expr = Object.values(VIDEO_PLAYER_EXTENSIONS)
-   return expr.reduce((prev, next) => {     
-        if(next.test(exp)){
-            return prev = true
-        }
-        return prev
-    }, false)
-}
-
-const canPlay = (url) =>{
-    if(url instanceof Array){
-        for(let item of url){
-            if(typeof item === 'string' && validateExtension(url)){
-                return true
-            }
-        }
-    }
-
-    if(typeof url === 'string'){
-        return validateExtension(url)
-    }
-
-    return false
-    
-}
-
 
 
 const getPoster = poster => {
@@ -78,20 +50,21 @@ const renderSourceElement = (url) => {
 
 
 
-const ActiveMedia = ({media}) => {
+const ActiveMedia = ({media, playerRef}) => {
     
     const poster = media.poster ? getPoster(media.poster) : false
     const { url, id } = media
+
+    const checkIfCanPlay = ReactPlayer.canPlay(url)
+    const checkIfImage = isImage(url)
 
 
     return (
         <>
 
-            { isImage(url) && <FullScreenImage src={renderSourceElement(url)}/> }
-            { canPlay(url) & poster.length > 0 ? <FullScreenImage src={renderSourceElement(poster)}/> : null }
-            { canPlay(url) & poster <= 0 ?  <VideoPlayer name={"gallery"} id={id} videoUrl={renderSourceElement(url)}/> : null }
+            { checkIfImage && <FullScreenImage src={renderSourceElement(url)}/> }
+            { checkIfCanPlay && <VideoPlayer playerRef={playerRef} name={"gallery"} id={id} poster={poster} videoUrl={renderSourceElement(url)}/>}
 
-            
         </>
     )
 

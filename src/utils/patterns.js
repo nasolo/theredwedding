@@ -49,3 +49,33 @@ export const VIDEO_PLAYER_EXTENSIONS = {
     HLS_EXTENSIONS,
     DASH_EXTENSIONS
 }
+
+
+
+export const validateExtension = exp =>{
+    const expr = Object.values(VIDEO_PLAYER_EXTENSIONS)
+    return expr.reduce((prev, next) => {     
+         if(next.test(exp)){
+             return prev = true
+         }
+         return prev
+     }, false)
+ }
+ 
+ export const canPlay = (url) =>{
+     if(url instanceof Array){
+         for(let item of url){
+             if(typeof item === 'string' && validateExtension(url)){
+                 return true
+             }
+         }
+     }
+ 
+     if(typeof url === 'string'){
+         return validateExtension(url)
+     }
+ 
+     return false
+     
+ }
+ 
