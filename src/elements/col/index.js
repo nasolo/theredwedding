@@ -44,7 +44,8 @@ const handleColumns = (props) =>{
 
 
 const Col = styled(Box).attrs(props =>({
-    className: handleColumns(props)
+    as: props.as || "div",
+    className: `${handleColumns(props)} ${props.className}`
 }))``
 
 

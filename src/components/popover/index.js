@@ -104,19 +104,11 @@ const Popover = props => {
                 </AnimatePresence>
 
                   )}
-    >
-
-
-       
+          >
         {({ triggerRef, isOpen }) => (
-
-          
-
            <span ref={triggerRef} onClick = {toggle}>
              {props.children}
            </span>
-
-            
         )}
 
         </ToggleLayer>

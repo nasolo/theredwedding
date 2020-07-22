@@ -50,7 +50,15 @@ const appInitialState = {
         loop: false,
         playing: false,
         seeking: false,
-        id: null
+        id: null,
+        quality:[
+          1080,
+          720,
+          480,
+          360,
+          240,
+          144
+        ]
     },
     packages: {
       isFetching: false,

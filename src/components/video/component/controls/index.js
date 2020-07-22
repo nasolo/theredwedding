@@ -9,7 +9,9 @@ import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import config from '../../selectors'
 import VideoPlayer from 'react-player'
-import { FormName } from 'redux-form'
+import { useCycle, motion } from 'framer-motion'
+import { opacity } from 'styled-system'
+
 
 const { getPlayerConfig } = config
 
@@ -20,12 +22,14 @@ const Controls = ({playerRef}) => {
     
     let name = 'gallery'
     const dispatch = useDispatch()
+    const [volumeHover, cycleVolume] = useCycle("0", "80%")
     const player = VideoPlayer
     const {
             duration, 
             played, 
             playing,
-            muted
+            muted,
+            volume
         } = useSelector(state=>getPlayerConfig(state, name), shallowEqual)
 
     const {
@@ -37,6 +41,7 @@ const Controls = ({playerRef}) => {
         handleEnablePIP,
         handlePlay,
         load,
+        handleVolumeChange,
         handleToggleMuted,
         handlePlayPause,
         handleSeekMouseDown,
@@ -44,6 +49,7 @@ const Controls = ({playerRef}) => {
         handleSeekMouseUp
       } = bindActionCreators(allActions, dispatch)
 
+      console.log(volumeHover)
 
     return (
         <Row zIndex="2000">
@@ -63,17 +69,19 @@ const Controls = ({playerRef}) => {
         </Col>
         <Col>
             <Seek 
+                key="seekTo_Range"
                 value={played}
                 onMouseDown={()=>handleSeekMouseDown()}
                 onChange={(e)=>handleSeekChange(e, name)}
                 onMouseUp={(e)=>handleSeekMouseUp(e, player, name)}
+                
+                
             />
         </Col>
 
         <Col
-            
-            borderLeft='1px dotted grey'
-        
+            onMouseEnter={()=>cycleVolume()}
+            onMouseLeave={()=>cycleVolume()}
         >
             <Icon 
                 icon={`${muted ? "mute" : "volume"}`}
@@ -82,8 +90,23 @@ const Controls = ({playerRef}) => {
                 key="volume_btn"
                 onClick={()=>handleToggleMuted(name)}
             />
+ 
+            <Seek
+                as={motion.input}
+                animate={{
+                    width: volumeHover
+                }}
+                key="volume_handler"
+                value={volume}
+                min={0}
+                max={1}
+                onChange={(e)=>handleVolumeChange(e, name)}
+                
+            />
         
+
         </Col>
+
         <Col borderRight='1px dotted grey' borderLeft='1px dotted grey'>
             <Icon 
                 icon="expand"  

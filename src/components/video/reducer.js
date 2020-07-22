@@ -16,7 +16,7 @@ const {
         handlePlay,
         handleSetPlaybackRate,
         handleToggleMuted,
-        handleValumeChange,
+        handleVolumeChange,
         handleToggleLoop,
         handleLight,
         handleStop,
@@ -56,7 +56,7 @@ const videoPlayer = createReducer(appInitialState.videoPlayer, {
                  
              }
          },
-         [handleValumeChange]: (state, action)=>{
+         [handleVolumeChange]: (state, action)=>{
             return {
                 ...state,
                 ...action.payload

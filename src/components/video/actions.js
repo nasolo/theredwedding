@@ -57,7 +57,7 @@ const handleToggleLoop =createAction(HANDLE.TOGGLE_LOOP, function prepare(name){
     }
 })
 
-const handleValumeChange = createAction(HANDLE.VOLUME_CHANGE, function prepare(e, name){
+const handleVolumeChange = createAction(HANDLE.VOLUME_CHANGE, function prepare(e, name){
     return{
       
         payload: {
@@ -209,7 +209,7 @@ const allActions = {
     handlePlay,
     handleSetPlaybackRate,
     handleToggleMuted,
-    handleValumeChange,
+    handleVolumeChange,
     handleToggleLoop,
     handleLight,
     handleStop,

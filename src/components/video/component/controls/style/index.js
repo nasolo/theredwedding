@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 
 export const Seek = styled(Box).attrs(props =>({
-    as: 'input',
+    as: props.as || 'input',
     type: 'range',
     value: props.value,
     min: 0,
