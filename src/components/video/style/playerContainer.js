@@ -9,6 +9,7 @@ const PlayerContainer = styled(Box).attrs(props =>({
     position: relative;
     display: flex;
     flex-direction: row;
+    justify-content: center;
     
 
 `

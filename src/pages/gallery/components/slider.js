@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Paralax from "../../../elements/paralax"
 
@@ -10,11 +10,11 @@ import Drag from '../../../elements/drag'
 import ActiveMedia from './activeMedia'
 import { sliderVariants } from '../assets/motionVariants' 
 
-const Slider = ({activeMedia, prev, next, direction, playerRef}) => {
+const Slider = ({activeMedia, prev, next, direction, ...rest}) => {
 
     const dispatch = useDispatch()
-    
 
+    
     return (
         <Paralax className="position-absolute">
             <AnimatePresence custom={direction}>
@@ -28,7 +28,7 @@ const Slider = ({activeMedia, prev, next, direction, playerRef}) => {
                     animate="center"
                     exit="exit"
                 >
-                    <ActiveMedia playerRef={playerRef} media={activeMedia !== undefined && activeMedia}/>
+                    <ActiveMedia {...rest} media={activeMedia !== undefined && activeMedia}/>
                 </Drag>
             </AnimatePresence>
         </Paralax>

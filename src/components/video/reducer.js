@@ -1,6 +1,7 @@
 import allActions from './actions'
-import { createReducer, combineReducers } from '@reduxjs/toolkit'
+import { createReducer, createNextState } from '@reduxjs/toolkit'
 import appInitialState from '../../root/initialState'
+import { includes } from 'lodash'
 
 const {
         handleDuration,
@@ -21,16 +22,20 @@ const {
         handleLight,
         handleStop,
         handlePlayPause,
-        load
+        load,
+        handleVideoRef
 } = allActions
 
 const videoPlayer = createReducer(appInitialState.videoPlayer, {
-        [load]: (state, action)=>{
-            return {
+        [load]: (state, action)=>({
                 ...state,
                 ...action.payload
-            }
-        },
+            
+        }),
+        [handleVideoRef]: (state, action) => ({
+            ...state,
+            ...action.payload
+        }),
         [handlePlayPause]: (state)=>{
             return{
                 ...state,
@@ -146,20 +151,64 @@ const videoPlayer = createReducer(appInitialState.videoPlayer, {
         }         
 })
 
-
-const createFilteredReducer = (reducer, predicate) =>{
-    return (state, action) =>{
-        const isInitializationCall = state === undefined;
-        const name = action.payload && predicate(action) 
-        const shouldRunWrappedReducer  = isInitializationCall || name 
-        
-        return shouldRunWrappedReducer ? reducer(state, action) : state
-
-    }
+const initState = {
+    urls: [],
+    ids: [],
+    loaded: 0,
+    activeVideo: {}
 }
 
+const videoReducer = createReducer(initState, builder => {
+    builder
+        .addCase(load, createNextState(
+            (video, action)=>{
+                
+                //extract id from actions to filter reducers
+                const {id, url} = action.payload
+    
+                //map state for reducer keys will be used to validate if keys exist
+                const reducers = Object.keys(video)
+    
+                //initiate keys to add for cleanup
+                let keysToAdd = []
+    
+                //valide if id exist is action payload if yes push keys to add
+                 if(!id){
+                     return video
+                 } else {
+                    keysToAdd.push(id)
+                 }
+    
+                 //map over keys and check and add reducers that does not exist
+                 keysToAdd.forEach(key => {
+                    video[key] = reducers[key] ? video[key] : videoPlayer(video[key],action)
+                });
+                
 
-export default combineReducers({
-    gallery: createFilteredReducer(videoPlayer, action => action.payload.name === "gallery"),
-    video: createFilteredReducer(videoPlayer, action => action.payload.name === "video")
+                video.activeVideo = video[id]
+             
+    
+                video.loaded = video.urls.length
+    
+                return video
+            })
+        ).addMatcher(
+            action => action.type.endsWith('VIDEO'),
+            createNextState(
+                (video, action) =>{
+                    
+                    if(!action || !action.payload.id) return video
+
+                    const id = action.payload.id
+    
+                    console.log(action)
+    
+                    video[id] = videoPlayer(video[id], action)
+    
+                    return video
+            })
+        )
 })
+    
+
+export default videoReducer

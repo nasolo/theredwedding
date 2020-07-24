@@ -50,7 +50,7 @@ const renderSourceElement = (url) => {
 
 
 
-const ActiveMedia = ({media, playerRef}) => {
+const ActiveMedia = ({media, ...rest}) => {
     
     const poster = media.poster ? getPoster(media.poster) : false
     const { url, id } = media
@@ -58,12 +58,11 @@ const ActiveMedia = ({media, playerRef}) => {
     const checkIfCanPlay = ReactPlayer.canPlay(url)
     const checkIfImage = isImage(url)
 
-
     return (
         <>
 
             { checkIfImage && <FullScreenImage src={renderSourceElement(url)}/> }
-            { checkIfCanPlay && <VideoPlayer playerRef={playerRef} name={"gallery"} id={id} poster={poster} videoUrl={renderSourceElement(url)}/>}
+            { checkIfCanPlay && <VideoPlayer {...rest} name={"gallery"} id={id} poster={poster} videoUrl={renderSourceElement(url)}/>}
 
         </>
     )

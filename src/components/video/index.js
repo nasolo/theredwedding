@@ -1,4 +1,5 @@
-import React, { useRef, useEffect} from 'react'
+import React, { useRef, useEffect, useCallback} from 'react'
+import Spinner from 'react-bootstrap/Spinner'
 import PlayerWrapper from './style/playerwrapper'
 import ReactPlayer from 'react-player'
 import config from './selectors'
@@ -9,46 +10,27 @@ import PlayButton from './component/play'
 import { bindActionCreators } from 'redux'
 import Controls from './component/controls'
 
+
 const { getPlayerConfig } = config
- 
-const VideoPlayer = ({videoUrl, name, id, poster}) => {
 
+const Video = ({config, actions, poster, player}) => {
 
+  const ref = useRef(null)
 
-    const dispatch = useDispatch()
-    const playerConfig = useSelector(state=>getPlayerConfig(state, name), shallowEqual)
-    const {
-      handleDuration,
-      handleEnded,
-      handleProgress,
-      handlePause,
-      handleDisablePIP,
-      handleEnablePIP,
-      handlePlay,
-      load,
-      handlePlayPause
-    } = bindActionCreators(allActions, dispatch)
-    const playerRef = useRef(null)
-    
-    
-      
-     const  { url, playing, controls, light, volume, muted, loop, played, loaded, duration, playbackRate, pip } = playerConfig
+  useEffect(()=>{
+    const { current } = ref
+    return player(current)
+  },[ref])
 
-     const shouldLoadVideo = videoUrl !== undefined
+  const { id, url, playing, controls, light, volume, muted, loop, played, loaded, duration, playbackRate, pip } = config
+  const {handlePlay,  handleEnablePIP, handleDisablePIP, handlePause, handleEnded, handleProgress, handleDuration, handleVideoRef, handlePlayPause} = actions
 
-     useEffect(
-    ()=>{
-          shouldLoadVideo && load(videoUrl, name, id)
-          },[videoUrl, dispatch]
-      )
-
-    return (
-      <PlayerContainer>
-          <ReactPlayer
+return (
+        <ReactPlayer
             className="react-player"
             key={id}
             wrapper={PlayerWrapper}
-            ref={playerRef}
+            ref={ref}
             url={url}
             playing={playing}
             controls={controls}
@@ -63,22 +45,51 @@ const VideoPlayer = ({videoUrl, name, id, poster}) => {
             pip={pip}
             onReady={()=> console.log('onReady')}
             onStart={()=> console.log('onStart')}
-            onPlay={()=>handlePlay(name)}
-            onEnablePIP={()=>handleEnablePIP()}
-            onDisablePIP={()=>handleDisablePIP()}
-            onPause={()=>handlePause()}
+            onPlay={()=>handlePlay(id)}
+            onEnablePIP={()=>handleEnablePIP(id)}
+            onDisablePIP={()=>handleDisablePIP(id)}
+            onPause={()=>handlePause(id)}
             onBuffer={()=> console.log('on buffer')}
             onSeek={(e)=>console.log('onSeek', e)}
-            onEnded={()=>handleEnded()}
+            onEnded={()=>handleEnded(id)}
             onError={e => console.log('onError',e)}
-            onProgress={(progress)=>handleProgress(name, progress)}
-            onDuration={(duration)=>handleDuration(name, duration)}
-            onClick={()=>handlePlayPause(name)}
+            onProgress={(progress)=>handleProgress(id, progress)}
+            onDuration={(duration)=>handleDuration(id, duration)}
+            onClick={()=>handlePlayPause(id)}
         />
+  )
+}
+ 
+const VideoPlayer = ({videoUrl, id, poster, player}) => {
+
+    const dispatch = useDispatch()
+    const actions = bindActionCreators(allActions, dispatch)
+
+    useEffect(
+      ()=>{
+            shouldLoadVideo && actions.load(videoUrl, id)
+            },[videoUrl, dispatch]
+        )
+
+    const playerConfig = useSelector(state=>getPlayerConfig(state, id), shallowEqual)
+    
+    
+      
+     const shouldLoadVideo = videoUrl !== undefined
+     const shouldRenderVideo = playerConfig === undefined
+
+
+    return (
+      <PlayerContainer>
+        {shouldRenderVideo ? 
+        <Spinner animation="border" className="m-auto"/>  
+        :
+        <Video player={player} config={playerConfig} actions={actions} poster={poster}/>}
+        
           {!poster &&
             <PlayButton
-              playing={playing}
-              onClick={() =>handlePlay(name)}
+              //playing={playerConfig.playing}
+              onClick={() =>actions.handlePlay(id)}
               poster={poster}
             />
           }
@@ -91,3 +102,6 @@ const VideoPlayer = ({videoUrl, name, id, poster}) => {
 VideoPlayer.Controls = Controls
 
 export default VideoPlayer
+
+/* 
+        */

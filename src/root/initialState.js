@@ -38,6 +38,7 @@ const appInitialState = {
     },
     videoPlayer: {
         url: null,
+        ref: null,
         pip: false,
         controls: false,
         light: false,

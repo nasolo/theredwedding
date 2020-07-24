@@ -5,7 +5,7 @@ import {reducer as form } from 'redux-form'
 import rootReducer from './rootReducer'
 import header from '../pages/home/redux/reducer';
 import gallery from '../pages/gallery/redux/reducers'
-import videoPlayer from '../components/video/reducer';
+import videoReducer from '../components/video/reducer';
 import packages from '../pages/packages/redux/reducer'
 import aboutUs from '../pages/about/redux/reducers'
 import testimonials from '../pages/testimonial/redux/reducers'
@@ -20,7 +20,7 @@ const reducer = {
     header,
     gallery,
     rootReducer,
-    videoPlayer,
+    videoReducer,
     packages,
     aboutUs,
     testimonials,

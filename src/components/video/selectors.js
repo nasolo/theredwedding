@@ -2,15 +2,15 @@ import { createSelector } from "reselect"
 
 
 
-const selectPlayerConfig = state => state.videoPlayer
+const selectPlayerConfig = state => state.videoReducer
 
 
 
 const getPlayerConfig = createSelector(
     selectPlayerConfig,
-    (_, name) => name,
-    (config, name) => {
-        return config[name]
+    (_, id) => id,
+    (config, id) => {
+        return config[id]
     }
 )
 

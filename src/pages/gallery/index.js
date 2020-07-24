@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {useSelector, useDispatch, shallowEqual } from 'react-redux'
 //customer components and elements
 import SlideContainer from '../../elements/slidecontainer'
@@ -27,23 +27,19 @@ const {allMediaData, filterGalleryByTags} = allSelectors
 const Gallery = props => {
 
     const dispatch = useDispatch()
-    const playerRef = useRef(null)
-
+    const [player, setPlayer] = useState({})
     const isDesktop = useWindowSize().width <= 990
     const Controls = ReactPlayer.Controls
 
-  
-//Redux Selectors
+ //Redux Selectors
     const makeGetAllMediaData = useMemo(allMediaData, [])
     const { activeId, 
             media,
-            activeIndex,
             direction,
             isFetching,
             shareIcons
          } = useSelector(state => makeGetAllMediaData(state), shallowEqual)
-    
-    
+         
     //Declare component variable dependies
     const indicatorsPerPage = isDesktop ? 4 : 8
     const { next, 
@@ -60,15 +56,16 @@ const Gallery = props => {
     //Handle side effects
     useEffect(() => {
         media.length < 1 & !isFetching && fetchAllData()
+
     })
     
 
       return (
         <SlideContainer className="d-flex flex-column" justifyContent="flex-end">
            
-           <Slider playerRef={playerRef} activeMedia={activeMedia} prev={prev} next={next} direction={direction}/>
+           <Slider player={setPlayer} activeMedia={activeMedia} prev={prev} next={next} direction={direction}/>
            <ShareGallery shareIcons={shareIcons}/>
-            <Controls player={playerRef}/>
+            
            <Indicators indicatorsPerPage={indicatorsPerPage} pageItems={currentPageItems} activeId={activeId} next={next} prev={prev}/>
            <PageFooter isDesktop={isDesktop}/>
                    
@@ -77,3 +74,4 @@ const Gallery = props => {
 }
 
 export default Gallery
+//<Controls player={playerRef}/>
