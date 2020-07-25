@@ -13,12 +13,14 @@ import { useCycle, motion } from 'framer-motion'
 
 
 
-const { getPlayerConfig } = config
+const { activeVideo } = config
 
 
 
 
 const Controls = ({player, id}) => {
+
+    console.log(id)
     
     const dispatch = useDispatch()
     const [volumeHover, cycleVolume] = useCycle("0", "80%")
@@ -29,8 +31,8 @@ const Controls = ({player, id}) => {
             playing,
             muted,
             volume
-        } = useSelector(state=>getPlayerConfig(state, id), shallowEqual)
-
+        } = useSelector(state=>activeVideo(state), shallowEqual)
+console.log(played)
     const {
         handleDuration,
         handleEnded,
@@ -48,9 +50,7 @@ const Controls = ({player, id}) => {
         handleSeekMouseUp
       } = bindActionCreators(allActions, dispatch)
 
-      console.log(volumeHover)
-
-    return (
+     return (
         <Row zIndex="2000">
             <Col>
                 <Icon 
@@ -73,8 +73,6 @@ const Controls = ({player, id}) => {
                 onMouseDown={()=>handleSeekMouseDown(id)}
                 onChange={(e)=>handleSeekChange(e, id)}
                 onMouseUp={(e)=>handleSeekMouseUp(e, player, id)}
-                
-                
             />
         </Col>
 

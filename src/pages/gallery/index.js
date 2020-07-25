@@ -65,7 +65,7 @@ const Gallery = props => {
            
            <Slider player={setPlayer} activeMedia={activeMedia} prev={prev} next={next} direction={direction}/>
            <ShareGallery shareIcons={shareIcons}/>
-            <Controls player={player} id={activeId}/>
+           <Controls player={player}/>
            <Indicators indicatorsPerPage={indicatorsPerPage} pageItems={currentPageItems} activeId={activeId} next={next} prev={prev}/>
            <PageFooter isDesktop={isDesktop}/>
                    

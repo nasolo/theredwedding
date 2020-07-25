@@ -14,7 +14,18 @@ const getPlayerConfig = createSelector(
     }
 )
 
+const activeVideo = createSelector(
+    selectPlayerConfig,
+    (media) => {
+        const { activeVideo } = media
+
+        const id = activeVideo.id
+       
+        return media[id] ?  media[id] : media
+    }
+)
 
 export default {
-    getPlayerConfig
+    getPlayerConfig,
+    activeVideo
 }

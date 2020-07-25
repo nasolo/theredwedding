@@ -155,14 +155,16 @@ const handleSeekChange = createAction(HANDLE.SEEK_CHANGE,
 )
 
 const handleSeekMouseUp = createAction(HANDLE.SEEK_MOUSEUP, 
-    (e, id) =>({
-        payload: {
-            seeking: false,
-            played: parseFloat(e.target.value),
-            id
-        }
-    })
-)
+    (e, player, id) =>{
+        player.seekTo(parseFloat(e.target.value))
+        return {
+            payload: {
+                seeking: false,
+                id
+            }
+    }
+
+})
 
 const handleProgress = createAction(HANDLE.PROGRESS, 
     (id, { played }) =>({
