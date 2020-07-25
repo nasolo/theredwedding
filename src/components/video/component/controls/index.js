@@ -8,9 +8,9 @@ import allActions from '../../actions'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import config from '../../selectors'
-import VideoPlayer from 'react-player'
+
 import { useCycle, motion } from 'framer-motion'
-import { opacity } from 'styled-system'
+
 
 
 const { getPlayerConfig } = config
@@ -18,19 +18,18 @@ const { getPlayerConfig } = config
 
 
 
-const Controls = ({playerRef}) => {
+const Controls = ({player, id}) => {
     
-    let name = 'gallery'
     const dispatch = useDispatch()
     const [volumeHover, cycleVolume] = useCycle("0", "80%")
-    const player = VideoPlayer
+    
     const {
             duration, 
             played, 
             playing,
             muted,
             volume
-        } = useSelector(state=>getPlayerConfig(state, name), shallowEqual)
+        } = useSelector(state=>getPlayerConfig(state, id), shallowEqual)
 
     const {
         handleDuration,
@@ -59,7 +58,7 @@ const Controls = ({playerRef}) => {
                     key={`${playing ? "play" : "pause"}"_btn"`} 
                     height="1rem" 
                     fill="white" 
-                    onClick={(name) =>handlePlayPause(name)}/>
+                    onClick={(id) =>handlePlayPause(id)}/>
             </Col>
         <Col>
             <Duration seconds={duration * played}/>
@@ -71,9 +70,9 @@ const Controls = ({playerRef}) => {
             <Seek 
                 key="seekTo_Range"
                 value={played}
-                onMouseDown={()=>handleSeekMouseDown()}
-                onChange={(e)=>handleSeekChange(e, name)}
-                onMouseUp={(e)=>handleSeekMouseUp(e, player, name)}
+                onMouseDown={()=>handleSeekMouseDown(id)}
+                onChange={(e)=>handleSeekChange(e, id)}
+                onMouseUp={(e)=>handleSeekMouseUp(e, player, id)}
                 
                 
             />
@@ -88,7 +87,7 @@ const Controls = ({playerRef}) => {
                 height="1rem" 
                 fill="white"
                 key="volume_btn"
-                onClick={()=>handleToggleMuted(name)}
+                onClick={()=>handleToggleMuted(id)}
             />
  
             <Seek
@@ -100,7 +99,7 @@ const Controls = ({playerRef}) => {
                 value={volume}
                 min={0}
                 max={1}
-                onChange={(e)=>handleVolumeChange(e, name)}
+                onChange={(e)=>handleVolumeChange(e, id)}
                 
             />
         

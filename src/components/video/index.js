@@ -19,8 +19,15 @@ const Video = ({config, actions, poster, player}) => {
 
   useEffect(()=>{
     const { current } = ref
-    return player(current)
-  },[ref])
+    
+    const shouldUpdateRef = typeof player === 'function' && current
+
+    if(!shouldUpdateRef){
+      return ref
+    } else{
+      return player(current)
+    }
+  },[ref, player])
 
   const { id, url, playing, controls, light, volume, muted, loop, played, loaded, duration, playbackRate, pip } = config
   const {handlePlay,  handleEnablePIP, handleDisablePIP, handlePause, handleEnded, handleProgress, handleDuration, handleVideoRef, handlePlayPause} = actions
@@ -88,8 +95,8 @@ const VideoPlayer = ({videoUrl, id, poster, player}) => {
         
           {!poster &&
             <PlayButton
-              //playing={playerConfig.playing}
-              onClick={() =>actions.handlePlay(id)}
+            playing={playerConfig && playerConfig.playing}
+              onClick={() =>actions.handlePlayPause(id)}
               poster={poster}
             />
           }

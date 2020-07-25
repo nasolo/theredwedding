@@ -4,9 +4,8 @@ import { createAction } from '@reduxjs/toolkit'
 
 
 
-const load = createAction(HANDLE.LOAD, function prepare(url, id, ref){
-  return{
-       
+const load = createAction(HANDLE.LOAD, 
+    (url, id, ref) =>({
         payload:{
             url,
             played: 0,
@@ -15,187 +14,182 @@ const load = createAction(HANDLE.LOAD, function prepare(url, id, ref){
             id,
             ref
         }
-    }
-})
+    })
+)
 
-const handleVideoRef = createAction(HANDLE.SET_REF, (id, ref) =>({
-    payload:{
-        id,
-        ref
-    }
-}))
+const handleVideoRef = createAction(HANDLE.SET_REF, 
+    (id, ref) =>({
+        payload:{
+            id,
+            ref
+        }
+    })
+)
 
 //play pause handle in reducer
-const handlePlayPause = createAction(HANDLE.PLAY_PAUSE, function prepare(id){
-    return {
+const handlePlayPause = createAction(HANDLE.PLAY_PAUSE, 
+    id =>({
        payload: {
            id
        }
-    }
-})
+    })
+)
 
-const handleStop = createAction(HANDLE.STOP, function prepare(id){
-    return {
-        
+const handleStop = createAction(HANDLE.STOP, 
+    id =>({
         payload: {
             url: null,
             playing: false,
             id
         }
-    }
-})
+    })
+)
 
 
-const handleLight = createAction(HANDLE.LIGHT, function prepare(light, id){
-       return {
-       
+const handleLight = createAction(HANDLE.LIGHT, 
+    (light, id) =>({
         payload: {
             light: light,
             id
         }
-    }
-})
+    })
+)
 
 //toggle loop in reducer
-const handleToggleLoop =createAction(HANDLE.TOGGLE_LOOP, function prepare(id){
-    return {
-       id
-    }
-})
+const handleToggleLoop =createAction(HANDLE.TOGGLE_LOOP, 
+    id => ({
+        payload:{
+            id
+        }
+    })
+)
 
-const handleVolumeChange = createAction(HANDLE.VOLUME_CHANGE, function prepare(e, id){
-    return{
-      
+const handleVolumeChange = createAction(HANDLE.VOLUME_CHANGE, 
+    (e, id) =>({
         payload: {
             volume: parseFloat(e.target.value),
             id
         }
-    }
-})
+    })
+)
 
 //mute toggle is handled by the reducer
-const handleToggleMuted = createAction(HANDLE.TOGGLE_MUTED, function prepare(id){
-    return {
+const handleToggleMuted = createAction(HANDLE.TOGGLE_MUTED, 
+    id =>({
         payload: {
             id
-        }
-    }
-})
+        } 
+    })
+)
 
-const handleSetPlaybackRate = createAction(HANDLE.SET_PLAY_BACK_RATE, function prepare(e, id){
-    return {
-      
+const handleSetPlaybackRate = createAction(HANDLE.SET_PLAY_BACK_RATE, 
+    (e, id) =>({
         payload: {
             playbackRate: parseFloat(e.target.value),
             id
-        }
-    }
-})
+        }  
+    })
+)
 
 //pip handled by reducer
-const handleTogglePIP = createAction(HANDLE.TOGGLE_PIP, function prepare(id){
-    return {
-       id
-    }
-})
+const handleTogglePIP = createAction(HANDLE.TOGGLE_PIP, 
+    id =>({
+        payload: {
+        id
+        }
+    })
+)
 
-const handlePlay = createAction(HANDLE.PLAY, function prepare(id){
-    return {
-      
+const handlePlay = createAction(HANDLE.PLAY, 
+    id =>({
         payload: {
             playing: true,
             id
         }
-    }
-})
+    })
+)
 
-const handleEnablePIP = createAction(HANDLE.PIP, function prepare(id){
-    return{
-      
+const handleEnablePIP = createAction(HANDLE.PIP, 
+    id =>({
         payload: {
             pip: true,
             id
         }
-    }
-})
+    })
+)
 
-const handleDisablePIP = createAction(HANDLE.DISABLE_PIP, function prepare(id){
-    return {
-       
+const handleDisablePIP = createAction(HANDLE.DISABLE_PIP, 
+    id =>({
         payload: { 
             pip: false,
-            id
-        }
-    }
-})
+            id 
+        } 
+    })
+)
 
-const handlePause = createAction(HANDLE.PAUSE, function prepate(id){
-   return {
-    
+const handlePause = createAction(HANDLE.PAUSE, 
+    id =>({
         payload: {
             playing: false,
             id
         }
-    }
-})
+    })
+)
 
-const handleSeekMouseDown = createAction(HANDLE.SEEKMOUSE_DOWN, function prepare(e, id){
-   return {
-       
+const handleSeekMouseDown = createAction(HANDLE.SEEKMOUSE_DOWN, 
+    (e, id) =>({
         payload: {
             seeking: true,
             id
         }
-    }
-})
+    })
+)
 
-const handleSeekChange = createAction(HANDLE.SEEK_CHANGE, function prepare(e, id){
-    return {
-      
+const handleSeekChange = createAction(HANDLE.SEEK_CHANGE, 
+    (e, id) =>({
         payload: { 
             played: parseFloat(e.target.value),
             id
         }
-    }
-})
+    })
+)
 
-const handleSeekMouseUp = createAction(HANDLE.SEEK_MOUSEUP, function prepare(e, id){
-    return {
-           
-            payload: {
-                seeking: false,
-                played: parseFloat(e.target.value),
-                id
-            }
-    }
-})
+const handleSeekMouseUp = createAction(HANDLE.SEEK_MOUSEUP, 
+    (e, id) =>({
+        payload: {
+            seeking: false,
+            played: parseFloat(e.target.value),
+            id
+        }
+    })
+)
 
-  const handleProgress = createAction(HANDLE.PROGRESS, function prepare(id, { played }){
-    return {
+const handleProgress = createAction(HANDLE.PROGRESS, 
+    (id, { played }) =>({
         payload:{
             played,
             id
-        }
-       
-    }
-})
+        }    
+    })  
+)
 
 ///set state.loop in reducer
-  const handleEnded = createAction(HANDLE.ENDED, id =>({
-      payload: {
+const handleEnded = createAction(HANDLE.ENDED, 
+    id =>({
+        payload: {
           id
-      }
-  }))
+        }
+    })
+)
 
-const handleDuration = createAction(HANDLE.ENDED, function prepare(id, duration){
-    
-    return {
+const handleDuration = createAction(HANDLE.ENDED, 
+    (id, duration) =>({
         payload: {
             duration,
             id
         }
-    }
-})
+    })
+)
 
 
 const allActions = {

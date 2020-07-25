@@ -29,8 +29,7 @@ const {
 const videoPlayer = createReducer(appInitialState.videoPlayer, {
         [load]: (state, action)=>({
                 ...state,
-                ...action.payload
-            
+                ...action.payload    
         }),
         [handleVideoRef]: (state, action) => ({
             ...state,
@@ -200,8 +199,6 @@ const videoReducer = createReducer(initState, builder => {
                     if(!action || !action.payload.id) return video
 
                     const id = action.payload.id
-    
-                    console.log(action)
     
                     video[id] = videoPlayer(video[id], action)
     
