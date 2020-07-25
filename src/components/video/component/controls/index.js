@@ -15,13 +15,9 @@ import { useCycle, motion } from 'framer-motion'
 
 const { activeVideo } = config
 
+const Controls = ({player}) => {
 
-
-
-const Controls = ({player, id}) => {
-
-    console.log(id)
-    
+        
     const dispatch = useDispatch()
     const [volumeHover, cycleVolume] = useCycle("0", "80%")
     
@@ -30,7 +26,8 @@ const Controls = ({player, id}) => {
             played, 
             playing,
             muted,
-            volume
+            volume,
+            id
         } = useSelector(state=>activeVideo(state), shallowEqual)
 console.log(played)
     const {
