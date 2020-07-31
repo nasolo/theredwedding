@@ -52,7 +52,7 @@ const Deck = styled(Box).attrs(props =>({
 }))`
 
    
-    margin: auto;
+    
     justify-content: center;
     
     

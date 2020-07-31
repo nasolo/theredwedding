@@ -21,50 +21,28 @@ import { motion } from 'framer-motion';
 import { useSelector, shallowEqual } from 'react-redux';
 import allSelectors from '../../redux/selectors';
 
-
-const handleMediaSlide = (media, activeImage) =>{
-    if(media === undefined){
-        return false
-    }
-
-    const paginate = (direction) => wrap(0, media.length, activeImage + direction)
-
-    return media.reduce((media, currVal) =>{
-            media.activeImage = activeImage
-            media.nextItem  = paginate(1)
-            media.prevItem = paginate(-1)
-        return media
-    },{})
-}
-
-
 const { filterMediaPackage } = allSelectors
 
-
 const PackageDetails = ({close, id}) => {
-
     
-    const [activeMedia, setActiveMedia] = useState(0)
+    const [activeIndex, setActiveIndex] = useState(0)
     const {
         details,
-        media,
         name,
         price,
-    } = useSelector(state => filterMediaPackage(state, id), shallowEqual)
+        next,
+        prev,
+        activeMedia
+    } = useSelector(state => filterMediaPackage(state, id, activeIndex), shallowEqual)
 
 
-    const imagePath = "assets/images/packages/wedding/"
-
-    const {
-        activeImage,
-        nextItem,
-        prevItem
-    } = handleMediaSlide(media, activeMedia)
+    const imagePath = "../assets/images/packages/wedding/"
 
     return (
         <DetailPageContainer id={id} key={`details-${id}`} layoutId={`${id}`}>
+    
         <BgImage 
-            src={setActiveMedia !== "" ? `${imagePath}${media[activeImage]} ` : null}
+            src={`${imagePath}${activeMedia}`}
             layoutId={`image-${id}`}    
         />
         <CloseBtn onClick={close}/>
@@ -73,8 +51,8 @@ const PackageDetails = ({close, id}) => {
             as={motion.div}
             animate
         >
-            <LeftChevron onClick={()=>setActiveMedia(prevItem)}/>
-            <RightChevron onClick={()=>setActiveMedia(nextItem)}/>
+            <LeftChevron onClick={()=>setActiveIndex(next)}/>
+            <RightChevron onClick={()=>setActiveIndex(prev)}/>
         </CarouselControls>
  
         <FooterContainer

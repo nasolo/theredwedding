@@ -19,7 +19,7 @@ const Footer = styled(Box).attrs(props => ({
     color: ${({theme}) => theme.colors.whites[0]};
     text-align: center;
     width: 60%;
-    margin: 1rem auto;
+    margin: auto;
     font-size: 1rem;
     font-weight: 900;
     ${mediaQueries}

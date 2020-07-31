@@ -15,9 +15,11 @@ const PackageCard = ({id, previewImage, name, subtitle}) =>{
     return(
         <Col className="mb-4">
                 <Card 
-                    className="bg-transparent text-white text-center h-100"
+                    className="bg-transparent text-white text-center mb-2"
+                    minHeight="5rem"
                     as={motion.div}
                     layoutId={`card-${id}`}
+                    key={`card-${id}`}
                     layoutId={`${id}`}
                     whileHover={{cursor: isMobile ? "pointer" : "unset"}}
                     onClick={()=> isMobile && dispatch(togglePackageDetailsPage(id))}
@@ -29,20 +31,22 @@ const PackageCard = ({id, previewImage, name, subtitle}) =>{
                         layoutId={`image-${id}`}
                         src={previewImage}
                         className="rounded-0 card-img"
+                        
                     />
                     <Card.Body
-                        className="p-3"
+                        className="p-3 d-none d-lg-block"
                         as={motion.div}
                         layoutId={`card-body-${id}`}
                         variants={"card-body"}
                         zIndex="2"
                         animate
                     >
-                        <Card.Title text={name} as="h4"/>
-                        <Card.Text text={subtitle} className="d-none d-lg-block"/>
-                        <Card.Link to={id} text="VIEW PACKAGE" className="d-none d-lg-block"  variant="dotted" onClick={()=>dispatch(togglePackageDetailsPage(id))}/>
+                         <Card.Title text={name} as="h4"/>
+                        <Card.Text text={subtitle} className=""/>
+                        <Card.Link to={id} text="VIEW PACKAGE" variant="dotted" onClick={()=>dispatch(togglePackageDetailsPage(id))}/>
                     </Card.Body>
                 </Card>
+                <Card.Title text={name} className="d-block d-lg-none" as="h6" color="white" textAlign="center" fontSize=".75rem"/>
             </Col>
     )
 }

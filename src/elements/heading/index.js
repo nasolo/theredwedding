@@ -5,8 +5,8 @@ import Box from '../Box'
 
 const mediaQueries = ({theme}) =>css({
     [theme.mediaQueries.lg]:{
-        fontSize: "2rem",
-        width: "100%",
+        fontSize: "2.5rem",
+      
     },
 
 })
@@ -24,8 +24,9 @@ const Heading = styled(Box).attrs(props => ({
     ${textColor}
     text-align: center;
     width: 100%;
-    margin: 1rem auto;
+    margin: auto ;
     font-weight: 900;
+    font-size: 1.5rem;
     ${mediaQueries}
 `
 

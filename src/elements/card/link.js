@@ -18,6 +18,7 @@ const CardLink = styled(Box).attrs(props =>({
 }))`
     ${mediaQueries}
     margin: auto;
+    width: ${props => props.width || '100%'} ;
     padding: 5% 1em;
 
 ${variant({

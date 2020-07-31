@@ -30,7 +30,7 @@ const PackageList =()=>{
     },[])
 
     return (
-        <Card.Deck sm={3} cols={3}>
+        <Card.Deck sm={3} cols={3} margin="2rem auto auto">
             {weddingPackages !== undefined ? weddingPackages.map(card => (
                 <PackageCard 
                     isSelected={card.id === activePageId}

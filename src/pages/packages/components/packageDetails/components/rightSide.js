@@ -15,7 +15,7 @@ const links = details !== undefined ? Object.keys(details) : null
 
     return (
         <FooterRight>
-            <Router>
+            <Router basename="/packages">
                 <Nav>
                     {links.map((link, i)=>(
                         <Nav.Item>
