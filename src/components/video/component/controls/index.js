@@ -1,15 +1,25 @@
-import React from 'react'
-import Row from '../../../../elements/row'
-import Col from '../../../../elements/col'
+import React, { useEffect } from 'react'
+
 import Icon from '../../../icon'
 import Duration from '../../duration'
-import {Seek} from './style'
+import {Seek} from './style/seek'
 import allActions from '../../actions'
 import { useDispatch, useSelector, shallowEqual } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import config from '../../selectors'
 
 import { useCycle, motion } from 'framer-motion'
+import ControlsWrapper from './style/videoControlsWrapper'
+import LeftControls from './style/LeftControls'
+import TimeDisplay from './style/timeDisplay'
+import ProgressBarContainer from './style/progressBarContainer'
+import RightControls from './style/rightControls'
+import VolumeControls from './style/volumeControls'
+import { volumeControlVariants, toolsVariants } from '../controls/style/variants'
+import ToolsControls from './style/tools'
+import { findDOMNode } from 'react-dom'
+import screenfull from 'screenfull'
+import Popover from '../../../popover'
 
 
 
@@ -19,7 +29,8 @@ const Controls = ({player}) => {
 
         
     const dispatch = useDispatch()
-    const [volumeHover, cycleVolume] = useCycle("0", "80%")
+    const [expand, setExpand] = useCycle(false, true)
+     
     
     const {
             duration, 
@@ -27,18 +38,13 @@ const Controls = ({player}) => {
             playing,
             muted,
             volume,
+            fullscreen,
+            quality,
             id
         } = useSelector(state=>activeVideo(state), shallowEqual)
-console.log(played)
+
     const {
-        handleDuration,
-        handleEnded,
-        handleProgress,
-        handlePause,
-        handleDisablePIP,
-        handleEnablePIP,
-        handlePlay,
-        load,
+        toggleFullscreen,
         handleVolumeChange,
         handleToggleMuted,
         handlePlayPause,
@@ -47,78 +53,116 @@ console.log(played)
         handleSeekMouseUp
       } = bindActionCreators(allActions, dispatch)
 
+      useEffect(() => {
+        toggleFullscreen(id, screenfull.isFullscreen)
+      }, [screenfull.isFullscreen])
+
+
      return (
-        <Row zIndex="2000">
-            <Col>
-                <Icon 
+        <ControlsWrapper>
+          
+          <LeftControls>
+                <Icon
                     icon={`${playing ? "pause" : "rightChevron"}`} 
                     key={`${playing ? "play" : "pause"}"_btn"`} 
-                    height="1rem" 
+                    height={[".75rem", "1rem"]}
                     fill="white" 
-                    onClick={(id) =>handlePlayPause(id)}/>
-            </Col>
-        <Col>
-            <Duration seconds={duration * played}/>
-        </Col>
-        <Col>
-            <Duration seconds={duration}/>
-        </Col>
-        <Col>
+                    onClick={(id) =>handlePlayPause(id)}
+                />
+            <TimeDisplay>
+                <Duration seconds={duration * played} className="mr-3"/>
+                <Duration seconds={duration} />
+            </TimeDisplay>
+        </LeftControls>
+            
+        
+        <ProgressBarContainer>
+       
             <Seek 
                 key="seekTo_Range"
+                width="100%"
+                margin="auto"
                 value={played}
                 onMouseDown={()=>handleSeekMouseDown(id)}
                 onChange={(e)=>handleSeekChange(e, id)}
                 onMouseUp={(e)=>handleSeekMouseUp(e, player, id)}
             />
-        </Col>
-
-        <Col
-            onMouseEnter={()=>cycleVolume()}
-            onMouseLeave={()=>cycleVolume()}
+            
+        </ProgressBarContainer>
+    
+        <RightControls 
+            as={motion.div}
+            display="flex"
+           
+            onMouseLeave={() => expand === true && setExpand()}
         >
+            
             <Icon 
                 icon={`${muted ? "mute" : "volume"}`}
-                height="1rem" 
-                fill="white"
-                key="volume_btn"
-                onClick={()=>handleToggleMuted(id)}
-            />
- 
-            <Seek
-                as={motion.input}
-                animate={{
-                    width: volumeHover
-                }}
-                key="volume_handler"
-                value={volume}
-                min={0}
-                max={1}
-                onChange={(e)=>handleVolumeChange(e, id)}
+               
+                padding="0 .50rem"
                 
-            />
-        
-
-        </Col>
-
-        <Col borderRight='1px dotted grey' borderLeft='1px dotted grey'>
-            <Icon 
-                icon="expand"  
                 height="1rem" 
                 fill="white"
                 key="volume_btn"
-            />
-        
-        </Col>
-        <Col>
+                display="inline-block"
+               zIndex="1000"
+                onMouseEnter={() => expand === false && setExpand()}
+                onClick={()=>handleToggleMuted(id)}
+            />    
+            <VolumeControls
+                as={motion.div}
+                onHoverEnd={() => expand === true && setExpand()}
+                variants={volumeControlVariants}
+                initial="hidden"
+                layout
+                animate={`${expand ? 'visible' : 'hidden'}`}
+            >
+            <Seek
+                    key="volume_handler"
+                   
+                    width="100%"
+                    value={volume}
+                    min={0}
+                    max={1}
+                    onChange={(e)=>handleVolumeChange(e, id)}
+                />
+        </VolumeControls>
+
+
+<ToolsControls
+        as={motion.div}
+        variants={toolsVariants}
+        layout
+        initial="visible"
+        animate={`${expand ? 'hidden' : 'visible'}`}
+    >
+        <Icon 
+                icon="expand"
+                height="1rem" 
+                fill="white"
+                key="fullscreen_btn"
+                paddingRight="1rem"
+                paddingLeft="1rem"
+                onClick={() =>screenfull.request(findDOMNode(player))}
+                
+        />
+        <Popover data="Select star to favorite images you love">
+                
             <Icon 
                 icon="tools"  
                 height="1rem" 
                 fill="white"
                 key="volume_btn"
             />
-        </Col>
-        </Row>
+            </Popover>
+</ToolsControls>
+
+    </RightControls>
+    </ControlsWrapper>
+
+
+
     )
     
 

@@ -1,9 +1,11 @@
-import { createStructuredSelector, createSelector } from 'reselect'
+import { createSelector } from 'reselect'
+import { sliderHandler } from '../../../utils/selectors/handleSlide'
 
 
 
 
 const selectAllGalleryData = state => state.gallery
+const indicatorSelector = (_, props) => props
 const selectAllGalleryMedia = state => state.gallery.media
 const selectActiveCard = state=> state.gallery.activeId
 
@@ -12,8 +14,39 @@ const activeFilterBtns = state => state.gallery.activeFilterBtnId
 
 export const allMediaData = () => {
     return createSelector(
-        [selectAllGalleryData],
-        data => data
+        [selectAllGalleryData, indicatorSelector, selectActiveCard],
+        (gallery, pageLength) => {
+            
+            //map filtered data requirements
+            const {filterTags, userTags, media, activeId} = gallery
+
+            //remove all duplicate tags
+            const filteredTags = new Set([...filterTags, ...userTags])
+            
+            //filter predicate
+            let shouldFilterData = filteredTags.size > 0
+
+            //if no filted tags then return gallery or else return media filtered by tags
+            const filteredMedia = shouldFilterData ? (media.filter(media => media.tags.find(tag => filteredTags.has(tag))))
+            : ( media )
+
+            //create gallery pagination array
+            const {
+                next, 
+                prev, 
+                activeMedia,
+                currentPageItems
+            } = sliderHandler(filteredMedia, activeId, pageLength)
+
+            return {
+                ...gallery,
+                next,
+                prev,
+                activeMedia,
+                currentPageItems
+            }
+
+        } 
     )
 }
 
@@ -37,18 +70,20 @@ export const userTags = createSelector(
 )
 
 
-export const filterGalleryByTags = createSelector(
-    [selectAllGalleryData, selectActiveCard],
-    (allMediaData, activeId) => {
-        const {filterTags, userTags, media} = allMediaData
+const allSelectors = {
+    allMediaData,
+    allMediaTags,
+    filterBtnsIcons,
+    userTags
+    
+    
+}
 
-        const allFilterTags = new Set([...filterTags, ...userTags])
+export default allSelectors
 
-        if(allFilterTags.size < 1){
-            return media
-        }
+/*
 
-        const filterMedia = media.reduce((valFound, currVal) =>{
+    const filterMedia = media.reduce((valFound, currVal) =>{
           currVal.tags.forEach(tag => {
               if(allFilterTags.has(tag)){
                 valFound = [...valFound, currVal]
@@ -56,17 +91,5 @@ export const filterGalleryByTags = createSelector(
           })
           return valFound
         }, [])
-        return filterMedia.length > 0 ? filterMedia : media
-    })
 
-const allSelectors = {
-    allMediaData,
-    allMediaTags,
-    filterBtnsIcons,
-    userTags,
-    filterGalleryByTags
-    
-}
-
-export default allSelectors
-
+*/

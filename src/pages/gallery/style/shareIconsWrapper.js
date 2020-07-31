@@ -9,8 +9,7 @@ const mediaQueries = ({theme})=>css({
     [theme.mediaQueries.lg]: {
         position: "unset",
         textAlign: "left",
-        width: "100%",
-        margin: "0 auto 2.5rem auto",
+        margin: "auto 1rem 1rem 0",
         maxWidth: "80vw",
     }
 })
@@ -20,7 +19,7 @@ const ShareIconsWrapper = styled(Box).attrs({
     
 })`
     height: 1em;
-    width: 100%;
+    width: 9rem;
     position: absolute;
     top: 20%;
     text-align: right;

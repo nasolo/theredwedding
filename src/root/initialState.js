@@ -52,6 +52,7 @@ const appInitialState = {
         playing: false,
         seeking: false,
         id: null,
+        fullscreen: false,
         quality:[
           1080,
           720,

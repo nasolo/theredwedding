@@ -23,7 +23,8 @@ const {
         handleStop,
         handlePlayPause,
         load,
-        handleVideoRef
+        handleVideoRef,
+        toggleFullscreen
 } = allActions
 
 const videoPlayer = createReducer(appInitialState.videoPlayer, {
@@ -147,7 +148,11 @@ const videoPlayer = createReducer(appInitialState.videoPlayer, {
                 ...state,
                 ...action.payload
             }
-        }         
+        },
+        [toggleFullscreen]: (state, action) =>({
+            ...state,
+            ...action.payload
+        })
 })
 
 const initState = {

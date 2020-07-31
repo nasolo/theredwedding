@@ -30,7 +30,9 @@ const Video = ({config, actions, poster, player}) => {
   },[ref, player])
 
   const { id, url, playing, controls, light, volume, muted, loop, played, loaded, duration, playbackRate, pip } = config
-  const {handlePlay,  handleEnablePIP, handleDisablePIP, handlePause, handleEnded, handleProgress, handleDuration, handleVideoRef, handlePlayPause} = actions
+  const {handlePlay,  handleEnablePIP, handleDisablePIP, handlePause, handleEnded, handleProgress, handleDuration, handlePlayPause} = actions
+
+  
 
 return (
         <ReactPlayer

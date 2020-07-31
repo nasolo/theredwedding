@@ -193,8 +193,18 @@ const handleDuration = createAction(HANDLE.ENDED,
     })
 )
 
+const toggleFullscreen = createAction(HANDLE.FULLSCREEN, 
+    (id, fullscreen) =>({
+        payload: {
+            id,
+            fullscreen,
+            controls: fullscreen
+        }
+    })
+)
 
 const allActions = {
+    toggleFullscreen,
     handleDuration,
     handleEnded,
     handleProgress,

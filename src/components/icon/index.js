@@ -26,6 +26,7 @@ const Icon = styled(Box).attrs(props =>({
 }))`
     ${({rotate}) => rotate && {transform: `rotate(${rotate}deg)`}}
     cursor: pointer;
+    overflow: visible;
 
 `
 
