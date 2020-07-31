@@ -1,6 +1,7 @@
 import { FETCH_NAV_CONFIG} from '../../header/redux/actionCreators'
 import { FETCH_ABOUTUS_CONFIG } from '../../../pages/about/redux/actionsCreators'
 import { FETCH_HEADER_CONFIG } from '../../../pages/home/redux/actionCreators'
+import { FETCH_PACKAGES_CONFIG } from '../../../pages/packages/redux/actionCreators';
 
 
 //  ...api_dispatch_config(dispatch)
@@ -8,7 +9,8 @@ import { FETCH_HEADER_CONFIG } from '../../../pages/home/redux/actionCreators'
 const list = [
     FETCH_NAV_CONFIG,
     FETCH_ABOUTUS_CONFIG,
-    FETCH_HEADER_CONFIG
+    FETCH_HEADER_CONFIG,
+    FETCH_PACKAGES_CONFIG
 ]
 
 export const fetchAppApi = () => {
