@@ -16,7 +16,8 @@ const StyledPackages = styled(Box).attrs(props=>({
     flex-direction: column;
     justify-content: center;
     padding: 2rem auto;
-    height: 100%;
+    height: 100vh;
+    overflow: hidden;
     z-index: 1;
     
 `

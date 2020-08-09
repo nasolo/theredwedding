@@ -13,7 +13,7 @@ import NavText from '../components/text';
 const TopNavigation = ({links, brand, isOpen, toggle}) => {
 
 
-
+    
 
     return (
         <Navbar expand="lg" variant="top">
@@ -23,7 +23,7 @@ const TopNavigation = ({links, brand, isOpen, toggle}) => {
             <Navbar.Collapse flexWrap="nowrap">
                 <Navbar.NavbarNav>
                     <NavList links={links} fill/>
-                    <NavText text="(312-857-3187)" className="nav-link nav-item"/>
+                    <NavText text="(312-857-3187)" className="nav-link nav-item" color="white"/>
                 </Navbar.NavbarNav>
             </Navbar.Collapse>
              

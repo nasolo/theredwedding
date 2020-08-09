@@ -13,7 +13,7 @@ const PackageCard = ({id, previewImage, name, subtitle}) =>{
     const dispatch = useDispatch()
     
     return(
-        <Col className="mb-4">
+        <Col className="p-0 pr-1">
                 <Card 
                     className="bg-transparent text-white text-center mb-2"
                     minHeight="5rem"
