@@ -1,14 +1,28 @@
 import React from 'react'
 import PackageList from './list'
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AnimateSharedLayout, AnimatePresence } from 'framer-motion'
 import PackageDetails from '../packageDetails'
 import { useDispatch, shallowEqual, useSelector } from 'react-redux'
-import { togglePackageDetailsPage } from '../../redux/actions'
+
 
 import { packageOverview }  from '../../redux/selectors'
 
 
+const Store = ({match}) => {
 
+    const { id } = match.params
+
+   return (
+        <>
+        <PackageList selectedId={id}/>
+             
+             <AnimatePresence initial={false}>
+                 {id && <PackageDetails id={id}/>}
+             </AnimatePresence>
+        </>
+    )
+}
 
 
 
@@ -22,12 +36,9 @@ const WeddingPackages =()=> {
         
         <AnimateSharedLayout type="crossfade">
           
-                <PackageList selectedId={activePageId}/>
-                <AnimatePresence initial={false}>
-                    {isPageOpen & activePageId !== "" ? 
-                        <PackageDetails id={activePageId} close={()=> dispatch(togglePackageDetailsPage())}/>
-                    : null}
-                </AnimatePresence>
+            <Router>
+                <Route path={["/packages/overview/:id", "/packages"]} component={Store}/>
+            </Router>
                
         </AnimateSharedLayout>
 

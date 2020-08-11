@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Box from "../Box";
 import { variant } from 'styled-system'
 import css from '@styled-system/css'
+import { Link } from "react-router-dom";
 
   const mediaQueries = ({theme}) => css({
     [theme.mediaQueries.xl]: {
@@ -13,7 +14,7 @@ import css from '@styled-system/css'
 const CardLink = styled(Box).attrs(props =>({
     
     className: "card-link btn",
-    as: 'a',
+    as: props.to ? Link : 'a',
     children: props.text
 }))`
     ${mediaQueries}

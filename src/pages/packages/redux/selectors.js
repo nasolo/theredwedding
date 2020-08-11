@@ -17,6 +17,11 @@ import { wrap } from "@popmotion/popcorn";
      (_, __,activeMedia) => activeMedia,
      (packages, id, activeIndex) =>{
 
+
+        const ShouldFilterWeddingPackages = packages.length < 1
+
+        if(ShouldFilterWeddingPackages) return false
+
         //filter all  packages by ID
         const getPackagesById = packages.find(x => x.id === id)
 
@@ -25,7 +30,6 @@ import { wrap } from "@popmotion/popcorn";
 
         //paginate function
         const paginate = ( direction ) => wrap(0, media.length, activeIndex + direction)
-        
 
         return {
             ...getPackagesById,

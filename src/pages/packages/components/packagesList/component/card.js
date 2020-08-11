@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import Col from '../../../../../elements/col';
 import { togglePackageDetailsPage } from '../../../redux/actions';
 import CardOverlay from '../../../style/imgOverlay';
+import { Link } from 'react-router-dom';
 
 const PackageCard = ({id, previewImage, name, subtitle}) =>{
 
@@ -14,6 +15,7 @@ const PackageCard = ({id, previewImage, name, subtitle}) =>{
     
     return(
         <Col className="p-0 pr-1">
+                <Link  to={`/packages/overview/${id}`}>
                 <Card 
                     className="bg-transparent text-white text-center mb-2"
                     minHeight="5rem"
@@ -25,28 +27,33 @@ const PackageCard = ({id, previewImage, name, subtitle}) =>{
                     onClick={()=> isMobile && dispatch(togglePackageDetailsPage(id))}
                   
                 >
-                    <CardOverlay
-                        id={id} 
-                        key={`image-${id}`}
-                        layoutId={`image-${id}`}
-                        src={previewImage}
-                        className="rounded-0 card-img"
-                        
-                    />
-                    <Card.Body
-                        className="p-3 d-none d-lg-block"
-                        as={motion.div}
-                        layoutId={`card-body-${id}`}
-                        variants={"card-body"}
-                        zIndex="2"
-                        animate
-                    >
-                         <Card.Title text={name} as="h4"/>
-                        <Card.Text text={subtitle} className=""/>
-                        <Card.Link to={id} text="VIEW PACKAGE" variant="dotted" onClick={()=>dispatch(togglePackageDetailsPage(id))}/>
-                    </Card.Body>
+                    
+                        <CardOverlay
+                            id={id} 
+                            key={`image-${id}`}
+                            layoutId={`image-${id}`}
+                            src={previewImage}
+                            className="rounded-0 card-img"
+                            
+                        />
+                 
+                        <Card.Body
+                            className="p-3 d-none d-lg-block"
+                            as={motion.div}
+                            layoutId={`card-body-${id}`}
+                            variants={"card-body"}
+                            zIndex="2"
+                            animate
+                        >
+                            <Card.Title text={name} as="h4"/>
+                            <Card.Text text={subtitle} className=""/>
+                            <Card.Link to={`/packages/overview/${id}`} text="VIEW PACKAGE" variant="dotted" onClick={()=>dispatch(togglePackageDetailsPage(id))}/>
+                        </Card.Body>
+                    
                 </Card>
+                </Link>
                 <Card.Title text={name} className="d-block d-lg-none" as="h6" color="white" textAlign="center" fontSize=".75rem"/>
+                
             </Col>
     )
 }

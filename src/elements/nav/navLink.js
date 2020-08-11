@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Box from '../Box';
 import classNames from '../../utils/classNames';
 
@@ -12,7 +12,7 @@ const AbstractNavLink = styled(Box).attrs(props =>({
 
     font-weight: 700;
     font-size: 1rem;
-    
+    text-transform: capitalize;
     color: ${({color}) => color || "white"};
 
     &:hover{
@@ -22,7 +22,7 @@ const AbstractNavLink = styled(Box).attrs(props =>({
 
 `
 
-const NavLink = React.forwardRef(
+const Link = React.forwardRef(
     ({
        className,
        disabled,
@@ -33,7 +33,7 @@ const NavLink = React.forwardRef(
        ...props
     }, ref) => {
 
-        const component = to ? Link : "a"
+        const component = to ? NavLink : "a"
 
         return (
         <AbstractNavLink
@@ -54,4 +54,4 @@ const NavLink = React.forwardRef(
 )
 
 
-export default NavLink
+export default Link

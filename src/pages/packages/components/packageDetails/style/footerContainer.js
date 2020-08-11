@@ -18,6 +18,7 @@ const FooterContainer = styled(Box).attrs(props =>({
 
     max-width: 100%;
     margin-bottom: 2rem;
+    z-index: 1;
     ${mediaQueries}
 
 `

@@ -1,6 +1,5 @@
 
 import React, { useState, useEffect } from 'react'
-import { wrap } from "@popmotion/popcorn";
 
 
 // import selectors
@@ -8,8 +7,7 @@ import { wrap } from "@popmotion/popcorn";
 
 //styled component dependencies
 import DetailPageContainer from './style/detailsPageContainer'
-import BgImage from './style/bgImage'
-import CloseBtn from './style/closeIcon'
+import Close from './style/closeIcon'
 import FooterContainer from './style/footerContainer'
 import Row from 'react-bootstrap/Row'
 import LeftSide from './components/leftSide'
@@ -17,15 +15,23 @@ import RightSide from './components/rightSide'
 import LeftChevron from './style/leftChevron'
 import CarouselControls from './style/carouselControls'
 import RightChevron from './style/rightChevron'
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useSelector, shallowEqual } from 'react-redux';
 import allSelectors from '../../redux/selectors';
+import BackgroundCarousel from './components/backgroundCarousel'
+
 
 const { filterMediaPackage } = allSelectors
 
-const PackageDetails = ({close, id}) => {
+const PackageDetails = ({id}) => {
     
-    const [activeIndex, setActiveIndex] = useState(0)
+    const [page, setPage] = useState({
+        index: 0,
+        direction: 0
+    })
+
+    console.log(page)
+    
     const {
         details,
         name,
@@ -33,35 +39,33 @@ const PackageDetails = ({close, id}) => {
         next,
         prev,
         activeMedia
-    } = useSelector(state => filterMediaPackage(state, id, activeIndex), shallowEqual)
+    } = useSelector(state => filterMediaPackage(state, id, page.index), shallowEqual)
 
-
-    const imagePath = "../assets/images/packages/wedding/"
+    const moveRight = next ? { ...page, index: next, direction: 1 } : page
+    const moveLeft = prev ? { ...page, index: prev, direction: -1 } : page
 
     return (
         <DetailPageContainer id={id} key={`details-${id}`} layoutId={`${id}`}>
     
-        <BgImage 
-            src={`${imagePath}${activeMedia}`}
-            layoutId={`image-${id}`}    
-        />
-        <CloseBtn onClick={close}/>
+        <BackgroundCarousel page={page} setPage={setPage} next={moveRight} prev={moveLeft} media={activeMedia} id={id}/>
+
+        <Close/>
 
         <CarouselControls
             as={motion.div}
             animate
         >
-            <LeftChevron onClick={()=>setActiveIndex(next)}/>
-            <RightChevron onClick={()=>setActiveIndex(prev)}/>
+            <LeftChevron onClick={()=>setPage(moveLeft)}/>
+            <RightChevron onClick={()=>setPage(moveRight)}/>
         </CarouselControls>
  
         <FooterContainer
            as={motion.div}
            animate
         >
-            <Row>
+            <Row className="justify-content-center">
                 <LeftSide name={name} price={price} id={id} overview={details.overview}/>
-                <RightSide details={details}/>
+                <RightSide details={details} id={id}/>
             </Row>
         </FooterContainer>
     </DetailPageContainer>

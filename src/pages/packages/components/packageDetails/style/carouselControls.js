@@ -9,8 +9,7 @@ const CarouselControls = styled(Box).attrs(props =>({
     display: none;
     justify-content: space-between;
     max-width: 80%;
-    margin-bottom: auto;
-    margin-top: auto;
+    margin: 10rem auto;
 
 `
 

@@ -1,9 +1,11 @@
 import lqip from "lqip.macro";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Box from "../Box";
 
 
-const FullScreenImage = styled(Box)`
+const FullScreenImage = styled(Box).attrs(props => ({
+    className: 'fullscreen-background'
+}))`
 
     min-height: ${props => props.height ? props.height : "100vh"};
     min-width: ${props => props.width ? props.width : "100vw"};
@@ -15,6 +17,14 @@ const FullScreenImage = styled(Box)`
     position: absolute;
     top: 0;
     left: 0;
+    ${({shadow}) => shadow && 
+    css`
+        box-shadow: 0px -63px 62px 52px rgba(0,0,0,0.75) inset;
+        &:before{
+            content: " ";
+            box-shadow: 0px 63px 62px 52px rgba(0,0,0,0.75) inset;
+        }` 
+    }
   
 
 `

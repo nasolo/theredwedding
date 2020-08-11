@@ -9,7 +9,7 @@ const RightChevron = styled(Icon).attrs(props =>({
     max-height: 3rem;
     max-width: 3rem;
     z-index: 200;
-    fill: gainsboro;
+    fill: ${({theme}) => theme.colors.whites[7]};;
     margin: auto 0 auto auto;
     
 

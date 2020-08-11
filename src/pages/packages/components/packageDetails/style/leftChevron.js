@@ -10,7 +10,7 @@ const LeftChevron = styled(Icon).attrs(props =>({
     max-height: 3rem;
     max-width: 3rem;
     z-index: 200;
-    fill: gainsboro;
+    fill: ${({theme}) => theme.colors.whites[7]};
     margin: auto auto auto 0;
     
     

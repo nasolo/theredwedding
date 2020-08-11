@@ -4,6 +4,11 @@ import Frame from "../Frame"
 
 const Drag = styled(Box).attrs(props =>({
     as: Frame,
+    drag:"x",
+    dragConstraints: {
+        left: 0,
+        right:0
+    },
     className: `${props.clasName} drag`
 }))`
    
@@ -11,12 +16,5 @@ const Drag = styled(Box).attrs(props =>({
 `
 
 
-Drag.defaultProps = {
-    drag:"x",
-    dragConstraints: {
-        left: 0,
-        right:0
-    }
-}
 
 export default Drag

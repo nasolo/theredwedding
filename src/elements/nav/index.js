@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from "styled-components"
 import Item from './navItem'
-import NavLink from './navLink'
+import Link from './navLink'
 import Nav from 'react-bootstrap/Nav'
 import ComposeBoxHelper from '../../utils/style/composeBox'
 
@@ -17,7 +17,7 @@ const NavList = styled(StyledNav)`
 `
 
 NavList.Item = Item
-NavList.Link = NavLink
+NavList.Link = Link
 
 
 export default NavList

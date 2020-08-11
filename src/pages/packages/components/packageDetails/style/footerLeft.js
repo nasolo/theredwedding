@@ -11,6 +11,8 @@ const PackageName = styled(Box).attrs(props =>({
 }))`
 
     font-weight: 900;
+    
+   
 
 `
 
@@ -26,16 +28,16 @@ const ViewMedia = styled(Box).attrs(props => ({
     className: 'btn viewmedia',
     children: props.text
 }))`
+    ${variant({
+        scale: 'buttons'
+    })}
 
     color: white;
     text-align: center;
     width: 80%;
-    margin: auto 10%;
+    margin: 0;
     padding: 1rem 0;
-
-    ${variant({
-        scale: 'buttons'
-    })}
+   
    
 
 `
@@ -47,14 +49,16 @@ const LeftPage = styled(Box).attrs(props => ({
     className: "footerLeft"
 }))`
 
-    margin: auto;
+    
     color: white;
+    margin: auto 0;
 
 `
 
 LeftPage.name = PackageName
 LeftPage.price = PackagePrice
 LeftPage.view = ViewMedia
+
 
 
 export default LeftPage

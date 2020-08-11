@@ -9,26 +9,36 @@ import {
   } from "react-router-dom";
 import Description from '../style/decription';
 
-const RightSide = ({details}) =>{
+const RightSide = ({details, id}) =>{
 
 const links = details !== undefined ? Object.keys(details) : null
 
     return (
-        <FooterRight>
-            <Router basename="/packages">
-                <Nav>
+        <FooterRight className="p-0">
+            <Router basename={`/packages`}>
+                <Nav borderBottom="1px white dotted" padding="1rem">
                     {links.map((link, i)=>(
                         <Nav.Item>
-                            <Nav.Link link={link} to={`/${link}`}/>
+                            <Nav.Link 
+                                link={link} 
+                                to={`/${link}/${id}`} 
+                                color={"rgba(253,253,253,.5)"}
+                                activeStyle={{
+                                    color: 'white',
+                                    border: 0
+                                }}
+                                >
+                                {link}
+                            </Nav.Link>
                         </Nav.Item>
                     ))}
                 </Nav>
                 <Switch>
-                <Redirect from='/' path={`/${details[0]}`}/>
+                    
                     {links.map((link, i)=>(
                         <Route
-                            path={`/${link}`}
-                            render={()=> <Description text={details[link]}/>}
+                            path={`/${link}/${id}`}
+                            render={()=> <Description text={details[link]} padding="1rem"/>}
                         />
                     ))}
                 </Switch>

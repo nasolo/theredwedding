@@ -23,6 +23,7 @@ const DetailPageContainer = styled(Box).attrs(props =>({
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
+    background-color: black;
     
 
 `

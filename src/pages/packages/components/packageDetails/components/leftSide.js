@@ -12,7 +12,8 @@ const LeftSide = ({name, price, id, overview, onClick}) => {
         opacity: 0
     },{
         height: "100%",
-        opacity: 1
+        opacity: 1,
+        
     })
 
     return(
