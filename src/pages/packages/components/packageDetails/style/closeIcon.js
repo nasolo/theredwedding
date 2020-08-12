@@ -15,7 +15,7 @@ const CloseBtn = styled(Icon).attrs(props =>({
     cursor: pointer;
     position: absolute;
     top: 20%;
-    right: 15%;
+    right: 12%;
     fill: ${({theme}) => theme.colors.whites[0]};;
    
 `

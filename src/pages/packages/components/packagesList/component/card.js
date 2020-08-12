@@ -15,7 +15,7 @@ const PackageCard = ({id, previewImage, name, subtitle}) =>{
     
     return(
         <Col className="p-0 pr-1">
-                <Link  to={`/packages/overview/${id}`}>
+               
                 <Card 
                     className="bg-transparent text-white text-center mb-2"
                     minHeight="5rem"
@@ -49,11 +49,17 @@ const PackageCard = ({id, previewImage, name, subtitle}) =>{
                             <Card.Text text={subtitle} className=""/>
                             <Card.Link to={`/packages/overview/${id}`} text="VIEW PACKAGE" variant="dotted" onClick={()=>dispatch(togglePackageDetailsPage(id))}/>
                         </Card.Body>
+                        <Card.Link 
+                            className="d-block d-lg-none h-100" 
+                            to={`/packages/overview/${id}`} 
+                            text=" " 
+                            onClick={()=>dispatch(togglePackageDetailsPage(id))}
+                        />
                     
                 </Card>
-                </Link>
+             
                 <Card.Title text={name} className="d-block d-lg-none" as="h6" color="white" textAlign="center" fontSize=".75rem"/>
-                
+               
             </Col>
     )
 }

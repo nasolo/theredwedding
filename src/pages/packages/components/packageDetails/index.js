@@ -45,7 +45,7 @@ const PackageDetails = ({id}) => {
     const moveLeft = prev ? { ...page, index: prev, direction: -1 } : page
 
     return (
-        <DetailPageContainer id={id} key={`details-${id}`} layoutId={`${id}`}>
+        <DetailPageContainer as={motion.div} id={id} key={`card-${id}`} layoutId={`card-${id}`}>
     
         <BackgroundCarousel page={page} setPage={setPage} next={moveRight} prev={moveLeft} media={activeMedia} id={id}/>
 

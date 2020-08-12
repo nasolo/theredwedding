@@ -1,8 +1,8 @@
 import styled from "styled-components"
 import Box from "../../../../../elements/Box"
 import Col from 'react-bootstrap/Col'
-import { left, variant } from "styled-system"
-
+import { variant } from "styled-system"
+import css from '@styled-system/css'
 
 const PackageName = styled(Box).attrs(props =>({
     className: "h1 package-name",
@@ -11,7 +11,7 @@ const PackageName = styled(Box).attrs(props =>({
 }))`
 
     font-weight: 900;
-    
+    color: white;
    
 
 `
@@ -23,8 +23,15 @@ const PackagePrice = styled(Box).attrs(props => ({
     children: `From ${props.price}`
 }))``
 
+
+const ViewMediaMediaQuery = ({mediaQueries}) => css({
+    [mediaQueries.lg]: {
+        width: "80%"
+    }
+})
+
 const ViewMedia = styled(Box).attrs(props => ({
-    as: 'button',
+ 
     className: 'btn viewmedia',
     children: props.text
 }))`
@@ -32,11 +39,14 @@ const ViewMedia = styled(Box).attrs(props => ({
         scale: 'buttons'
     })}
 
+    ${({theme})=> ViewMediaMediaQuery(theme)}
+
     color: white;
     text-align: center;
-    width: 80%;
-    margin: 0;
+    width: 100%;
+    margin: .50rem auto 0;
     padding: 1rem 0;
+    font-size: .75rem;
    
    
 

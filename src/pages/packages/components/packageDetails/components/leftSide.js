@@ -21,7 +21,14 @@ const LeftSide = ({name, price, id, overview, onClick}) => {
             <LeftPage.name name={name}/>
                 <LeftPage.price price={price}/>
             <LeftPage.view text="VIEW MEDIA" variant="dotted" />
-            <LeftPage.view text="VIEW MEDIA" className="d-block d-lg-none" variant="dotted" onClick={()=>setisOpen()}/>
+            <LeftPage.view 
+                text="VIEW DETAILS" 
+                className="d-block d-lg-none" 
+                variant="dotted" 
+              
+                onClick={()=>setisOpen()}
+
+            />
             <Description text={overview} as={motion.div} animate={isOpen}/>
         </LeftPage>
        
