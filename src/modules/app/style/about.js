@@ -13,6 +13,8 @@ const StyledAbout = styled(Box).attrs(props =>({
 
     position: relative;
     background-color: black;
+    height: 100vh;
+    overflow: hidden;
    
 
 `

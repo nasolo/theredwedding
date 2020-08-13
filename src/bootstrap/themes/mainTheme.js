@@ -73,16 +73,10 @@ const mainTheme = {
       radii: [".25em", ".50em", ".75em", "1rem", "2rem", '100%'],
       buttons:{
         dotted: {
-          color: 'white',
           backgroundColor: 'rgba(0,0,0,.6)',
           border: '1px dotted white',
-          borderRadius: '2px',
-          fontSize: '',
+          borderRadius: '8px',
           textAlign: 'center',
-          margin: 'auto .5em',
-          paddingTop: '5%',
-          paddingBottom: '5%',
-          fontSize: "1em",
         },
         grey:{
           color: "white",

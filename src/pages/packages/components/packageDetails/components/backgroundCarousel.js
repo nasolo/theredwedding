@@ -28,7 +28,6 @@ const BackgroundCarousel = ({
                 position="absolute"
                 top="0"
                 left="0"
-                
                 key={`id-${id}-index-${index}`}
                 custom={direction}
                 onDragEnd={(e, i) => handleOnDragEnd(e, i, next, prev, setPage)}
@@ -39,8 +38,6 @@ const BackgroundCarousel = ({
             >
                 <FullScreenImage
                     shadow
-                    
-
                     key={index}
                     src={`${imagePath}${media}`}
                 />

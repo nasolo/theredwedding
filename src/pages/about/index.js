@@ -15,11 +15,11 @@ import {allPages} from './redux/selectors'
 //actions
 import { fetchAllAboutUsData } from './redux/actionsCreators' 
 //styled components
-import Link from '../../elements/Link';
+
 import RouteWithProps from './components/routeWithPros';
 import Container from '../../elements/container';
 import LinksWrapper from './style/linksWrapper';
-import NavLink from './style/navBtns';
+import Link from './style/navBtns';
 
 
 
@@ -36,17 +36,20 @@ const {
 const pageRoutes = routes(pageContent)
 
     return (
-        <Container className="h-100 d-flex" >
-            <Router>
+        <Container 
+            display="flex"
+            flexDirection="column-reverse"
+            className="h-100" 
+        >
+            <Router basename="about">
                 <LinksWrapper>
                     {pageRoutes !== undefined
-                        ? pageRoutes.map(route =>
-                        <NavLink
-                            as={Link}
+                        && pageRoutes.map(route =>
+                        <Link
                             variant="dotted"
                             text={route.page}
                             to={`${route.path}`}
-                        />) : null
+                        />)
                     }
                 </LinksWrapper>
                 <Switch>

@@ -82,8 +82,6 @@ const VideoPlayer = ({videoUrl, id, poster, player}) => {
 
     const playerConfig = useSelector(state=>getPlayerConfig(state, id), shallowEqual)
     
-    
-      
      const shouldLoadVideo = videoUrl !== undefined
      const shouldRenderVideo = playerConfig === undefined
 

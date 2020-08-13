@@ -6,9 +6,7 @@ import Box from "../../../elements/Box";
  }))`
 
 
-    position: absolute;
-    top: 0;
-    left: 0;
+   
     &:hover{
        cursor: pointer;
     }
@@ -33,3 +31,8 @@ import Box from "../../../elements/Box";
  export default PlayerWrapper
 
  
+ /*
+  position: absolute;
+    top: 0;
+    left: 0;
+*/

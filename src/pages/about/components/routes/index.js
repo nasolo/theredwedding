@@ -25,15 +25,15 @@ const handleComponent = (path, components) =>{
 
 }
 
-const routes = (pages) => {
-    return pages.map(page =>{
-        return{
-            path: page.route,
-            component: handleComponent(page.route),
-            data: {...page},
-            page: page.page
-        }
+const routes = (pages) => pages.map(
+    page =>({
+        path: page.route,
+        component: handleComponent(page.route),
+        data: {...page},
+        page: page.page
     })
-}
+)
+
+
 
 export default routes
