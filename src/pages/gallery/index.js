@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import Carousel from '../../modules/carousel'
 import {useSelector, useDispatch, shallowEqual } from 'react-redux'
 import VideoPlayer from '../../components/video'
 
@@ -21,6 +22,7 @@ import ShareGallery from './components/shareGallery';
 import Indicators from './components/indicators';
 import PageFooter from './components/footer';
 import ReactPlayer from 'react-player'
+import Media from '../../components/media'
 
 
 const {allMediaData} = allSelectors
@@ -53,6 +55,9 @@ const Gallery = props => {
     //Declare component variable dependies
     const fetchAllData = useCallback(()=> { dispatch(fetchMediaData())}, [])
     const shouldRenderVideoControls = activeMedia && ReactPlayer.canPlay(activeMedia.url)
+
+
+    
   
     //Handle side effects
     useEffect(() => {
@@ -62,7 +67,12 @@ const Gallery = props => {
       return (
         <SlideContainer className="d-flex flex-column" justifyContent="flex-end">
            
-           <Slider player={setPlayer} activeMedia={activeMedia} prev={prev} next={next} direction={direction}/>
+           <Carousel>
+            
+              <Media />
+           
+           </Carousel>
+
             <Container 
               zIndex="100"
               display="flex"
@@ -80,3 +90,5 @@ const Gallery = props => {
 
 export default Gallery
 //<Controls player={playerRef}/>
+
+//<Slider player={setPlayer} activeMedia={activeMedia} prev={prev} next={next} direction={direction}/>

@@ -41,7 +41,7 @@ const pageRoutes = routes(pageContent)
             flexDirection="column-reverse"
             className="h-100" 
         >
-            <Router basename="about">
+            <Router >
                 <LinksWrapper>
                     {pageRoutes !== undefined
                         && pageRoutes.map(route =>
@@ -53,6 +53,7 @@ const pageRoutes = routes(pageContent)
                     }
                 </LinksWrapper>
                 <Switch>
+                   <Redirect from="/about" to="video"/>
                 {pageRoutes !== undefined
                     ? pageRoutes.map((route, i) => (
                         <RouteWithProps key={i} {...route}/>

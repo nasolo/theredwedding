@@ -13,7 +13,7 @@ const Services = ({data}) => {
             <Container fluid className="h-100 m-auto">
                 <Row>
                     {data.services.map((service, i) =>(
-                    <Col cols="6" lg={4} key={i}>
+                    <Col cols="6" lg={4} key={i} className="p-0">
                         <Service {...service}/>
                     </Col>
                     ))}

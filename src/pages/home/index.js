@@ -1,77 +1,66 @@
-import React, {  useMemo } from 'react'
-import { AnimatePresence } from 'framer-motion'
+import React, {  useMemo, useState } from 'react'
 
 
-import { useSelector, useDispatch, shallowEqual } from 'react-redux'
+
+import { useSelector, shallowEqual } from 'react-redux'
 import SliderContent from './component/card'
 import allHeaderSelectors from './redux/selectors'
-
-//redux actionCreators {business logic}
-import { 
-        handleChevrons
-    } from './redux/actionCreators'
-import { nextCardById, prevCardById } from './redux/actions'
-//styled components
 
 import Indicators from './component/indicators';
 import SlideContainer from '../../elements/slidecontainer';
 
-import Paralax from '../../elements/paralax';
-import Drag from '../../elements/drag';
+import Carousel from '../../modules/carousel'
 import Chevrons from './component/chevrons';
-import handleOnDragEnd from '../../utils/actionCreators/handleDragEnd'
-import { variants } from './variants'
 
 // Bootstrap Components
 
 
 const CardCarousel = props => {
 
-
+    const [carouselData, setCarouselData] = useState({})
+    const handleCarouselData = (data) => setCarouselData(data)
+    const {
+        activeIndex, 
+        dispatch, 
+        setActiveItem, 
+        currentPageItems,
+        paginatePrev,
+        paginateNext,
+        next,
+        prev
+    } = carouselData
 
 const makeGetAllHeaderData = useMemo(allHeaderSelectors.allHeaderData, [])
 const { 
-      cards,
-       direction,
-       activeId,
-       activeMedia,
-       next,
-       prev
+        cards
       } = useSelector(state => makeGetAllHeaderData(state), shallowEqual)
 
-const dispatch = useDispatch()
+
+const handleChevrons = ( type ) =>{
+    if(!type) return
+
+    if(type === 'leftChevron'){
+        return dispatch(paginatePrev(prev))
+    } else{
+        dispatch(paginateNext(next))
+    }
+}
+
+const handleIndicator = (index) => {
+    return dispatch(setActiveItem(index))
+}
 
     return(
-        
         <SlideContainer>
-            <Paralax>
-                <AnimatePresence custom={direction} initial={false}>
-                    <Drag 
-                        className="h-100 vw-100" 
-                        position="absolute"
-                        custom={direction} 
-                        onDragEnd={(event, info)=>dispatch(handleOnDragEnd(event, info, nextCardById(next), prevCardById(prev)))}
-                        variants={variants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                       
-                        key={activeId}
-                    >
-                        <SliderContent {...activeMedia}/>
-                    </Drag>
-                </AnimatePresence>
-              
-                    <Indicators cards={cards} id={activeId}/>
-               
-                    <Chevrons dispatch={(chevron)=>dispatch(handleChevrons(chevron))} chevrons={["leftChevron", "rightChevron"]} />
-                
-        </Paralax>
-    </SlideContainer>
-
+            <Carousel getCarouselInfo={handleCarouselData}>
+                {cards.map((card, i) =>(
+                    <SliderContent {...card}/>
+                ))}
+            </Carousel>
+            <Indicators cards={currentPageItems ? currentPageItems : cards} activeIndex={activeIndex} handleIndicator={handleIndicator}/>  
+            <Chevrons handleChevens={handleChevrons} chevrons={["leftChevron", "rightChevron"]} />
+        </SlideContainer>
     )
-
-  
 }
 
 export default CardCarousel

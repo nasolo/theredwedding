@@ -23,13 +23,11 @@ const Testimonials = props => {
     const {
         isFetching,
         testimonies,
-        bg,
-        activeQuoteId,
-        slideData,
-        direction
+        bg
+    
     } = useSelector(state => makeGetAllTestimonies(state), shallowEqual)
     
-    const { activeMedia, next, prev } = slideData
+  
 
     const fetchPageData = useCallback(() => {
             dispatch(fetchAllTestimonialsData())
@@ -38,24 +36,26 @@ const Testimonials = props => {
     useEffect(() => {
         !isFetching && testimonies.length < 1 && fetchPageData()
     },[])
-    
-
 
     return (
         <Container fluid className="h-100 d-flex flex-column"> 
             <FullScreenImage src={bg} backgroundPosition="center center"/>
     
-                   <Container fluid className="m-auto" overflow='hidden'>
-                        <Comments {...activeMedia} next={next} prev={prev} direction={direction}/>
+                   <Container fluid 
+                        className="d-flex flex-column"
+                        overflow='hidden'
+                        height="100%"
+                    >
+                        <Comments quotes={testimonies}/>
                    
                     <Row className="flex-column bg-transparent" margin={{_:"auto", sm: "3rem auto", lg: "auto"}}>
                     <Col className="d-flex justify-content-center">
-                        <Indicators quotes={testimonies} activeId={activeQuoteId} onClick={(card)=>dispatch(setActiveQuoteId(card))}/>
+                      
                     </Col>
                 </Row>
                 </Container>
 
-            <Row className=" d-lg-none align-self-end mb-0 mt-auto vw-100">
+            <Row className=" d-lg-none align-self-end mb-0 mt-0 vw-100">
                     <Col className="bg-white">
                         <Newsletter/>
                     </Col>
@@ -67,3 +67,6 @@ const Testimonials = props => {
 }
 
 export default Testimonials
+
+
+ // <Indicators quotes={testimonies} activeId={activeQuoteId} onClick={(card)=>dispatch(setActiveQuoteId(card))}/>

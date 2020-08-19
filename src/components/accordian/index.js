@@ -50,7 +50,7 @@ const AccordianItem = ({i, expanded, setExpanded, description, heading}) =>{
                 initial={false}
                 onClick={()=> setExpanded(isOpen ? false : i)}
             >   
-              <Heading as="h6" text={heading} className="text-white" fontSize={["1rem", ".75rem", "1rem"]}/>
+              <Heading as="h2" text={heading} className="text-white" fontSize={{_:"1rem", lg:"2rem"}}/>
             </AccordianHeader>
 
             <AnimatePresence initial={false} exitBeforeEnter>
@@ -63,7 +63,7 @@ const AccordianItem = ({i, expanded, setExpanded, description, heading}) =>{
                         variants={collapse}
                     >
                        <Card.Body variants={InfoVariant} >
-                        <P>{description} </P>
+                        <P fontSize={{_:".75rem", lg:"1rem"}}>{description} </P>
                         </Card.Body>
                      
                     </AccordianBody>

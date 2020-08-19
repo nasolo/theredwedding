@@ -5,12 +5,9 @@ const getAllTestimonial = state => state.testimonials
 const getActiveId = state => state.testimonials.activeQuoteId
 
 export const allTestimonies = () =>createSelector(
-    [getAllTestimonial, getActiveId],
-    (testimonies, activeId) =>({
-        ...testimonies,
-        slideData: { 
-            ...sliderHandler(testimonies.testimonies, activeId, 5)
-        }
+    [getAllTestimonial],
+    (testimonies) =>({
+        ...testimonies
     })
 )
 

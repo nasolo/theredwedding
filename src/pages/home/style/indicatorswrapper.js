@@ -11,6 +11,7 @@ const IndicatorsWrapper = styled(Box).attrs({
     justify-content: flex-end;
     position: absolute;
     padding-right: 20%;
+    z-index: 100;
     
 
 `

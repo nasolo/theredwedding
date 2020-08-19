@@ -9,9 +9,10 @@ import {
 
 
 const RouteWithProps = (route) => {
+
     return (
         <Route
-            path={route.path}
+            path={`${route.path}`}
             render={props =>(
                 <route.component {...props} data={route.data}/>
             )}

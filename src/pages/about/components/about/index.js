@@ -50,20 +50,25 @@ const About = ({data}) => {
             <Container fluid className="h-100 m-auto">
                 <Row>
                     <Col cols={12}>
-                        <Heading 
-                            as="h5" 
+                        <Heading
+                            key="aboutme-heading" 
+                            as="h6" 
                             text={data.heading} 
                             className="p-3"
-                            textAlign={{_:"center", lg: "right"}}
+                            textAlign={{_:"left", lg: "right"}}
+                            fontSize="1rem"
+                            
 
                         />
                     </Col>
 
                     {parsedText.map((text, i) =>(
                         <Col cols={12} lg={6} key={i}>
-                            <P  variant="primary" 
-                                marginLeft={{_:"15%", lg: "40%"}}
+                            <P 
+                                key={`paragraph-${i}`}  
+                                marginLeft={{_:"20%", lg: "40%"}}
                                 textAlign={{_:"left", lg: "right"}}
+                                fontSize={{_:".75rem", lg: "1rem"}}
                             >
                             {text}
                             </P>

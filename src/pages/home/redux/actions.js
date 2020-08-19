@@ -9,7 +9,8 @@ const {
     DIRECTION,
     PAGE,
     INVALID_CARD_REQUEST,
-    SET_CURRENT_CARD_ID
+    SET_CURRENT_CARD_ID,
+    UPDATE_CAROUSEL_DATA
 } = HEADER_CONSTANTS
 
 
@@ -19,8 +20,9 @@ export const nextCardById = createAction(PAGINATE_NEXT)
 export const setCurrentCardById = createAction(SET_CURRENT_CARD_ID)
 export const prevCardById = createAction(PAGINATE_PREV)
 export const page = createAction(PAGE)
-
 export const requrestCards = createAction(REQUEST_CARDS)
+
+export const updateCarouselData = createAction(UPDATE_CAROUSEL_DATA)
 
 export const receiveCards = createAction(RECEIVE_CARDS,  function prepare(json){
  

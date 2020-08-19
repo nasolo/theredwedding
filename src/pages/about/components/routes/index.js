@@ -4,6 +4,7 @@ import Video from "../video"
 import Faqs from "../faqs"
 
 
+
 const handleComponent = (path, components) =>{
  
     switch(path){
@@ -16,7 +17,7 @@ const handleComponent = (path, components) =>{
         case '/faqs':
            return Faqs
             break;
-        case '/about':
+        case '/whoweare':
             return About
             break;
         default:

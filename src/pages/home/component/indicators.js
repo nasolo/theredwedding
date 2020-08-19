@@ -7,19 +7,19 @@ import { setActiveCardId } from '../redux/actionCreators'
 
 
 
-const Indicators = ({cards, id}) => {
+const Indicators = ({cards, activeIndex, handleIndicator}) => {
 
-   const dispatch = useDispatch()
+
 
     return (
         <IndicatorsWrapper >
         {cards.map((card, index) => { 
-            let active = card.id === id
+            let active = activeIndex === index
                 return (
                     <Indicator 
                     key={`${card.id}_${index}`} 
                     active={active}
-                    onClick={()=>dispatch(setActiveCardId({...card, index}))}
+                    onClick={()=>handleIndicator(index)}
                     />
                 )
             })         

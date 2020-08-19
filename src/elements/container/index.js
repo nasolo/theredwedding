@@ -20,7 +20,7 @@ const mediaQueries = ({theme}) =>css({
 })
 
 const Container = styled(Box).attrs(props =>({
-    className: handleFluidBreakPoints(props.fluid)
+    className: `${handleFluidBreakPoints(props.fluid)}`
 }))`
 
     ${mediaQueries}

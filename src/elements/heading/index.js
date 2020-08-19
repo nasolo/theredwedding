@@ -22,13 +22,15 @@ const Heading = styled(Box).attrs(props => ({
 }))`
 
     ${textColor}
-    text-align: center;
     width: 100%;
     margin: auto ;
     font-weight: 900;
-    font-size: 1.5rem;
-    ${mediaQueries}
+    
+    
 `
-
+Heading.defaultProps ={
+    textAlign: 'center',
+    
+}
 
 export default Heading

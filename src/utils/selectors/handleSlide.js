@@ -4,39 +4,42 @@ import { nanoid } from "@reduxjs/toolkit";
 
 
 
-const initialValue = {
-    
-    activeId: null,
-    activeIndex: null,
-    nextItem: null,
-    prevItem: null,
-}
 
-export const sliderHandler = (data, activeId, chunkSize) =>{
+export const sliderHandler = (data, active, chunkSize) =>{
    
         if(!data){
             return "no data was provided"
         }
 
         
-        const active = activeId === undefined ? data[0].id : activeId
-        const size = chunkSize === null ? 9 : chunkSize
-
-        const paginate = (activeIndex, direction) => wrap(0, data.length, activeIndex + direction) 
+        const wasActiveIndexGiven = active === undefined
+        const wasChunkSizeGiven = chunkSize === undefined
         
-        const sliderData = data.reduce((prev, curr) =>{
-                prev.activeId = active
-                prev.pages = chunk(data, size)
-                prev.activeIndex = data.findIndex(card => card.id === activeId)
-                prev.paginate =(direction)=>paginate(prev.activeIndex, direction)
-                prev.activeMedia = data[prev.activeIndex]
-                prev.jump = (direction) => prev.paginate(direction)
-                prev.next = data[prev.paginate(1)]
-                prev.prev = data[prev.paginate(-1)]
-                prev.currentPage = prev.pages.findIndex(page => page.find(page=> page.id.includes(prev.activeId)))
-                prev.currentPageItems = prev.pages[prev.currentPage]
-                return prev
-            },initialValue)
+        const activeIndex =  wasActiveIndexGiven ? 0 : active
+        const activeData = wasActiveIndexGiven ? data[0] : data[activeIndex] 
+        const size = wasChunkSizeGiven ? 9 : chunkSize
+        const pages = chunk(data, size)
+        const paginate = (direction) => wrap(0, data.length, activeIndex + direction)
+        const currentPage = pages.findIndex(page => page.find(page => page === activeData))
+        
+        const sliderData = {
+                
+                pages,
+                activeIndex: activeIndex,
+                paginate: (direction)=>paginate(activeIndex, direction),
+                activeItem: data[activeIndex],
+                jump: (direction) => paginate(direction),
+                next: {
+                    activeIndex: paginate(1), 
+                    direction: 1
+                },
+                prev: {
+                    activeIndex: paginate(-1), 
+                    direction: -1
+                },
+                currentPage,
+                currentPageItems: pages[currentPage]
+            }
 
     return {data, ...sliderData}
 

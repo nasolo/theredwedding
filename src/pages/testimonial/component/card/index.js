@@ -2,16 +2,10 @@ import  Card from '../../../../elements/card'
 import Quote from '../../../../elements/blockquote'
 import React, { useState } from 'react'
 import Buttons from '../../../../elements/buttons'
-import ViewModal from '../../../../components/modal'
-import Carousel from '../../../../components/carousel'
-import { motion } from 'framer-motion'
-import Img from '../../../../elements/img'
-import Drag from '../../../../elements/drag'
+
 import { useDispatch } from 'react-redux'
-import handleOnDragEnd from '../../../../utils/actionCreators/handleDragEnd'
-import { setActiveQuoteId } from '../../redux/actions'
-import { AnimatePresence } from "framer-motion"
-import SlideContainer from '../../../../elements/slidecontainer'
+import Carousel from '../../../../modules/carousel'
+
 
 const variants = {
     enter: (direction) => {
@@ -35,18 +29,60 @@ const variants = {
   };
 
 
+const RenderQuote = ({quote, name, subTitle}) => (
+  <>
+            <Quote>{quote}</Quote>
+            <Card className="text-white border-0 text-center align-items-center ">
+                <Card.Body className="bg-transparent">
+                    <Card.Title text={name} as="h3" className="mb-2 w-100" fontWeight="500"/>
+                    <Card.Text text={subTitle}/>
+                    <Buttons variant="dotted" className="mt-3 mb-3">View Media</Buttons>
+                </Card.Body>
+            </Card>
+        </>
+)
 
-const Comments = ({id, quote, subTitle, name, media, next, prev, direction}) => {
+
+const Comments = ({quotes, ...rest}) => {
     
-    const [modalShow, setModalShow] = useState(false)
-    const toggleModal = () => setModalShow(!modalShow)
+   console.log(quotes)
     const dispatch = useDispatch()
-    
-  
+    const handleCarouselData = (info) => console.log(info)
     return (
-        <>
-     
-        <AnimatePresence custom={direction} exitBeforeEnter>
+      <Carousel getCarouselInfo={handleCarouselData}>
+        {quotes.map((quote, index) => (
+            <RenderQuote {...quote} key={`quote-${index}`}/>
+        ))}
+      </Carousel>
+  
+    )
+}
+
+export default Comments
+
+
+
+/*
+ <ViewModal show={modalShow} onHide={() => toggleModal()}>
+                <Carousel data={media}>
+                    {media !== undefined ? media.map((media, i) => (
+                        <Img
+                            as={motion.img}
+                            srcSet={media} 
+                            key={i} 
+                            drag="x"
+                            dragConstraints ={{left: 0, right: 0}}
+                            onMouseDown={(e)=> e.preventDefault()}
+                            dragElastic={1}
+                        /> 
+                    )): null}
+                </Carousel>
+            </ViewModal>
+*/
+
+
+
+/*<AnimatePresence custom={direction} exitBeforeEnter>
         <Drag
             custom={direction}
             key={`motion-drag-${id}`}
@@ -65,31 +101,9 @@ const Comments = ({id, quote, subTitle, name, media, next, prev, direction}) => 
                 <Card.Body className="bg-transparent">
                     <Card.Title text={name} as="h3" className="mb-2 w-100" fontWeight="500"/>
                     <Card.Text text={subTitle}/>
-                    <Buttons onClick={()=>toggleModal()} variant="dotted" className="mt-3 mb-3">View Media</Buttons>
+                    <Buttons variant="dotted" className="mt-3 mb-3">View Media</Buttons>
                 </Card.Body>
             </Card>
         </Drag>
     </AnimatePresence>
-
-
-            <ViewModal show={modalShow} onHide={() => toggleModal()}>
-                <Carousel data={media}>
-                    {media !== undefined ? media.map((media, i) => (
-                        <Img
-                            as={motion.img}
-                            srcSet={media} 
-                            key={i} 
-                            drag="x"
-                            dragConstraints ={{left: 0, right: 0}}
-                            onMouseDown={(e)=> e.preventDefault()}
-                            dragElastic={1}
-                        /> 
-                    )): null}
-                </Carousel>
-            </ViewModal>
-          
-        </>
-    )
-}
-
-export default Comments
+  */

@@ -92,6 +92,13 @@ const appInitialState = {
       bg: null,
       activeIndex: 0,
       direction: 0
+    },
+    carousel:{
+      loaded: false,
+      items: [],
+      activeIndex: 0,
+      activeItem: null,
+      direction: 1
     }
 
     

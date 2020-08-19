@@ -42,13 +42,12 @@ const testimonials = createReducer(appInitialState.testimonials, {
         }),
         [setActiveQuoteId]: createNextState(
             (testimonies, action)=>{
-                const { id, position } = action.payload
-                const { activeIndex, } = testimonies
-                const newDirection = activeIndex === 0 & position === testimonies.testimonies.length || position < activeIndex ? 1 : -1
+                const { id, position, direction} = action.payload
+                console.log(action.payload)
 
                 testimonies.activeQuoteId = id
                 testimonies.activeIndex = position
-                testimonies.direction = newDirection
+                testimonies.direction = direction
             }
         )
 })

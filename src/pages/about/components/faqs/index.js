@@ -2,9 +2,8 @@ import React from 'react'
 import { useRouteMatch } from "react-router-dom";
 import FullScreenImage from '../../../../elements/imagePlaceholder';
 import Container from '../../../../elements/container';
-import Row from '../../../../elements/row';
 import Accordian from '../../../../components/accordian';
-import Col from '../../../../elements/col';
+
 
 
 const Faqs = ({data}) => {
@@ -13,7 +12,7 @@ const Faqs = ({data}) => {
     
     return (
         <FullScreenImage src={data.background} className="d-flex justify-content-center">
-            <Container fluid overflow="hidden" maxHeight="80vh">
+            <Container fluid overflow="hidden" margin="20vh auto 1rem" maxHeight="50%">
               
                         <Accordian accordians={data.description}/>
                    

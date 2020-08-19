@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit'
-import {requrestCards, receiveCards, nextCardById, prevCardById, setCurrentCardById, direction} from './actions'
+import {requrestCards, receiveCards, nextCardById, prevCardById, setCurrentCardById, updateCarouselData, direction} from './actions'
 import appInitialState from '../../../root/initialState'
 
 const header = createReducer(appInitialState.header, {
@@ -23,19 +23,24 @@ const header = createReducer(appInitialState.header, {
         }
     },
     [nextCardById]: (state, action) =>{
-        const { id, index } = action.payload
+        const { id, index, direction } = action.payload
+
+       
+
         return {
             ...state,
-            direction: 1,
+            direction: direction,
             activeCardIndex: index,
             activeCardId: id
         }
     },
     [prevCardById]: (state, action) => {
-        const { id, index } = action.payload
+        const { id, index, direction } = action.payload
+
+       
         return {
             ...state,
-                direction: -1,
+                direction: direction,
                 activeCardIndex: index,
                 activeCardId: id
 
@@ -43,17 +48,22 @@ const header = createReducer(appInitialState.header, {
     },
     [setCurrentCardById]: (state, action) =>{
         
-        const { id, index } = action.payload
+        const { id, index, direction } = action.payload
         const { activeCardIndex } = state
-        const newDirection = index > activeCardIndex ? 1 : -1
+        
+      
 
         return {
             ...state,
-            direction: newDirection,
+            direction: direction,
             activeCardIndex: index,
             activeCardId: id
         }
-    }
+    },
+    [updateCarouselData]: (state, action) =>({
+        ...state,
+        activeCardIndex: action.payload
+    })
 
 
 })
