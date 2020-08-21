@@ -14,6 +14,7 @@ import Paralax from '../../elements/paralax'
 const {
     paginateNext,
     paginatePrev,
+    setActiveItem
 } = allActions
 
 //fullscreen styles will initialzed @fullscreen prop (string)
@@ -25,8 +26,6 @@ const fullScreen = {
 const defaultStyle = {
 
 }
-
-
 
 
 const Carousel = ({
@@ -77,6 +76,9 @@ const Carousel = ({
             activeItem,
             next,
             prev,
+            slideRight: () => dispatch(paginateNext(next)),
+            slideLeft: () => dispatch(paginatePrev(prev)),
+            setPageItem: (index) => dispatch(setActiveItem(index)),
             currentPage,
             currentPageItems,
             ...allActions,

@@ -1,42 +1,39 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
-import { allTestimonies, activeQuote } from './redux/selectors'
+import React, {useMemo, useState } from 'react'
+import { allTestimonies, } from './redux/selectors'
 import { useDispatch, shallowEqual, useSelector } from 'react-redux'
-import { fetchAllTestimonialsData } from './redux/actionCreators'
+
 import Comments from './component/card'
 import Container from '../../elements/container'
 import Row from '../../elements/row'
 import Col from '../../elements/col'
 import FullScreenImage from '../../elements/imagePlaceholder'
-import Indicators from './component/indicators'
-import { setActiveQuoteId } from './redux/actions'
 import Newsletter from './component/newsletter'
+import Indicators from './component/indicators'
 
 
 
 
 const Testimonials = props => {
 
-    const dispatch = useDispatch()
 
+    const [carouselData, setCarouselData] = useState({})
+
+    const {currentPageItems, setPageItem, activeIndex} = carouselData
     const makeGetAllTestimonies = useMemo(allTestimonies, [])
 
     const {
-        isFetching,
+
         testimonies,
         bg
     
     } = useSelector(state => makeGetAllTestimonies(state), shallowEqual)
     
   
-
-    const fetchPageData = useCallback(() => {
-            dispatch(fetchAllTestimonialsData())
-        },[testimonies])
-
-    useEffect(() => {
-        !isFetching && testimonies.length < 1 && fetchPageData()
-    },[])
-
+   const activeQuote = {
+       ...testimonies[activeIndex]
+   }
+  
+   
     return (
         <Container fluid className="h-100 d-flex flex-column"> 
             <FullScreenImage src={bg} backgroundPosition="center center"/>
@@ -46,11 +43,11 @@ const Testimonials = props => {
                         overflow='hidden'
                         height="100%"
                     >
-                        <Comments quotes={testimonies}/>
+                        <Comments quotes={testimonies} getCarouselInfo={setCarouselData}/>
                    
                     <Row className="flex-column bg-transparent" margin={{_:"auto", sm: "3rem auto", lg: "auto"}}>
                     <Col className="d-flex justify-content-center">
-                      
+                      <Indicators items={currentPageItems} setActiveIndex={setPageItem} activeQuote={activeQuote}/>
                     </Col>
                 </Row>
                 </Container>

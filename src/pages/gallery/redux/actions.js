@@ -16,7 +16,8 @@ const {
         SET_FILTER_BUTTON_ACTIVE,
         REMOVE_FILTER_BUTTON_INACTIVE,
         ADD_USER_TAGS,
-        REMOVE_USER_TAGS
+        REMOVE_USER_TAGS,
+        UPDATE_MEDIA
  } = galleryConstants
 
 const fetchMedia = createAction(PENDING)
@@ -42,6 +43,8 @@ export const removeAllFilterTags = createAction(REMOVE_ALL_FILTER_TAGS)
 const addUserTags = createAction(ADD_USER_TAGS)
 
 const removeUserTags = createAction(REMOVE_USER_TAGS)
+
+export const updateMedia = createAction(UPDATE_MEDIA)
 
 const receiveMedia = createAction(SUCCESS, function prepare(json){
         return{ 
@@ -84,7 +87,8 @@ const allActions = {
         setFilterButtonActive,
         setFilterButtonInActive,
         addUserTags,
-        removeUserTags
+        removeUserTags,
+        updateMedia
 }
 
 export default allActions

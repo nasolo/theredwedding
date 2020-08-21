@@ -5,7 +5,7 @@ import { sliderHandler } from '../../../utils/selectors/handleSlide'
 
 
 const selectAllGalleryData = state => state.gallery
-const indicatorSelector = (_, props) => props
+const activeIndex = (_, props) => props
 const selectAllGalleryMedia = state => state.gallery.media
 const selectActiveCard = state=> state.gallery.activeId
 
@@ -14,8 +14,8 @@ const activeFilterBtns = state => state.gallery.activeFilterBtnId
 
 export const allMediaData = () => {
     return createSelector(
-        [selectAllGalleryData, indicatorSelector, selectActiveCard],
-        (gallery, pageLength) => {
+        [selectAllGalleryData, activeIndex],
+        (gallery, activeIndex) => {
             
             //map filtered data requirements
             const {filterTags, userTags, media, activeId} = gallery
@@ -30,20 +30,13 @@ export const allMediaData = () => {
             const filteredMedia = shouldFilterData ? (media.filter(media => media.tags.find(tag => filteredTags.has(tag))))
             : ( media )
 
-            //create gallery pagination array
-            const {
-                next, 
-                prev, 
-                activeMedia,
-                currentPageItems
-            } = sliderHandler(filteredMedia, activeId, pageLength)
+
+            
 
             return {
                 ...gallery,
-                next,
-                prev,
-                activeMedia,
-                currentPageItems
+                media: [...filteredMedia],
+                
             }
 
         } 

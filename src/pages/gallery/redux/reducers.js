@@ -16,7 +16,8 @@ const {
         setFilterButtonActive,
         setFilterButtonInActive,
         addUserTags,
-        removeUserTags
+        removeUserTags,
+        updateMedia
         
     } = allActions
 
@@ -126,7 +127,12 @@ const gallery = createReducer(appInitialState.gallery, {
             ...state,
             userTags: [...state.userTags.filter(tag => !action.payload.includes(tag))]
         }
-    }
+    },
+    [updateMedia]: (state, action) =>({
+        ...state,
+        id: action.payload.id,
+        media: action.payload.media
+    })
 })
 
 export default gallery

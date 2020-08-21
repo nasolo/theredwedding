@@ -22,12 +22,10 @@ const CardCarousel = props => {
     const {
         activeIndex, 
         dispatch, 
-        setActiveItem, 
+        setPageItem, 
         currentPageItems,
-        paginatePrev,
-        paginateNext,
-        next,
-        prev
+        slideLeft,
+        slideRight,
     } = carouselData
 
 const makeGetAllHeaderData = useMemo(allHeaderSelectors.allHeaderData, [])
@@ -40,24 +38,22 @@ const handleChevrons = ( type ) =>{
     if(!type) return
 
     if(type === 'leftChevron'){
-        return dispatch(paginatePrev(prev))
+        return slideLeft()
     } else{
-        dispatch(paginateNext(next))
+        return slideRight()
     }
 }
 
-const handleIndicator = (index) => {
-    return dispatch(setActiveItem(index))
-}
+
 
     return(
         <SlideContainer>
             <Carousel getCarouselInfo={handleCarouselData}>
                 {cards.map((card, i) =>(
-                    <SliderContent {...card}/>
+                    <SliderContent {...card} key={card.id}/>
                 ))}
             </Carousel>
-            <Indicators cards={currentPageItems ? currentPageItems : cards} activeIndex={activeIndex} handleIndicator={handleIndicator}/>  
+            <Indicators cards={currentPageItems ? currentPageItems : cards} activeIndex={activeIndex} handleIndicator={setPageItem}/>  
             <Chevrons handleChevens={handleChevrons} chevrons={["leftChevron", "rightChevron"]} />
         </SlideContainer>
     )

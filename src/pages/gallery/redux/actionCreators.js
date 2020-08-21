@@ -20,7 +20,7 @@ const {
         
     } = allActions
 
-export const fetchMediaHandler = () => ({
+export const FETCH_GALLERY_CONFIG = {
         type: API,
         url: "/data/media.json",
         payload: {
@@ -33,28 +33,7 @@ export const fetchMediaHandler = () => ({
             ERROR: errorMedia
         }
     }
-})
-
-const shouldFetchMedia = state => {
-    const gallery = state.gallery
-    if(!gallery){
-        return true
-    } else if(gallery.isFetching){
-        return false
-    } else {
-        return {
-                    didInValidate: gallery.didInValidate,
-                    errorMsg: gallery.apiErrorMsg
-                }
-    }
 }
-
-export function fetchMediaData(){
-    return (dispatch, getState) =>{
-        return shouldFetchMedia(getState) ? dispatch(fetchMediaHandler()) : Promise.resolve()
-    }
-}
-
 
 export function addMediaFilter ( medialFilters ){
     

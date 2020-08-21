@@ -1,37 +1,20 @@
 import React, { useEffect } from 'react'
+import Carousel from '../../../modules/carousel'
+import Media from '../../../components/media'
+import CarouselWrapper from '../style/carouselWrapper'
 
-import Paralax from "../../../elements/paralax"
+const Slider = ({media, getCarouselData, fullscreen = 'false', itemsPerPage, ...rest}) => {
 
-import { useDispatch } from 'react-redux'
-import handleOnDragEnd from '../../../utils/actionCreators/handleDragEnd'
-import { setActiveId } from '../redux/actions'
-import { AnimatePresence } from 'framer-motion'
-import Drag from '../../../elements/drag'
-import ActiveMedia from './activeMedia'
-import { sliderVariants } from '../assets/motionVariants' 
 
-const Slider = ({activeMedia, prev, next, direction, ...rest}) => {
+    const handleCarouselData = (data) => getCarouselData(data)
 
-    const dispatch = useDispatch()
-
-    
     return (
-        <Paralax className="position-absolute">
-            <AnimatePresence custom={direction}>
-                <Drag
-                    className="w-100 h-100 container-fluid position-absolute p-0"
-                    onDragEnd={(event, info)=>dispatch(handleOnDragEnd(event, info, setActiveId(prev), setActiveId(next)))}
-                    key={activeMedia !== undefined && activeMedia.id}
-                    custom={direction}
-                    variants={sliderVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                >
-                    <ActiveMedia {...rest} media={activeMedia !== undefined && activeMedia}/>
-                </Drag>
-            </AnimatePresence>
-        </Paralax>
+
+    <CarouselWrapper>
+        <Carousel getCarouselInfo={handleCarouselData} itemsPerPage={itemsPerPage}>
+            {media.map((media, index) => <Media fullscreen={fullscreen} {...media} {...rest} key={`${media.id}-${index}-slider`}/>)}
+        </Carousel>
+    </CarouselWrapper>
     )
 
 }

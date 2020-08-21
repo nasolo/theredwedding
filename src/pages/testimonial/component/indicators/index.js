@@ -2,20 +2,29 @@ import React from 'react'
 import Indicator from '../../../../elements/indicator'
 
 
-const Indicators = ({quotes, activeId, onClick, ...rest}) => {
+const Indicators = ({items, activeQuote, setActiveIndex, ...rest}) => {
 
-    const isActive = (id) => id === activeId
-    const handleClick = (id) => !isActive(id) && onClick(id)
+    const shouldRenderQuotes = items !== undefined
+
+    const quotes = shouldRenderQuotes && items.map(quote => quote.props)
+
+    const { id } = activeQuote
+
+    const handleClick = (active, index) => !active && setActiveIndex(index)
 
     return (
         <>
-            {quotes.map(quote => 
-                <Indicator 
-                key={quote.id}
-                active={isActive(quote.id)}
-                onClick={()=>handleClick(quote)}
-                {...rest}
-            />)}
+            {shouldRenderQuotes && quotes.map((quote) =>{ 
+                const active = id === quote.id
+                return ( 
+                    <Indicator 
+                        key={quote.id}
+                        active={active}
+                        onClick={()=>handleClick(active, quote.position)}
+                        {...rest}
+                    />
+                )
+            })}
         </>
     )
 

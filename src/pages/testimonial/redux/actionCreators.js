@@ -11,7 +11,7 @@ const {
     receiveTestimonies
 } = allActions
 
-const fetchTestimoniesHandler = () =>({
+export const FETCH_TESTIMONIALS_CONFIG = {
         type: API,
         url: '/data/testimonials.json',
         payload:{
@@ -23,26 +23,5 @@ const fetchTestimoniesHandler = () =>({
             PENDING: fetchTestimonials,
             ERROR: fetchError
         }
-    }
-})
-
-const shouldFetchTestimonies = state => {
-    const testimonies = state.testimonials
-    if(!testimonies){
-        return true
-    } else if(testimonies.isFetching){
-        return false
-    } else {
-        return {
-            didInValidate: testimonies.didInValidate,
-            errorMsg: testimonies.apiErrorMsg
-        }
-    }
-}
-
-
-export const fetchAllTestimonialsData = () =>{
-    return (dispatch, getState) =>{
-        return shouldFetchTestimonies(getState) ? dispatch(fetchTestimoniesHandler()) : Promise.resolve()
     }
 }

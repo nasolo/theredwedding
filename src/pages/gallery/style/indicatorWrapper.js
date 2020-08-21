@@ -32,6 +32,7 @@ const IndicatorWrapper = styled(Box).attrs(props =>({
     flex-direction: row;
     position: absolute;
     bottom: 5%;
+ 
     ${({theme, totalItems}) => mediaQueries(theme, totalItems)};
 `
 

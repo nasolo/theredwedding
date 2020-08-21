@@ -5,6 +5,7 @@ import Buttons from '../../../../elements/buttons'
 
 import { useDispatch } from 'react-redux'
 import Carousel from '../../../../modules/carousel'
+import { Link } from 'react-router-dom'
 
 
 const variants = {
@@ -29,25 +30,40 @@ const variants = {
   };
 
 
-const RenderQuote = ({quote, name, subTitle}) => (
-  <>
-            <Quote>{quote}</Quote>
-            <Card className="text-white border-0 text-center align-items-center ">
-                <Card.Body className="bg-transparent">
+const RenderQuote = ({quote, id, media, name, subTitle}) => {
+
+  console.log(media)
+  
+  const mediaLink = location => ({
+      ...location,
+      pathname: '/gallery',
+      hash: `media-${id}`,
+      state: {
+        media,
+        id
+      }
+    })
+
+
+  return(
+        <>
+            <Quote key={`quote-${id}`}>{quote}</Quote>
+            <Card className="text-white border-0 text-center align-items-center" key={`quote-card-${id}`}>
+                <Card.Body className="bg-transparent" key={`quote-body-${id}`}>
                     <Card.Title text={name} as="h3" className="mb-2 w-100" fontWeight="500"/>
                     <Card.Text text={subTitle}/>
-                    <Buttons variant="dotted" className="mt-3 mb-3">View Media</Buttons>
+                    <Buttons as={Link} to={mediaLink} variant="dotted" className="mt-3 mb-3">View Media</Buttons>
                 </Card.Body>
             </Card>
         </>
-)
+  )
+}
 
 
-const Comments = ({quotes, ...rest}) => {
+const Comments = ({quotes, getCarouselInfo, ...rest}) => {
     
-   console.log(quotes)
-    const dispatch = useDispatch()
-    const handleCarouselData = (info) => console.log(info)
+    const handleCarouselData = (data) => getCarouselInfo(data)
+
     return (
       <Carousel getCarouselInfo={handleCarouselData}>
         {quotes.map((quote, index) => (

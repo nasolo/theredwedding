@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import Carousel from '../../modules/carousel'
+
 import {useSelector, useDispatch, shallowEqual } from 'react-redux'
 import VideoPlayer from '../../components/video'
 
@@ -9,11 +9,10 @@ import Container from '../../elements/container'
 
 //redux actions and action creators
 import allSelectors from './redux/selectors'
-import { fetchMediaData } from './redux/actionCreators'
-import { sliderHandler } from '../../utils/selectors/handleSlide'
+import { updateMedia } from './redux/actions'
+
 
 //Custom Hooks
-
 import useWindowSize from '../../utils/hooks/useWindowSize'
 
 //motion variants
@@ -22,56 +21,80 @@ import ShareGallery from './components/shareGallery';
 import Indicators from './components/indicators';
 import PageFooter from './components/footer';
 import ReactPlayer from 'react-player'
-import Media from '../../components/media'
+import { useLocation } from 'react-router-dom'
+
 
 
 const {allMediaData} = allSelectors
 
 
 
+function usePageViews() {
+  let location = useLocation();
+  
+  const dispatch = useDispatch()
+
+  React.useEffect(() => {
+
+    const {pathname, hash, state} = location
+
+    const shouldDispatchMedia = pathname === '/gallery' && hash.includes('media')
+    
+    shouldDispatchMedia && dispatch(updateMedia({...state}))
+
+      
+
+  }, [location]);
+}
+
+
+
 
 const Gallery = props => {
 
-    const dispatch = useDispatch()
+    
+
     const [player, setPlayer] = useState({})
+    const [carouselData, setcarouselData] = useState({})
     const isDesktop = useWindowSize().width <= 990
     const indicatorsPerPage = isDesktop ? 4 : 8
     const Controls = VideoPlayer.Controls
     const makeGetAllMediaData = useMemo(allMediaData, [])
 
+  const { 
+    activeIndex, 
+    currentPageItems,
+    slideRight,
+    slideLeft,
+    setPageItem
+    
+  } = carouselData
+
+
+
+
+  
  //Extract gallery Data from selector
     const { 
-            activeId, 
-            media,
-            direction,
-            isFetching,
             shareIcons,
-            next, 
-            prev, 
-            activeMedia,
-            currentPageItems
-         } = useSelector(state => makeGetAllMediaData(state, indicatorsPerPage), shallowEqual)
+            media,
+         } = useSelector(state => makeGetAllMediaData(state, activeIndex), shallowEqual)
          
     //Declare component variable dependies
-    const fetchAllData = useCallback(()=> { dispatch(fetchMediaData())}, [])
+    
+    const activeMedia = {
+      ...media[activeIndex]
+    }
+
     const shouldRenderVideoControls = activeMedia && ReactPlayer.canPlay(activeMedia.url)
 
+    usePageViews()
 
-    
-  
-    //Handle side effects
-    useEffect(() => {
-        media.length < 1 & !isFetching && fetchAllData()
-    })
-    
       return (
         <SlideContainer className="d-flex flex-column" justifyContent="flex-end">
            
-           <Carousel>
-            
-              <Media />
-           
-           </Carousel>
+
+           <Slider media={media} fullscreen player={setPlayer} getCarouselData={setcarouselData} itemsPerPage={indicatorsPerPage}/>
 
             <Container 
               zIndex="100"
@@ -81,7 +104,16 @@ const Gallery = props => {
            <ShareGallery shareIcons={shareIcons}/>
            {shouldRenderVideoControls && <Controls player={player}/>}
           </Container>
-           <Indicators indicatorsPerPage={indicatorsPerPage} pageItems={currentPageItems} activeId={activeId} next={next} prev={prev}/>
+          
+           <Indicators 
+              indicatorsPerPage={indicatorsPerPage} 
+              pageItems={currentPageItems} 
+              activeMedia={activeMedia} 
+              next={slideRight} 
+              prev={slideLeft} 
+              handleIndicator={setPageItem}
+            />
+
            <PageFooter isDesktop={isDesktop}/>
                    
       </SlideContainer>

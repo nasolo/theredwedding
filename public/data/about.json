@@ -16,7 +16,7 @@
     },
     {
         "id": 2,
-        "page": "About Us",
+        "page": "About",
         "route": "/whoweare",
         "background": "/assets/images/aboutus/faqsbg.png",
         "heading": "Hello. We’re RED Weddings. The color of love, passion & old Hollywood",

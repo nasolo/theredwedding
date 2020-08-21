@@ -1,8 +1,9 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
-import FullScreenImage from '../../elements/imagePlaceholder'
+
 import { IMAGE_EXTENSTIONS } from '../../utils/patterns'
 import VideoPlayer from '../video'
+import {FullsizePicture, Picture} from 'react-responsive-picture'
 
 
 
@@ -40,11 +41,11 @@ const isImage = url => {
     }
 }
 
-const Media = ({url, id, poster,  ...rest}) => {
+const Media = ({url, id, poster, fullscreen, ...rest}) => {
     
     const mediaPoster = poster && getPoster(poster)
 
-    console.log(url)
+    console.log(fullscreen)
 
     const renderSourceElement = (url) => {
 
@@ -60,11 +61,19 @@ const Media = ({url, id, poster,  ...rest}) => {
                     videoUrl={url}
                 />
                 :
-                checkIfImage && <FullScreenImage src={url} />
+                checkIfImage && fullscreen ? <FullsizePicture src={url} cover="both"/> : <Picture src={url} cover="both"/>
             }
         
         if(url instanceof Array){
-            return renderSourceElement(url[0])
+
+            let sources = url.map(url => ({
+                    srcSet:  url
+                })
+            )
+            
+        return fullscreen ? <FullsizePicture sources={sources} src={url[0]} className="position-absolute"/> 
+                            : 
+                            <Picture sources={sources} src={url[0]} className="position-absolute"/>
         }
       }
 
@@ -77,3 +86,6 @@ const Media = ({url, id, poster,  ...rest}) => {
 }
 
 export default Media
+
+
+//<FullScreenImage src={url} />
