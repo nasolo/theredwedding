@@ -66,8 +66,8 @@ const Gallery = props => {
     currentPageItems,
     slideRight,
     slideLeft,
-    setPageItem
-    
+    setPageItem,
+    handleIndicatorsAndChevrons
   } = carouselData
 
 
@@ -112,6 +112,7 @@ const Gallery = props => {
               next={slideRight} 
               prev={slideLeft} 
               setPageItem={setPageItem}
+              dispatch={handleIndicatorsAndChevrons}
             />
 
            <PageFooter isDesktop={isDesktop}/>

@@ -18,7 +18,7 @@ const Testimonials = props => {
 
     const [carouselData, setCarouselData] = useState({})
 
-    const {currentPageItems, setPageItem, activeIndex} = carouselData
+    const {currentPageItems, handleIndicatorsAndChevrons, activeIndex} = carouselData
     const makeGetAllTestimonies = useMemo(allTestimonies, [])
 
     const {
@@ -47,7 +47,7 @@ const Testimonials = props => {
                    
                     <Row className="flex-column bg-transparent" margin={{_:"auto", sm: "3rem auto", lg: "auto"}}>
                     <Col className="d-flex justify-content-center">
-                      <Indicators items={currentPageItems} setActiveIndex={setPageItem} activeQuote={activeQuote}/>
+                      <Indicators items={currentPageItems} dispatch={handleIndicatorsAndChevrons} activeQuote={activeQuote}/>
                     </Col>
                 </Row>
                 </Container>

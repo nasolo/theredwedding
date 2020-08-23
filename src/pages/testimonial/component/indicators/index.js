@@ -2,7 +2,7 @@ import React from 'react'
 import Indicator from '../../../../elements/indicator'
 
 
-const Indicators = ({quotes, activeQuote, setActiveIndex, ...rest}) => {
+const Indicators = ({quotes, activeQuote, dispatch, ...rest}) => {
 
     const shouldRenderQuotes = quotes !== undefined
 
@@ -10,7 +10,7 @@ const Indicators = ({quotes, activeQuote, setActiveIndex, ...rest}) => {
 
     const { id } = activeQuote
 
-    const handleClick = (active, index) => !active && setActiveIndex(index)
+    const handleClick = (active, id) => !active && console.log(id)
 
     return (
         <>
@@ -20,7 +20,7 @@ const Indicators = ({quotes, activeQuote, setActiveIndex, ...rest}) => {
                     <Indicator 
                         key={quote.id}
                         active={active}
-                        onClick={()=>handleClick(active, quote.position)}
+                        onClick={()=>handleClick(active, quote.id)}
                         {...rest}
                     />
                 )
