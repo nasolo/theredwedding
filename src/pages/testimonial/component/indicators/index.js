@@ -2,11 +2,11 @@ import React from 'react'
 import Indicator from '../../../../elements/indicator'
 
 
-const Indicators = ({items, activeQuote, setActiveIndex, ...rest}) => {
+const Indicators = ({quotes, activeQuote, setActiveIndex, ...rest}) => {
 
-    const shouldRenderQuotes = items !== undefined
+    const shouldRenderQuotes = quotes !== undefined
 
-    const quotes = shouldRenderQuotes && items.map(quote => quote.props)
+    
 
     const { id } = activeQuote
 

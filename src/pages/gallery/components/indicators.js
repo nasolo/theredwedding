@@ -7,13 +7,15 @@ import Chevron from '../../../elements/chevron'
 import Indicator from '../style/indicator'
 
 
-const Indicators = ({indicatorsPerPage, pageItems, activeMedia, next, prev, handleIndicator}) => {
+const Indicators = ({indicatorsPerPage, pageItems, activeMedia, next, prev, setPageItem}) => {
 
     
 
 
-    const getMediaProps = pageItems ? pageItems.map(item => item.props) : []
+    
     const { id } = activeMedia
+
+    const handleIndicator = (item) => console.log(item, pageItems)
 
     return (
         <IndicatorWrapper totalItems={indicatorsPerPage} lg={12} >                          
@@ -26,14 +28,14 @@ const Indicators = ({indicatorsPerPage, pageItems, activeMedia, next, prev, hand
                 display="inline" 
             />
 
-                {pageItems !== undefined && getMediaProps.map(item => {
+                {pageItems !== undefined && pageItems.map(item => {
                 let active = item.id === id
                     
                 return (
                     <Indicator 
                         active={active} 
                         totalItems={indicatorsPerPage} 
-                        onClick={()=>handleIndicator(item.position)}
+                        onClick={()=>handleIndicator(item)}
                         key={item.id}
                     />
                 )

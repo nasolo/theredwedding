@@ -111,7 +111,7 @@ const Gallery = props => {
               activeMedia={activeMedia} 
               next={slideRight} 
               prev={slideLeft} 
-              handleIndicator={setPageItem}
+              setPageItem={setPageItem}
             />
 
            <PageFooter isDesktop={isDesktop}/>

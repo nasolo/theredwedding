@@ -61,8 +61,29 @@ const Carousel = ({
             next,
             prev,
             currentPage,
-            currentPageItems
+            currentPageItems,
+            data
     } = sliderHandler(pageItems, activeIndex, itemsPerPage)
+
+    const handleIndicatorsAndChevrons = (id, type) =>{
+        if(id === undefined & type === undefined) return
+        const items = data.map(item => item.props)
+        const propsExist = items.length > 0
+
+        if(id){
+            const itemIndex = propsExist && items.findIndex(item => item.id && item.id === id)
+            return dispatch(setActiveItem(itemIndex))
+        }
+
+        if(type){
+            switch(type){
+                case 'next':
+                    return dispatch(paginateNext(next))
+                case 'prev':
+                    return dispatch(paginatePrev(prev)) 
+            }
+        }
+    }
 
 
     useEffect(
@@ -80,7 +101,7 @@ const Carousel = ({
             slideLeft: () => dispatch(paginatePrev(prev)),
             setPageItem: (index) => dispatch(setActiveItem(index)),
             currentPage,
-            currentPageItems,
+            currentPageItems: currentPageItems && currentPageItems.map(item => item.props),
             ...allActions,
             dispatch
         }

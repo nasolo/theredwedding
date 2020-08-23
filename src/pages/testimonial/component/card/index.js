@@ -31,8 +31,6 @@ const variants = {
 
 
 const RenderQuote = ({quote, id, media, name, subTitle}) => {
-
-  console.log(media)
   
   const mediaLink = location => ({
       ...location,
@@ -75,51 +73,3 @@ const Comments = ({quotes, getCarouselInfo, ...rest}) => {
 }
 
 export default Comments
-
-
-
-/*
- <ViewModal show={modalShow} onHide={() => toggleModal()}>
-                <Carousel data={media}>
-                    {media !== undefined ? media.map((media, i) => (
-                        <Img
-                            as={motion.img}
-                            srcSet={media} 
-                            key={i} 
-                            drag="x"
-                            dragConstraints ={{left: 0, right: 0}}
-                            onMouseDown={(e)=> e.preventDefault()}
-                            dragElastic={1}
-                        /> 
-                    )): null}
-                </Carousel>
-            </ViewModal>
-*/
-
-
-
-/*<AnimatePresence custom={direction} exitBeforeEnter>
-        <Drag
-            custom={direction}
-            key={`motion-drag-${id}`}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-            x: { type: "spring", stiffness: 300, damping: 200 },
-            opacity: { duration: 0.2 }
-            }}
-            variants={variants}
-            onDragEnd={(event, info) => dispatch(handleOnDragEnd(event, info, setActiveQuoteId(next), setActiveQuoteId(prev)))}
-        >
-            <Quote>{quote}</Quote>
-            <Card className="text-white border-0 text-center align-items-center ">
-                <Card.Body className="bg-transparent">
-                    <Card.Title text={name} as="h3" className="mb-2 w-100" fontWeight="500"/>
-                    <Card.Text text={subTitle}/>
-                    <Buttons variant="dotted" className="mt-3 mb-3">View Media</Buttons>
-                </Card.Body>
-            </Card>
-        </Drag>
-    </AnimatePresence>
-  */
