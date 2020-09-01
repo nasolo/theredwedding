@@ -20,6 +20,7 @@ import mainTheme from './bootstrap/themes/mainTheme';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './bootstrap/globalStyle/globalStyle';
 import MainNavigation from './modules/header';
+import Contact from './pages/contact';
 
 
 
@@ -36,6 +37,7 @@ function App() {
         packages={<Packages/>}
         about={<AboutUs/>}
         testimonies={<Testimonials/>}
+        contact={<Contact/>}
       />
 </Router>
       </ThemeProvider>

@@ -63,7 +63,7 @@ const Comments = ({quotes, getCarouselInfo, ...rest}) => {
     const handleCarouselData = (data) => getCarouselInfo(data)
 
     return (
-      <Carousel getCarouselInfo={handleCarouselData}>
+      <Carousel fullscreen getCarouselInfo={handleCarouselData}>
         {quotes.map((quote, index) => (
             <RenderQuote {...quote} key={`quote-${index}`}/>
         ))}

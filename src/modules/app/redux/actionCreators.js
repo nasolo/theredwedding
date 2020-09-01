@@ -3,7 +3,8 @@ import { FETCH_ABOUTUS_CONFIG } from '../../../pages/about/redux/actionsCreators
 import { FETCH_HEADER_CONFIG } from '../../../pages/home/redux/actionCreators'
 import { FETCH_PACKAGES_CONFIG } from '../../../pages/packages/redux/actionCreators';
 import { FETCH_GALLERY_CONFIG } from '../../../pages/gallery/redux/actionCreators';
-import {FETCH_TESTIMONIALS_CONFIG} from '../../../pages/testimonial/redux/actionCreators'
+import {FETCH_TESTIMONIALS_CONFIG} from '../../../pages/testimonial/redux/actionCreators';
+import {FETCH_CONTACT_CONFIG} from '../../../pages/contact/redux/actionCreators'
 //  ...api_dispatch_config(dispatch)
 
 const list = [
@@ -12,7 +13,8 @@ const list = [
     FETCH_HEADER_CONFIG,
     FETCH_PACKAGES_CONFIG,
     FETCH_GALLERY_CONFIG,
-    FETCH_TESTIMONIALS_CONFIG
+    FETCH_TESTIMONIALS_CONFIG,
+    FETCH_CONTACT_CONFIG
 ]
 
 export const fetchAppApi = () => {

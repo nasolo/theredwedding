@@ -6,7 +6,7 @@ import VideoPlayer from '../video'
 import {FullsizePicture, Picture} from 'react-responsive-picture'
 
 
-
+const handleDefault = e => e.preventDefault()
 
 
 const getPoster = poster => {
@@ -61,7 +61,7 @@ const Media = ({url, id, poster, fullscreen, ...rest}) => {
                     videoUrl={url}
                 />
                 :
-                checkIfImage && fullscreen ? <FullsizePicture src={url} cover="both"/> : <Picture src={url} cover="both"/>
+                checkIfImage && <FullsizePicture src={url} cover="both"/>
             }
         
         if(url instanceof Array){
@@ -71,9 +71,8 @@ const Media = ({url, id, poster, fullscreen, ...rest}) => {
                 })
             )
             
-        return fullscreen ? <FullsizePicture sources={sources} src={url[0]} className="position-absolute"/> 
-                            : 
-                            <Picture sources={sources} src={url[0]} className="position-absolute"/>
+        return <FullsizePicture  cover="both" sources={sources} src={url[0]} className="position-absolute" onMouseDown={handleDefault}/> 
+                            
         }
       }
 

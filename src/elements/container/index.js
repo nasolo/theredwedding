@@ -13,9 +13,9 @@ const handleFluidBreakPoints = fluid =>{
 }
 
 
-const mediaQueries = ({theme}) =>css({
+const mediaQueries = ({fluid, theme}) =>css({
     [theme.mediaQueries.lg]:{
-        maxWidth: "80%"
+        maxWidth: fluid ? "100%" : "80%"
     }
 })
 
@@ -23,8 +23,12 @@ const Container = styled(Box).attrs(props =>({
     className: `${handleFluidBreakPoints(props.fluid)}`
 }))`
 
-    ${mediaQueries}
+   
+
 
 `
 
 export default Container
+
+
+/* ${ props => mediaQueries(props)}*/

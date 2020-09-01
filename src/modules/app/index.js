@@ -4,6 +4,7 @@ import Home from './style/home'
 import Gallery from './style/gallery'
 import Packages from './style/packages'
 import About from './style/about'
+import Contact from './style/contact'
 import { routes } from './redux/selectors'
 
 import Testimonies from './style/testimonials'
@@ -12,7 +13,6 @@ import { useEffect } from 'react'
 import { fetchAppApi } from './redux/actionCreators'
 import { AnimatedRoutes } from '../../components/routeTransitions'
 import variants from './routeAnimations'
-import { Redirect } from 'react-router-dom'
 
 const AppContainer = (props) => {
 
@@ -74,7 +74,12 @@ const AppContainer = (props) => {
 
                     <Testimonies contents={props.testimonies} path={testimonials.to} variants={variants}/>
                 }
+                {
 
+                    contact &&
+
+                    <Contact contents={props.contact} path={contact.to} variants={variants}/>
+                }
 
 
             </AnimatedRoutes>

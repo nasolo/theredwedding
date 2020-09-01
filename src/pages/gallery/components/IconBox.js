@@ -10,8 +10,8 @@ const IconBox = ({icon, text}) => (
     <IconBoxWrapper
         className="row"
     >
-            <Icon icon={icon} width="1rem" className="col-lg-6"/>
-            <IconBoxText className="col-lg-6">
+        <Icon icon={icon} width="1rem" className="col-lg-6"/>
+        <IconBoxText className="col-lg-6">
             {text}
         </IconBoxText>
     </IconBoxWrapper>

@@ -18,7 +18,7 @@ const Properties = icon => {
 
 const Icon = styled(Box).attrs(props =>({
     as: 'svg',
-    className: `${props.className ? props.className : "icon"} ${props.icon}`,
+    className: `icon ${props.icon}`,
     children: ICON[props.icon.toUpperCase()] !== undefined ? Properties(ICON[props.icon.toUpperCase()]) : Properties(ICON.WRONG),
     viewBox: ICON[props.icon.toUpperCase()] !== undefined ? ICON[props.icon.toUpperCase()].viewBox !== undefined ? ICON[props.icon.toUpperCase()].viewBox : "0 0 24 24" : ICON.WRONG.viewBox,
     onClick: props.onClick

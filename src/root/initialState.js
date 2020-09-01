@@ -1,3 +1,5 @@
+import { background } from "styled-system"
+
 const appInitialState = {
   app: {
     isFetching: false,
@@ -93,12 +95,13 @@ const appInitialState = {
       activeIndex: 0,
       direction: 0
     },
-    carousel:{
-      loaded: false,
-      items: [],
-      activeIndex: 0,
-      activeItem: null,
-      direction: 1
+    contact:{
+      id: null,
+      isFetching: false,
+      lastUpdate: null,
+      didInValidate: false,
+      apiErrorMsg: null,
+      background: null
     }
 
     

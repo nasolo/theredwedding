@@ -12,8 +12,7 @@ import {
 import {useSelector, useDispatch, shallowEqual } from 'react-redux'
 //selectors
 import {allPages} from './redux/selectors'
-//actions
-import { fetchAllAboutUsData } from './redux/actionsCreators' 
+
 //styled components
 
 import RouteWithProps from './components/routeWithPros';
@@ -29,7 +28,6 @@ const AboutUs = props => {
 const dispatch = useDispatch()
 
 const {
-    isFetching,
     pageContent
 } = useSelector(state => allPages(state), shallowEqual)
 

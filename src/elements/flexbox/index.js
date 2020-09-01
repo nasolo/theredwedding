@@ -11,6 +11,10 @@ const Flexbox = styled(Box).attrs({
     flex-wrap: nowrap;
     flex: 1 1 auto;
 
+    ${props => ({
+        gap: props.gap
+    })}
+
 
 `
 

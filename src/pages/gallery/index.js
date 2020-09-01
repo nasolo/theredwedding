@@ -29,7 +29,7 @@ const {allMediaData} = allSelectors
 
 
 
-function usePageViews() {
+function usePageViews(customMedia) {
   let location = useLocation();
   
   const dispatch = useDispatch()
@@ -40,10 +40,9 @@ function usePageViews() {
 
     const shouldDispatchMedia = pathname === '/gallery' && hash.includes('media')
     
-    shouldDispatchMedia && dispatch(updateMedia({...state}))
-
-      
-
+    shouldDispatchMedia ? customMedia(state) : customMedia(false)
+    
+  
   }, [location]);
 }
 
@@ -55,11 +54,13 @@ const Gallery = props => {
     
 
     const [player, setPlayer] = useState({})
+    const [externalMedia, setExternalMedia] = useState(false)
     const [carouselData, setcarouselData] = useState({})
     const isDesktop = useWindowSize().width <= 990
     const indicatorsPerPage = isDesktop ? 4 : 8
     const Controls = VideoPlayer.Controls
     const makeGetAllMediaData = useMemo(allMediaData, [])
+    
 
   const { 
     activeIndex, 
@@ -71,7 +72,7 @@ const Gallery = props => {
   } = carouselData
 
 
-
+  console.log(externalMedia)
 
   
  //Extract gallery Data from selector
@@ -81,20 +82,19 @@ const Gallery = props => {
          } = useSelector(state => makeGetAllMediaData(state, activeIndex), shallowEqual)
          
     //Declare component variable dependies
-    
     const activeMedia = {
       ...media[activeIndex]
     }
 
     const shouldRenderVideoControls = activeMedia && ReactPlayer.canPlay(activeMedia.url)
 
-    usePageViews()
+    usePageViews(setExternalMedia)
 
       return (
         <SlideContainer className="d-flex flex-column" justifyContent="flex-end">
            
 
-           <Slider media={media} fullscreen player={setPlayer} getCarouselData={setcarouselData} itemsPerPage={indicatorsPerPage}/>
+           <Slider media={externalMedia ? externalMedia.media : media} fullscreen={isDesktop} player={setPlayer} getCarouselData={setcarouselData} itemsPerPage={indicatorsPerPage}/>
 
             <Container 
               zIndex="100"

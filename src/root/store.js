@@ -10,7 +10,7 @@ import packages from '../pages/packages/redux/reducer'
 import aboutUs from '../pages/about/redux/reducers'
 import testimonials from '../pages/testimonial/redux/reducers'
 import navigation from '../modules/header/redux/reducer'
-
+import contact from '../pages/contact/redux/reducer'
 
 //Custom Middlewares
 import apiMiddleware from './middlewares/api';
@@ -26,6 +26,7 @@ const reducer = {
     aboutUs,
     testimonials,
     navigation,
+    contact,
     form
     
 }
