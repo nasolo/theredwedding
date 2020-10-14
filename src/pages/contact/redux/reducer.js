@@ -12,6 +12,9 @@ const {
 const contact = createReducer(appInitialState.contact, {
     [receivedContactInfo]: createNextState(
         (contact, action)=>{
+
+            console.log(action.payload)
+
             contact.isFetching = false
             contact.didInvalidate = false
             contact.lastUpdate = action.payload.receivedAt
@@ -19,8 +22,13 @@ const contact = createReducer(appInitialState.contact, {
             contact.apiErrorMsg = null
             contact.background = action.payload.background
             contact.heading = action.payload.heading
-            
+            contact.copyrightNotice = action.payload.copyrightNotice
+            contact.forms = action.payload.form
+            contact.links = action.payload.links
+            contact.social = action.payload.social
+
             return contact
+
         }),
     [fetchContactError]: createNextState(
         (err, action) =>{

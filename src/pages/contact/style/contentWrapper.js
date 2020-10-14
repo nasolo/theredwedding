@@ -1,5 +1,16 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import Box from "../../../elements/Box"
+
+const shadowMediaQueries = ({theme}) => css`
+
+    ${`${theme.mediaQueries.lg}`}{
+        box-shadow: none;
+        padding: 4rem 0;
+    }
+
+
+`
+
 
 const ContentWrapper = styled(Box).attrs(props =>({
     className: 'content-wrapper'
@@ -12,6 +23,8 @@ const ContentWrapper = styled(Box).attrs(props =>({
     background-repeat: no-repeat;
     padding: 2rem 0 1rem;
     box-shadow: inset 0px -150px 100px -12px rgba(0,0,0,1);
+
+    ${shadowMediaQueries};
 
     &::before{
         content: '';

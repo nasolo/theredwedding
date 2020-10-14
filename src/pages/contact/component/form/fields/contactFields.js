@@ -2,88 +2,102 @@ import React from 'react'
 import Form from '../../../../../elements/forms'
 import renderValidation from './validation'
 
-const style={
-    className: "col-lg-3 col-6",
-    padding: ".5rem 0",
-    backgroundColor: "white",
-    borderTop: "1.5px dotted grey",
-    borderBottom: "1.5px dotted grey",
-    borderRight: "1.5px dotted grey",
-    
-}
-
-const controlBorderStyle={
-   border: "none"
-}
-
-const borderRadiiLeft = {
-    borderTopLeftRadius: ".5rem",
-    borderTopLeftRadius: ".5rem",
-    borderBottomRLeftRadius: ".5rem",
-    borderBottomLeftRadius: ".5rem"
-}
-
-const borderRadiiRight = {
-    borderTopRightRadius: ".5rem",
-    borderTopRightRadius: ".5rem",
-    borderBottomRRightRadius: ".5rem",
-    borderBottomRightRadius: ".5rem"
-}
-
 const { Control, Group } = Form
+
+const formCols = "col-6 col-lg-3 p-0 px-lg-3"
+
+const handleValidation = ({touched, error}) => {
+
+    return `${touched && error ? "is-invalid" : "needs-validation"} rounded-0`
+}
+
+
+const renderFormGroup = ({meta, input, validations, type, label, ...rest}) => {
+
+    console.log(meta)
+
+    return (
+        <Group className={`${formCols}`}>
+            <Control
+                {...rest}
+                className={`${handleValidation({...meta})}`} 
+                required={validations.required}
+                {...input}
+                type={type}
+                placeholder={label} 
+            />
+            {renderValidation(meta)}
+        </Group>
+    )
+}
+
 
 
 const contactFields = (fields) => {
-    const {firstName, lastName, email, phone } = fields
 
-    console.log(firstName)
-    
+
+
+
+    const { formFields } = fields
+
+    const isFieldDefiend = formFields !== undefined && formFields instanceof Array
+
     return (
-        <>
-            <Group {...style} {...borderRadiiLeft} borderLeft="1.5px dotted grey">
+        <>  
+            {isFieldDefiend && formFields.map(field => renderFormGroup({...field, ...fields[field.name]}))}
+        </>
+    )
+}
+
+
+export default contactFields
+
+
+
+/*
+
+
+/*
+
+<>
+            <Group className={`${formCols}`}>
                 <Control 
-                    className={`${firstName.meta.touched && firstName.meta.error ? "is-invalid" : "needs-validation"} `} 
+                    className={`${handleValidation(firstName.meta)}`} 
                     required
                     {...firstName.input} 
-                    {...controlBorderStyle}  
-                    {...borderRadiiLeft}
-                    type="text" 
-                    placeholder="First Name" 
+                    type="text"
+                    placeholder="First" 
                 />
 
                 {renderValidation(firstName.meta)}
 
             </Group>
-            <Group {...style}>
+            <Group className={`${formCols}`}>
                 <Control
                 required
-                    className={`${lastName.meta.touched && lastName.meta.error ? "is-invalid" : "needs-validation"} `} 
+                    className={`${handleValidation(lastName.meta)}`} 
                     {...lastName.input} 
-                    {...controlBorderStyle} 
                     type="text" 
-                    placeholder="Last Name"
+                    placeholder="Last"
                 />
                 {renderValidation(lastName.meta)}
             </Group>
-            <Group {...style}>
+            <Group className={`${formCols}`}>
                 <Control
                     required
-                    className={`${email.meta.touched && email.meta.error ? "is-invalid" : "needs-validation"} `} 
+                    className={`${handleValidation(emailAddress.meta)}`} 
                     {...email.input} 
-                    {...controlBorderStyle} 
                     type="text" 
-                    placeholder="Email Address"
+                    placeholder="Email"
                 />
 
                 {renderValidation(email.meta)}
             </Group>
-            <Group {...style} {...borderRadiiRight}>
+            <Group className={`${formCols}`}>
                 <Control
                     required
-                    className={`${phone.meta.touched && phone.meta.error ? "is-invalid" : "needs-validation"} `} 
+                    className={`${handleValidation(phone.meta)}`} 
                     {...phone.input} 
-                    {...controlBorderStyle} 
-                    {...borderRadiiRight}
                     type="text" 
                     placeholder="Phone"
                 />
@@ -91,9 +105,5 @@ const contactFields = (fields) => {
                 {renderValidation(phone.meta)}
 
             </Group>
-        </>
-    )
-}
 
-
-export default contactFields
+*/

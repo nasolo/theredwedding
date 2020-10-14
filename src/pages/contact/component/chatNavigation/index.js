@@ -4,9 +4,17 @@ import Row from '../../../../elements/row'
 import Column from './style/textCol'
 import Link from './style/navLink'
 import Icon from '../../../../components/icon'
+import Container from '../../../../elements/container'
 
 const ChatNavigation = props => {
     return (
+    <Container 
+        fluid 
+        position="relative"
+        height="100%"
+        maxHeight="5rem"
+        
+    >
         <LinkWrapper>
             <Row className="h-100">
                 <Column className="quote">
@@ -22,6 +30,7 @@ const ChatNavigation = props => {
                 </Column>
             </Row>
         </LinkWrapper>
+    </Container> 
     )
 }
 

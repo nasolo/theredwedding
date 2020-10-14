@@ -1,7 +1,11 @@
-const userContactInfo = ['firstName', 'lastName', 'email', 'phone']
+
+
+const userContactInfo = ['firstName', 'lastName', 'emailAddress', 'phoneNumber']
 
 const validate = values => {
     const errors={}
+
+   
 
     userContactInfo.forEach(contact => {
         if(!values[contact]) {
@@ -19,9 +23,7 @@ const validate = values => {
     if(!values.message){
         errors.message = "Required"
     }     
-
-    console.log("error", errors, values)
-
+    console.log(values)
     return errors
 }
 

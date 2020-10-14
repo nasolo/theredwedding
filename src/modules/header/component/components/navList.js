@@ -9,7 +9,7 @@ const NavList = ({links, isOpen, as, ...rest}) => {
     return(
         <>
             { !isDefined && links.map(link => (
-                <NavItem {...link} {...rest}>
+                <NavItem {...link} {...rest} paddingRight="1rem">
                     {link.page}
                 </NavItem>
             ))}

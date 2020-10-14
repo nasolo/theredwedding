@@ -7,6 +7,12 @@ export const contactPageData = createSelector(
     (contactPageData) => contactPageData
 )
 
+
+export const formValidation = createSelector(
+    [getAllContactData],
+    (formData) => formData
+)
+
 const getServices = state => state.gallery.filterIcons
 
 export const services = createSelector(
@@ -16,7 +22,9 @@ export const services = createSelector(
 
 
 const allSelectors = {
-    contactPageData
+    contactPageData,
+    services,
+    formValidation
 }
 
 export default allSelectors

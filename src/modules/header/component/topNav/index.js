@@ -17,13 +17,13 @@ const TopNavigation = ({links, brand, isOpen, toggle}) => {
 
     return (
         <Navbar expand="lg" variant="top">
-            <Container fluid>
+            <Container>
                 
             <Brand {...brand}/>
             <Navbar.Collapse flexWrap="nowrap">
-                <Navbar.NavbarNav>
+                <Navbar.NavbarNav variant="justify-left">
                     <NavList links={links} fill/>
-                    <NavText text="(312-857-3187)" className="nav-link nav-item" color="white"/>
+                    <NavText text="(312-857-3187)" className="nav-link nav-item" color="white" fontWeight="700"/>
                 </Navbar.NavbarNav>
             </Navbar.Collapse>
              

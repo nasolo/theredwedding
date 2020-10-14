@@ -101,7 +101,10 @@ const appInitialState = {
       lastUpdate: null,
       didInValidate: false,
       apiErrorMsg: null,
-      background: null
+      background: null,
+      heading: null,
+      links: {}
+
     }
 
     

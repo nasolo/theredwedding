@@ -6,7 +6,8 @@ const wrapperMediaQueries =({theme})=>css({
     [theme.mediaQueries.lg]: {
         border: "1px solid white",
         borderRadius: ".50rem",
-        background: "linear-gradient(to bottom, #a90329 0%,#8f0222 44%,#6d0019 100%)"
+        
+background: "linear-gradient(180deg, rgba(184,0,0,1) 0%, rgba(0,0,0,0.4429972672662815) 100%)"
     }
 })
 
@@ -22,6 +23,7 @@ const navLinkMediaQueries = ({theme}) => css({
 const Wrapper = styled(Box).attrs(props =>({
     className: "btn-wrapper"
 }))`
+    display: ${({hide}) => hide && "none"};
 
     ${wrapperMediaQueries}
     flex: 1 1 auto;

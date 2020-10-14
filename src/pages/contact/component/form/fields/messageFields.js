@@ -19,7 +19,7 @@ return(
     <Group>
         
         <Control
-            className={`${touched && error ? "is-invalid" : "needs-validation"} `}
+            className={`${touched && error ? "is-invalid" : "needs-validation"} rounded`}
             required
             as='textarea' 
             {...input}
@@ -27,7 +27,7 @@ return(
             type={type}  
             cols="1000"
             height="15vh" 
-            borderRadius=".5rem"
+           
         />
            
     </Group>

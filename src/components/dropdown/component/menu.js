@@ -54,11 +54,11 @@ const DropDownMenu = ({list, header, onChange, className, prefix, ...rest}) =>{
     const handleSelectedListItems = (id) => {
         
         let selectedIdsToAdd = selectedIds
-        
+        const isSelected = (id) => selectedIdsToAdd.includes(id)
         
         //if slected item is selectedIds state return remove else add
 
-        if(selectedIdsToAdd.includes(id)){
+        if(isSelected(id)){
             selectedIdsToAdd = selectedIdsToAdd.filter(filterId => filterId !== id)
         }else{
             selectedIdsToAdd.push(id)
@@ -66,9 +66,9 @@ const DropDownMenu = ({list, header, onChange, className, prefix, ...rest}) =>{
 
         return setState({
             ...state,
-            options: options.map(option => ({...option, selected: selectedIdsToAdd.includes(option.id)})),
+            options: options.map(option => ({...option, selected: isSelected(option.id)})),
             selectedIds: selectedIdsToAdd,
-            selectedOptions: options.filter(option => selectedIdsToAdd.includes(option.id))
+            selectedOptions: options.filter(option => isSelected(option.id))
         })
     }
 

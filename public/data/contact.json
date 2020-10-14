@@ -1,4 +1,153 @@
 {
-    "background": "assets/contact/contact_bg.png",
-    "heading": "Get a quote sent to you"
+        "background": "assets/contact/contact_bg.png",
+        "heading": "Get a quote sent to you",
+        "copyrightNotice":  "©2019 All Rights Reserved. Unauthorized Duplication prohibited.",
+        "links": {
+            "chat":{
+                "page": "CHAT live",
+                "to": "chat"
+            },
+    
+            "quote":{
+                "page": "GET A QUOTE now",
+                "to": "quote"
+            },
+        "copyright":[
+            {
+                "page": "Terms of Use",
+                "to": "/terms"
+            },
+    
+            {
+                "page": "Privacy Policy",
+                "to": "/privacy"
+            },
+    
+            {
+                "page": "Email Directly",
+                "to": "/email"
+            }],
+            "social": [
+                {
+                    "icon": "facebook",
+                    "link": "https://www.facebook.com/"
+                },
+                {
+                    "icon": "twitter",
+                    "link":"https://www.twitter.com/"
+                },
+                {
+                    "icon": "instogram",
+                    "link": "https://www.instogram.com/"
+                },
+                {
+                    "icon": "youtube",
+                    "link":"https://www.youtube.com/"
+                },
+                {
+                    "icon": "linkedin",
+                    "link": "https://www.linkedin.com/"
+                }
+            ]
+        },
+        "form" :{
+        "fields":{
+            "personalInfo":[
+                    {
+                        "name": "firstName",
+                        "type": "text",
+                        "label": "First",
+                        "validations": {
+                            "required": true
+                        },
+                        "warnings": {
+                            "required": "First name is required"
+                        }
+                },
+                {
+                        "name": "lastName",
+                        "type":"text",
+                        "label": "Last",
+                        "validations": {
+                            "required": true
+                        },
+                        "warnings":{
+                            "required": "Lastname is required"
+                        }
+                },
+                {
+                    "name": "emailAddress",
+                    "type": "text",
+                    "label": "Email",
+                    "validations": {
+                        "required": true,
+                        "type": "email"
+                    },"warnings": {
+                        "required": "Email address is required",
+                        "type": "invalid email address"
+                    }
+                },
+                {
+                    "name": "phoneNumber",
+                    "type": "text",
+                    "label": "Phone",
+                    "validations": {
+                        "required": true
+                    },
+                    "warnings":{
+                        "required": true
+                    }
+                }
+            ]
+        }, 
+        "field":{
+            "details":{
+                "name": "details",
+                "type": "textarea",
+                "label": "Details"
+            },
+            "survey":{
+                "name": "survey",
+                "type": "select",
+                "label": "How did you hear about us?",
+                "options": [
+                    "Word of Mouth",
+                    "Magazine",
+                    "Newpaper",
+                    "Radio",
+                    "Internet"
+                ]
+            },
+            "eventStartDate":{
+                "name": "startDate",
+                "type": "input",
+                "label": "Start"
+            },
+            "eventEndDate":{
+                "name": "endDate",
+                "type": "input",
+                "label": "End"
+            },
+            "typeOfEvent":{
+                "name": "event",
+                "type": "select",
+                "label": "Event Type",
+                "options":[
+                    "Proposal",
+                    "Bar/Bat Mitzvah",
+                    "Engagement Party",
+                    "Awards Ceremony",
+                    "Vow Renewal"
+                ]
+            },
+            "services":{
+                "name": "services",
+                "type": "select",
+                "label": "Select Services that you need",
+                "details": "(You can specify in more detail in the details box)"
+            }
+            
+        }
+    
+    }
 }

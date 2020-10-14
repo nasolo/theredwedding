@@ -14,13 +14,10 @@ export const receivedContactInfo = createAction(SUCCESS, function prepare(json){
         payload:{
             receivedAt: Date.now(),
             id: nanoid(),
-            background: json.background,
-            heading: json.heading
+            ...json
         }
     }
 })
-
-
 
 export default {
     fetchContactInfo,

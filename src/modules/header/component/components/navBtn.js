@@ -2,24 +2,31 @@ import React from 'react'
 import Wrapper from '../../style/wrapper'
 import NavList from '../../../../elements/nav'
 import Icon from '../../../../components/icon'
-import Hamburger from '../../../../elements/hamburger'
-import ButtonBackground from '../../style/buttonBackground'
+import { useLocation } from "react-router-dom";
 
 
-const ContactBtns = props => (
-    <Wrapper className="row">
+const pagesToExclude = ["/contact"]
+
+const ContactBtns = props => {
+
+    const location = useLocation()
+
+    const {pathname} = location
+
+    const hideButtons = pagesToExclude.includes(pathname)
+
+    return(
+        <Wrapper className="row" hide={hideButtons}>
+                <NavList.Link  key="quote-link" href="/home" className="col">
+                    GET A QUOTE now
+                </NavList.Link>
         
-            <NavList.Link  key="quote-link" href="/home" className="col">
-                GET A QUOTE now
-            </NavList.Link>
-    
-            <NavList.Link  key="key-link" href="/home" className="col">
-                <Icon icon="person" height={"1.35rem"} pr=".5rem" fill="white"/>
-                CHAT live
-            </NavList.Link>
-
-    </Wrapper>
-)
+                <NavList.Link  key="key-link" href="/home" className="col">
+                    <Icon icon="person" height={"1.35rem"} pr=".5rem" fill="white"/>
+                    CHAT live
+                </NavList.Link>
+        </Wrapper>
+)}
 
 
 export default ContactBtns

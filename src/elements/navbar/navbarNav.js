@@ -16,7 +16,9 @@ const bsPrefix = "navbar-nav"
             ["justify-right"]: {
                 marginLeft: "auto"
             },
-            
+            ["justify-center"]:{
+                margin: "auto"
+            }
         }
     })
 
@@ -24,7 +26,7 @@ const Nav = styled(Box).attrs(props =>({
     as: props.variants ? motion.ul : "ul",
     className: `${props.fill ? "nav-fill w-100" : ""}`
 }))`
-    margin: auto;
+    
     ${variants};
 
 `

@@ -17,9 +17,10 @@ className: 'contact-page-wrapper'
     overflow: hidden;
     max-height: 100vh;
     display: flex;
-    justify-content: flex-end;
+    
     flex-direction: column;
     position: relative;
+    justify-content: flex-end;
     
 
 
