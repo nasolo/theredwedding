@@ -39,7 +39,7 @@ const Contact = props => {
             <Container>
                 <Row>
                     <Col cols={12} pb="1rem" className="d-none d-lg-block">
-                        <Heading as="h1" text={heading} className="text-left"/>
+                        <Heading as="h3" text={heading} className="text-left"/>
                     </Col>
                     <Col cols={12}>
                         <ContactForm onSubmit={handleOnSubmit} formField={field} formFields={fields}/>

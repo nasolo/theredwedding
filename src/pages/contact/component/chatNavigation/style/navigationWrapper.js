@@ -6,15 +6,12 @@ const positionMediaQueries = ({theme}) => css`
     ${`${theme.mediaQueries.lg}`}{
         
         left: 65%;
-        
-        
         font-size: .75rem;
     }
 
     ${`${theme.mediaQueries.md}`}{
         
         left: 70%;
-        
         font-size: .75rem;
     }
 
