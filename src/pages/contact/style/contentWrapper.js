@@ -5,7 +5,6 @@ const shadowMediaQueries = ({theme}) => css`
 
     ${`${theme.mediaQueries.lg}`}{
         box-shadow: none;
-        padding: 4rem 0;
         margin: 0px auto 5rem;
     }
 
