@@ -16,13 +16,14 @@ const ContentWrapper = styled(Box).attrs(props =>({
     className: 'content-wrapper'
 }))`
 
-   position: relative;
+    position: relative;
     width: 100%;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     padding: 2rem 0 1rem;
     box-shadow: inset 0px -150px 100px -12px rgba(0,0,0,1);
+    margin-bottom: 5rem;
 
     ${shadowMediaQueries};
 

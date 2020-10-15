@@ -6,6 +6,7 @@ import Link from '../../../../elements/nav/navLink'
 import Icon from '../../../../components/icon'
 import CopyrightWrapper from './style/links'
 import Notice from './style/notice'
+import Container from '../../../../elements/container'
 
 
 
@@ -14,6 +15,7 @@ const defaultNotice = "Unauthorized Duplication prohibited"
 const Footer = ({notice, copyrightLinks, social}) => {
 
     return (
+        <Container>
         <Row
             className="justify-content-between"
         >
@@ -31,11 +33,17 @@ const Footer = ({notice, copyrightLinks, social}) => {
             <Col cols={5} className="d-flex justify-content-between">
                 {social && social.map((social, i) => (
                     <Link id={`link-${social.icon}-${i}`} href={social.to}>
-                        <Icon height="2rem" fill="rgba(253,253,253,.4)" key={`icon-${social.icon}-${i}`}icon={social.icon}/>  
+                        <Icon 
+                            height="2rem" 
+                            fill="rgba(253,253,253,.4)" 
+                            key={`icon-${social.icon}-${i}`}
+                            icon={social.icon}
+                        />  
                     </Link>
                 ))}
             </Col>
         </Row>
+        </Container>
     )
 }
 
