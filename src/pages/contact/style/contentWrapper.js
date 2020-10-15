@@ -9,7 +9,7 @@ const shadowMediaQueries = ({theme}) => css`
         margin: 0px auto 5rem;
     }
 
-    ${`${theme.mediaQueries.md}`}{
+    ${`${theme.mediaQueries.sm}`}{
         box-shadow: none;
         padding: 1rem 0;
         margin: 0px auto 3rem;
