@@ -48,8 +48,9 @@ const Contact = props => {
             </Container>
             </ContentWrapper>
             <Container 
-                className="d-none d-lg-block"
-                paddingTop="5rem"
+                className="d-none d-lg-block w-100"
+                position="absolute"
+                bottom="0"           
             >
                 <Footer notice={copyrightNotice} copyrightLinks={copyright} social={social}/>
             </Container>

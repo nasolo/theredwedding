@@ -5,6 +5,7 @@ import P from '../../../../elements/p'
 import Link from '../../../../elements/nav/navLink'
 import Icon from '../../../../components/icon'
 import CopyrightWrapper from './style/links'
+import Notice from './style/notice'
 
 
 
@@ -18,7 +19,7 @@ const Footer = ({notice, copyrightLinks, social}) => {
         >
            
             <CopyrightWrapper>
-                <P>{notice}</P>
+                <Notice notice={notice}/>
                 
                 {copyrightLinks && copyrightLinks.map((links, i) =>(
                     <Link id={`${links.page}-${i}`} href={links.to}>
@@ -27,10 +28,10 @@ const Footer = ({notice, copyrightLinks, social}) => {
                 ))}
                 
             </CopyrightWrapper>
-            <Col cols={6} className="d-flex justify-content-between">
+            <Col cols={5} className="d-flex justify-content-between">
                 {social && social.map((social, i) => (
                     <Link id={`link-${social.icon}-${i}`} href={social.to}>
-                        <Icon height="2rem" fill="white" key={`icon-${social.icon}-${i}`}icon={social.icon}/>  
+                        <Icon height="2rem" fill="rgba(253,253,253,.4)" key={`icon-${social.icon}-${i}`}icon={social.icon}/>  
                     </Link>
                 ))}
             </Col>

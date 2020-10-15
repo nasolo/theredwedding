@@ -8,6 +8,7 @@ const navLinkStyle = css`
     .nav-link{
         font-size: .65rem;
         padding: 0;
+        color: ${({theme}) => theme.colors.whites[7]};
     }
 
 `
@@ -18,12 +19,15 @@ const CopyrightWrapper = styled(Box).attrs({
 })`
 
     display: flex;
-    margin: 0 auto;
     gap: .50rem;
     flex-wrap: nowrap;
-    font-size: .65rem;
     ${navLinkStyle}
     
+    &&{
+        color: ${({theme}) => theme.colors.whites[7]} !important;
+        font-size: .65rem;
+    }
+
 
 
 
