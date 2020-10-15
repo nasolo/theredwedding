@@ -47,8 +47,11 @@ const Contact = props => {
                     </Row>
             </Container>
             </ContentWrapper>
-            <Container className="d-none d-lg-block">
-                <Footer notice={copyrightNotice} copyrightLinks = {copyright} social={social}/>
+            <Container 
+                className="d-none d-lg-block"
+                paddingTop="5rem"
+            >
+                <Footer notice={copyrightNotice} copyrightLinks={copyright} social={social}/>
             </Container>
         </PageWrapper>
     )

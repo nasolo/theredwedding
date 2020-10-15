@@ -3,8 +3,9 @@ import Row from '../../../../elements/row'
 import Col from '../../../../elements/col'
 import P from '../../../../elements/p'
 import Link from '../../../../elements/nav/navLink'
-import Spinner from 'react-bootstrap/Spinner'
 import Icon from '../../../../components/icon'
+import CopyrightWrapper from './style/links'
+
 
 
 const defaultNotice = "Unauthorized Duplication prohibited"
@@ -16,7 +17,7 @@ const Footer = ({notice, copyrightLinks, social}) => {
             className="justify-content-between"
         >
            
-            <Col cols={5} className="d-flex" >
+            <CopyrightWrapper>
                 <P>{notice}</P>
                 
                 {copyrightLinks && copyrightLinks.map((links, i) =>(
@@ -25,8 +26,8 @@ const Footer = ({notice, copyrightLinks, social}) => {
                     </Link>
                 ))}
                 
-            </Col>
-            <Col cols={5} className="d-flex justify-content-between">
+            </CopyrightWrapper>
+            <Col cols={6} className="d-flex justify-content-between">
                 {social && social.map((social, i) => (
                     <Link id={`link-${social.icon}-${i}`} href={social.to}>
                         <Icon height="2rem" fill="white" key={`icon-${social.icon}-${i}`}icon={social.icon}/>  
