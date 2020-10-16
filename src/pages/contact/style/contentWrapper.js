@@ -5,7 +5,7 @@ const shadowMediaQueries = ({theme}) => css`
 
     ${`${theme.mediaQueries.xl}`}{
         box-shadow: none;
-        padding: 1rem 0;
+        padding: 4rem 0;
     }
 
 `
