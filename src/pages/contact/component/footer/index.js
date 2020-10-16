@@ -15,7 +15,7 @@ const defaultNotice = "Unauthorized Duplication prohibited"
 const Footer = ({notice, copyrightLinks, social}) => {
 
     return (
-        <Container>
+        <Container className="h-100">
         <Row
             className="justify-content-between"
         >
@@ -30,7 +30,7 @@ const Footer = ({notice, copyrightLinks, social}) => {
                 ))}
                 
             </CopyrightWrapper>
-            <Col cols={5} className="d-flex justify-content-between">
+            <Col cols={5} className="d-flex justify-content-between m-auto">
                 {social && social.map((social, i) => (
                     <Link id={`link-${social.icon}-${i}`} href={social.to}>
                         <Icon 

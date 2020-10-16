@@ -11,6 +11,7 @@ const ChatNavigation = props => {
     <Container 
         fluid 
         position="relative"
+        margin="auto auto 0"
         
     >
         <LinkWrapper>

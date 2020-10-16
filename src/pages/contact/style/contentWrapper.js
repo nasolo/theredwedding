@@ -6,7 +6,6 @@ const shadowMediaQueries = ({theme}) => css`
     ${`${theme.mediaQueries.xl}`}{
         box-shadow: none;
         padding: 1rem 0;
-        margin: 0px auto 3rem;
     }
 
 `
@@ -15,7 +14,7 @@ const shadowMediaQueries = ({theme}) => css`
 const ContentWrapper = styled(Box).attrs(props =>({
     className: 'content-wrapper'
 }))`
-
+    margin-bottom: 2rem;
     position: relative;
     width: 100%;
     background-size: cover;

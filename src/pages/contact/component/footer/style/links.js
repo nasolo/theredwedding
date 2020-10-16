@@ -20,6 +20,7 @@ const CopyrightWrapper = styled(Box).attrs({
 
     display: flex;
     gap: .50rem;
+    margin: auto;
     flex-wrap: nowrap;
     ${navLinkStyle}
     
