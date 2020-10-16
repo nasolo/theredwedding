@@ -11,9 +11,10 @@ const ChatNavigation = props => {
     <Container 
         fluid 
         position="relative"
-        height="100%"
-        maxHeight="5rem"
-        
+        className="h-100 d-flex"
+        justifyContent="flex-end"
+        flexDirection="row"
+    
     >
         <LinkWrapper>
             <Row className="h-100">

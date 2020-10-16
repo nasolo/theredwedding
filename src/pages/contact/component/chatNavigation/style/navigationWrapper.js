@@ -6,6 +6,7 @@ const positionMediaQueries = ({theme}) => css`
     ${`${theme.mediaQueries.lg}`}{
         left: 65%;
         font-size: .75rem;
+        
     }
 
     ${`${theme.mediaQueries.md}`}{
@@ -22,12 +23,9 @@ const LinkWrapper = styled(Box).attrs(props =>({
     position: absolute;
     top:0px;
     left: 27%;
-    height: 5rem;
     width:100%;
     max-width: 13.5rem;
-    margin: auto;
-    
-    
+    margin: auto 0;
     z-index: 1;
     color: white;
     font-size: .75rem;
