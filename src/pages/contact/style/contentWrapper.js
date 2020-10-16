@@ -22,6 +22,7 @@ const ContentWrapper = styled(Box).attrs(props =>({
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: inset 0px -150px 100px -12px rgba(0,0,0,1);
+    background-image: ${({ContentBackground}) => `url(${ContentBackground})`};
     
 
     

@@ -10,8 +10,7 @@ const Column = styled(Col).attrs(props =>({
 
 
     
-    padding: 0;
-    padding-top: 10%;
+    padding: 10% 0;
     height: 100%;
     margin: auto;
 

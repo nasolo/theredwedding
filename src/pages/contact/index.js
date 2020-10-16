@@ -35,7 +35,7 @@ const Contact = props => {
 
             <ChatNavigation />
 
-            <ContentWrapper backgroundImage={`url(${background})`}>
+            <ContentWrapper ContentBackground={background}>
             <Container>
                 <Row>
                     <Col cols={12} pb="1rem" className="d-none d-lg-block">

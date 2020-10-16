@@ -21,11 +21,10 @@ const LinkWrapper = styled(Box).attrs(props =>({
 }))`
 
     position: absolute;
-    top:0px;
+    bottom:0;
     left: 27%;
     width:100%;
     max-width: 13.5rem;
-    margin: auto 0;
     z-index: 1;
     color: white;
     font-size: .75rem;
