@@ -23,7 +23,7 @@ const ButtonWrapper = styled(Box).attrs(props =>({
     background: linear-gradient(180deg, rgba(250,250,250,1) 0%, rgba(186,186,185,1) 100%);
     border-radius: 0;
     min-height: 4rem;
-    padding: .75rem 0 .75rem 1rem;
+    padding: 1.5rem .75rem;
     
     
     

@@ -3,9 +3,10 @@ import Box from "../../../elements/Box"
 
 const shadowMediaQueries = ({theme}) => css`
 
-    ${`${theme.mediaQueries.xl}`}{
+    ${`${theme.mediaQueries.lg}`}{
         box-shadow: none;
         padding: 4rem 0;
+        margin-bottom: 2rem;
     }
 
 `
@@ -14,7 +15,7 @@ const shadowMediaQueries = ({theme}) => css`
 const ContentWrapper = styled(Box).attrs(props =>({
     className: 'content-wrapper'
 }))`
-    margin-bottom: 2rem;
+    padding: 1rem 0;
     position: relative;
     width: 100%;
     background-size: cover;

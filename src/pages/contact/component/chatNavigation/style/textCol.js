@@ -3,6 +3,11 @@ import styled, { css } from "styled-components"
 import Col from "../../../../../elements/col"
 
 
+const linkHeightBreakpoints = ({theme}) => css`
+    ${theme.mediaQueries.lg}{
+        padding: 10% 0;
+    }
+`
 
 const Column = styled(Col).attrs(props =>({
     className: `${props.active ? 'active' : 'in-active'}`
@@ -10,7 +15,7 @@ const Column = styled(Col).attrs(props =>({
 
 
     
-    padding: 10% 0;
+    padding: 5% 0;
     height: 100%;
     margin: auto;
 
@@ -29,6 +34,7 @@ const Column = styled(Col).attrs(props =>({
         border-top-left-radius: .25rem;
     }
 
+    ${linkHeightBreakpoints};
 
     ${({active}) => css`
         background: ${active ? "#980000" : "#B80000"};

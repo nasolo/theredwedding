@@ -16,7 +16,7 @@ const DropdownWrapper = styled(Box).attrs(props =>({
 
     position: absolute;
     z-index: 1;
-    
+    width: 100%;
     background-color: transparent;
     min-width: 5rem;
     border-radius: .5rem; 
