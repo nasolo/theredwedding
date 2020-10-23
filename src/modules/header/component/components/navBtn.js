@@ -5,7 +5,7 @@ import Icon from '../../../../components/icon'
 import { useLocation } from "react-router-dom";
 
 
-const pagesToExclude = ["/contact"]
+const pagesToExclude = ["/contact", "/terms"]
 
 const ContactBtns = props => {
 

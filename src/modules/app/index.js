@@ -5,6 +5,10 @@ import Gallery from './style/gallery'
 import Packages from './style/packages'
 import About from './style/about'
 import Contact from './style/contact'
+import Info from './style/info'
+import Blog from './style/blog'
+
+
 import { routes } from './redux/selectors'
 
 import Testimonies from './style/testimonials'
@@ -13,6 +17,7 @@ import { useEffect } from 'react'
 import { fetchAppApi } from './redux/actionCreators'
 import { AnimatedRoutes } from '../../components/routeTransitions'
 import variants from './routeAnimations'
+
 
 const AppContainer = (props) => {
 
@@ -26,6 +31,7 @@ const AppContainer = (props) => {
         testimonials,
         contact,
         blog,
+        terms,
         direction
     } = useSelector(state => routes(state), shallowEqual)
 
@@ -80,6 +86,21 @@ const AppContainer = (props) => {
 
                     <Contact contents={props.contact} path={contact.to} variants={variants}/>
                 }
+                {
+                    terms &&
+
+                    <Info contents={props.info} path={terms.to} variants={variants} />
+
+                }   
+                   
+                {
+                   
+                    blog && 
+
+                    <Blog contents={props.blog} path={blog.to} variants={variants} />
+
+                }
+
 
 
             </AnimatedRoutes>
@@ -90,14 +111,3 @@ const AppContainer = (props) => {
 }
 
 export default AppContainer
-
-/*
-<Container className="container-fluid">
-                <Header contents={props.header}/>
-                <Gallery contents={props.gallery} />
-                <Packages  contents={props.packages} />
-                <About contents={props.aboutUs}/>
-                <Testimonies contents={props.testimonies} />
-</Container>
-
-        */

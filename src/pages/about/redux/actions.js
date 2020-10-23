@@ -22,10 +22,8 @@ export const reciveAboutUsInfo = createAction(SUCCESS, function prepare(json){
 })
 
 
-const allActions = {
+export default {
     fetchAboutUsInfo,
     fetchError,
     reciveAboutUsInfo
 }
-
-export default allActions

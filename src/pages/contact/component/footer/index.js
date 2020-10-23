@@ -1,14 +1,15 @@
 import React from 'react'
 import Row from '../../../../elements/row'
 import Col from '../../../../elements/col'
-import P from '../../../../elements/p'
 import Link from '../../../../elements/nav/navLink'
 import Icon from '../../../../components/icon'
 import CopyrightWrapper from './style/links'
 import Notice from './style/notice'
 import Container from '../../../../elements/container'
 
-
+import {
+    BrowserRouter as Router,
+  } from "react-router-dom";
 
 const defaultNotice = "Unauthorized Duplication prohibited"
 
@@ -22,12 +23,13 @@ const Footer = ({notice, copyrightLinks, social}) => {
            
             <CopyrightWrapper>
                 <Notice notice={notice}/>
-                
-                {copyrightLinks && copyrightLinks.map((links, i) =>(
-                    <Link id={`${links.page}-${i}`} href={links.to}>
-                        {links.page}
-                    </Link>
-                ))}
+               
+                    {copyrightLinks && copyrightLinks.map((links, i) =>(
+                        <Link id={`${links.page}-${i}`} to={links.to}>
+                            {links.page}
+                        </Link>
+                    ))}
+               
                 
             </CopyrightWrapper>
             <Col cols={5} className="d-flex justify-content-between m-auto">

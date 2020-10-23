@@ -11,9 +11,15 @@ import aboutUs from '../pages/about/redux/reducers'
 import testimonials from '../pages/testimonial/redux/reducers'
 import navigation from '../modules/header/redux/reducer'
 import contact from '../pages/contact/redux/reducer'
+import info from '../pages/info/redux/reducer'
+import blog from '../pages/blog/redux/reducer';
+
+
 
 //Custom Middlewares
 import apiMiddleware from './middlewares/api';
+
+
 
 
 
@@ -27,6 +33,8 @@ const reducer = {
     testimonials,
     navigation,
     contact,
+    info,
+    blog,
     form
     
 }

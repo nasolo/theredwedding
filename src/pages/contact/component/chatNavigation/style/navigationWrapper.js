@@ -6,12 +6,16 @@ const positionMediaQueries = ({theme}) => css`
     ${`${theme.mediaQueries.lg}`}{
         left: 65%;
         font-size: .75rem;
+        .row .nav-link{
+            padding: .5rem 1rem !important;
+        }
         
     }
 
     ${`${theme.mediaQueries.md}`}{
         left: 70%;
         font-size: .75rem;
+        
     }
 
 `
@@ -22,7 +26,7 @@ const LinkWrapper = styled(Box).attrs(props =>({
 
     position: absolute;
     bottom:0;
-    left: 27%;
+    left: 30%;
     width:100%;
     max-width: 13.5rem;
     z-index: 1;
@@ -33,6 +37,9 @@ const LinkWrapper = styled(Box).attrs(props =>({
     text-align: center;
     ${positionMediaQueries}
     
+    .row .nav-link{
+        padding: 0;
+    }
     
     span{
         font-weight: 700;

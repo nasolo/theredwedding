@@ -12,6 +12,7 @@ import calender from './fields/calender'
 import Services from '../services'
 import Col from '../../../../elements/col'
 import ContactFields from './style.js/contactFieldWrapper'
+import Heading from '../../../../elements/heading'
 
 
 const userContactInfo = ['firstName', 'lastName', 'email', 'phone']
@@ -25,13 +26,19 @@ const {Row, Group} = Form
 const ContactForm = props => {
 
    
-    const { handleSubmit, pristine, reset, submitting, formFields, formField } = props
+    const { handleSubmit, pristine, reset, submitting, formFields, formField, heading } = props
 
     const { personalInfo } = formFields
 
     const formFieldsNames = !personalInfo ? userContactInfo : personalInfo.map(field => field.name)
 
     return (
+        <Row>
+            <Col cols={12} pb="1rem" className="d-none d-lg-block">
+                <Heading as="h3" text={heading} className="text-left"/>
+            </Col>
+            <Col cols={12}>
+        
         <Form onSubmit={handleSubmit} className="needs-validation">
             <ContactFields>
                 <Fields names={formFieldsNames} component={contactFields} formFields={personalInfo}/>
@@ -111,8 +118,9 @@ const ContactForm = props => {
                         </Btn>
                     </Col>
                 </Row>
-            
-        </Form>
+            </Form>
+        </Col>
+    </Row>
     )
 }
 

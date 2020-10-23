@@ -16,14 +16,14 @@ const DropdownWrapper = styled(Box).attrs(props =>({
 
     position: absolute;
     z-index: 1;
-    width: 100%;
+   
     background-color: transparent;
     min-width: 5rem;
     border-radius: .5rem; 
 
 
    &.calender {
-        left: calc(-50vw + 1.73rem);
+        right: 0;
         ${positionBreakpoint}
     }
     .react-calendar__month-view__days__day{
@@ -31,11 +31,12 @@ const DropdownWrapper = styled(Box).attrs(props =>({
     }
 
     .react-calendar__tile{
-        padding: 0;
+        padding: .20rem;
     }
 
     .react-calendar{
-       width: 240px;
+      width: 100%;
+      border-radius: .25rem;
     }
 
     .react-calendar__navigation{

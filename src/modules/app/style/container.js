@@ -50,13 +50,14 @@ const Container = styled(Box)`
         grid-row: 1;
 
     }
-    .Terms{
+    .terms {
         grid-column: 1/13;
         grid-row: 1;
     }
-
-
-
+    .blog {
+        grid-column: 1/13;
+        grid-row: 1;
+    }
 `
 
 

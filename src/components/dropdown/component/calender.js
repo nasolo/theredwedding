@@ -34,7 +34,7 @@ const DropdownCalender = ({title, onChange, className, ...rest}) => {
 
     return (
         <Wrapper>
-            <ButtonWrapper className={`alert bg-sm-white calender ${className}`}>
+            <ButtonWrapper className={`mb-1 bg-sm-white calender ${className}`}>
                 <ButtonLabel onClick={handleToggle}>
                 <Icon icon="calender" height=".75rem" width=".75rem"  margin="auto .5rem"/>
                     {date || label}

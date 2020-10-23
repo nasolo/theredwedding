@@ -6,37 +6,66 @@
         "alt": "logo"
     },
     "links":[
-        {
+        {   
+            "id": "home",
             "page": "home", 
-            "to": "/home"
+            "to": "/home",
+            "order": 1,
+            "visible": true
             
         },
         {
+            "id": "gallery",
             "page": "gallery", 
-            "to": "/gallery"
+            "to": "/gallery",
+            "order": 2,
+            "visible": true
             
         },
         {
+            "id": "packages",
             "page": "packages", 
-            "to": "/packages"
+            "to": "/packages",
+            "order": 3,
+            "visible":true
+            
             
         }, 
         {
+            "id": "about",
             "page": "about", 
-            "to": "/about"
+            "to": "/about",
+            "order": 4,
+            "visible": true
             
         }, 
         {
+            "id": "testimonials",
             "page": "testimonials", 
-            "to": "/testimonials"
+            "to": "/testimonials",
+            "order": 5,
+            "visible": true
         }, 
         {
+            "id": "contact",
             "page": "contact", 
-            "to": "/contact"
+            "to": "/contact",
+            "order": 6,
+            "visible": true
         }, 
         {
+            "id": "blog",
             "page": "blog", 
-            "to": "/blog"
+            "to": "/blog",
+            "order": 7,
+            "visible": true
+        },
+        {
+            "id": "terms",
+            "page": "terms",
+            "to": "/terms",
+            "order": 8,
+            "visible": false
         }
     ],
     

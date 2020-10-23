@@ -104,7 +104,25 @@ const appInitialState = {
       background: null,
       heading: null,
       links: {}
-
+    },
+    terms:{
+      id: null,
+      isFetching: false,
+      lastUpdate: null,
+      didInValidate: false,
+      apiErrorMsg: null,
+      route: "/terms",
+      heading: null,
+      description: null
+    },
+    blog:{
+      id: null,
+      isFetching: false,
+      lastUpdate: null,
+      didInValidate: false,
+      apiErrorMsg: null,
+      route: "/route",
+      posts: []
     }
 
     

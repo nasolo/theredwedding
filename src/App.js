@@ -11,6 +11,9 @@ import Gallery from './pages/gallery'
 import Packages from './pages/packages'
 import AboutUs from './pages/about'
 import Testimonials from './pages/testimonial';
+import Contact from './pages/contact';
+import TermsOfUse from './pages/info';
+
 
 
 //themes
@@ -20,7 +23,7 @@ import mainTheme from './bootstrap/themes/mainTheme';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './bootstrap/globalStyle/globalStyle';
 import MainNavigation from './modules/header';
-import Contact from './pages/contact';
+import Blog from './pages/blog';
 
 
 
@@ -38,6 +41,8 @@ function App() {
         about={<AboutUs/>}
         testimonies={<Testimonials/>}
         contact={<Contact/>}
+        info={<TermsOfUse/>}
+        blog={<Blog/>}
       />
 </Router>
       </ThemeProvider>

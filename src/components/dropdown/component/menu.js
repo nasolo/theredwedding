@@ -91,7 +91,7 @@ const DropDownMenu = ({list, header, onChange, className, prefix, ...rest}) =>{
     return (
         <Wrapper >
 
-            <ButtonWrapper className={`menu alert rounded-lg ${className}`}>
+            <ButtonWrapper className={`menu rounded-lg ${className} mb-1`}>
                 <ButtonLabel onClick={handleToggle} >
                 {isOpen ? 
                     <Icon icon="angleup" height="1rem" width="1rem" margin="auto .5rem"/>
@@ -101,7 +101,7 @@ const DropDownMenu = ({list, header, onChange, className, prefix, ...rest}) =>{
                 {getSelectedOptionsTitles.length > 0 ? `${ prefix || defaultSelectedPrefix } ${getSelectedOptionsTitles.join(", ")}` : title}
                 </ButtonLabel>
             </ButtonWrapper>
-            <DropdownWrapper>
+            <DropdownWrapper className="w-100">
                 {isOpen && 
                     <List>
                         {options.map(option => (

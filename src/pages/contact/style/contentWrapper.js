@@ -16,6 +16,7 @@ const ContentWrapper = styled(Box).attrs(props =>({
     className: 'content-wrapper'
 }))`
     padding: 1rem 0;
+    margin-bottom: 2rem;
     position: relative;
     width: 100%;
     background-size: cover;
