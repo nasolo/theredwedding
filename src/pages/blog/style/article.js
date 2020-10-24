@@ -6,9 +6,11 @@ const Article = styled(Box).attrs(props => ({
     as: 'article'
 }))`
 
-background-color: transparent;
-color: white;
-border: none;
+    background-color: transparent;
+    color: white;
+    border: none;
+    margin-bottom: 1.5rem;
+    width: 100%;
 
 `
 

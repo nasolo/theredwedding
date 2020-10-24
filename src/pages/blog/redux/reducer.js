@@ -2,7 +2,8 @@ import { createReducer, createNextState } from '@reduxjs/toolkit'
 import {
     fetchBlogData,
     fetchError,
-    receiveBlogData
+    receiveBlogData,
+    selectPostDate
 } from './actions'
 import appInitialState from '../../../root/initialState'
 
@@ -36,7 +37,16 @@ const blog = createReducer(appInitialState.blog, {
             fetch.apiErrorMsg = null
 
             return fetch
-        })
+        }),
+    [selectPostDate]: createNextState(
+        (blog, action) =>{
+            
+            blog.selectedDates = action.payload
+
+            return blog
+        }
+    )
+
 })
 
 export default blog

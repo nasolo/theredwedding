@@ -122,6 +122,7 @@ const appInitialState = {
       didInValidate: false,
       apiErrorMsg: null,
       route: "/route",
+      selectedDates: null,
       posts: []
     }
 

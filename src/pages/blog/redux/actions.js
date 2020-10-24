@@ -7,7 +7,8 @@ import { capitalizeWords } from '../helpers/utilities'
 const {
     PENDING,
     ERROR,
-    SUCCESS
+    SUCCESS,
+    FILTER_POSTS_BY_DATE
 } = blogConstants
 
 const {
@@ -33,6 +34,7 @@ const mockPosts = Array(20)
 
 
 export const fetchBlogData = createAction(PENDING)
+export const selectPostDate = createAction(FILTER_POSTS_BY_DATE)
 export const fetchError = createAction(ERROR)
 export const receiveBlogData = createAction(SUCCESS, json => ({
     payload:{
@@ -47,5 +49,6 @@ export const receiveBlogData = createAction(SUCCESS, json => ({
 export default {
     fetchBlogData,
     fetchError,
-    receiveBlogData
+    receiveBlogData,
+    selectPostDate
 }

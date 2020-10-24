@@ -1,13 +1,30 @@
 import { createSelector } from 'reselect'
-import chunk from 'lodash/chunk'
+import moment from 'moment'
 
 const  getAllBlogIngo = state => state.blog
+const isWithinRanges = (date, dateRange) => moment(date).isBetween(...dateRange)
 
 export const blogPageData = createSelector(
     [getAllBlogIngo],
-    ({posts, background}) => ({
-       background, 
-       posts, 
-       pages: chunk(posts, 5)
-    })
+    ({posts, background, selectedDates}) => {
+
+        const blogPostData = {
+            posts,
+            background,
+            selectedDates
+        }
+
+        const shouldFilterBlog = selectedDates === null || !selectedDates instanceof Array
+
+        if(shouldFilterBlog) return blogPostData
+
+        const filteredPosts = posts.filter(post => isWithinRanges(post.date, selectedDates))
+
+        return {
+            ...blogPostData,
+            posts: filteredPosts
+        }
+
+
+    }
 )

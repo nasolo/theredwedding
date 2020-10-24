@@ -5,10 +5,9 @@ const PostListWrapper = styled(Box).attrs(props => ({
     className: 'post-list-wrapper'
 }))`
 
-    height: 50vh;
+    height: 40vh;
     overflow-y: scroll;
     overflow-x: hidden;
-    
 
 
 `

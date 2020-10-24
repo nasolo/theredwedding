@@ -24,14 +24,18 @@ const Post = ({id, title, summary, date, slug, index}) =>{
                 <PostSummary>
                     {summary}
                 </PostSummary>
+                <Link
+                    to={`/post/${id}/${slug}`}
+                    key={`${index}-${slug}`}
+                    textAlign="right"
+                    ml="auto"
+                    width="fit-content"
+                >
+                    Read More
+                </Link>
             </PostBody>
 
-            <Link
-                to={`/post/${id}/${slug}`}
-                key={`${index}-${slug}`}
-            >
-                Read More
-            </Link>
+            
         </Article>
     )
 }
