@@ -20,7 +20,6 @@ const Post = ({id, title, summary, date, slug, content, index}) =>{
     
     const postLink = isPost ? `/blog` : `/post/${id}/${slug}`
 
-
     return (
         <Article key={id} id={`${slug}-${id}`}>
             <PostBody>

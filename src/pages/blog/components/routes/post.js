@@ -18,7 +18,7 @@ const PostRouteComponent = props => {
     
     const filterPostById = useSelector(state => state.blog.posts.find(post => post.id === id))
 
-    console.log(filterPostById.background)
+    console.log(id, slug)
 
     return (
         <>

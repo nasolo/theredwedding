@@ -58,10 +58,7 @@ const Container = styled(Box)`
         grid-column: 1/13;
         grid-row: 1;
     }
-    .post {
-        grid-column: 1/13;
-        grid-row: 1;
-    }
+
 `
 
 
