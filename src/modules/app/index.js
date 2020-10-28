@@ -7,7 +7,7 @@ import About from './style/about'
 import Contact from './style/contact'
 import Info from './style/info'
 import Blog from './style/blog'
-
+import Post from './style/post'
 
 import { routes } from './redux/selectors'
 
@@ -32,6 +32,7 @@ const AppContainer = (props) => {
         contact,
         blog,
         terms,
+        post,
         direction
     } = useSelector(state => routes(state), shallowEqual)
 
@@ -98,6 +99,13 @@ const AppContainer = (props) => {
                     blog && 
 
                     <Blog contents={props.blog} path={blog.to} variants={variants} />
+
+                }
+
+                {
+                    post &&
+
+                    <Post contents={props.post} path={post.to} variants={variants} />
 
                 }
 

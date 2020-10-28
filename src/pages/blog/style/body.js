@@ -5,8 +5,11 @@ const PostBody = styled(Box).attrs(props => ({
     className: `card-body post-body`
 }))`
 
-    padding: 0 2rem .50rem 1rem;
+   
 
 `
 
 export default PostBody
+
+
+// padding: 0 2rem .50rem 1rem;

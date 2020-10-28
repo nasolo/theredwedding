@@ -38,18 +38,16 @@ import Box from '../../elements/Box/index';
 
 const MountTransition = styled(Box).attrs({
     as: motion.div,
-    className: "mount-transition home"
+    className: "mount-transition"
 })`
 
-  height: 100%;
-  position: absolute;
-  top: 0;
+ 
 
 `
 
 
 MountTransition.defaultProps = {
-
+  variants: variants
 }
 
 export default MountTransition

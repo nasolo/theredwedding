@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from 'moment'
+import { useLocation } from 'react-router-dom'
 
 import Link from '../../../../../elements/nav/navLink'
 import Article from '../../../style/article'
@@ -9,9 +10,17 @@ import PostSummary from '../../../style/summary'
 import PostTile from '../../../style/title'
 
 
-const Post = ({id, title, summary, date, slug, index}) =>{
+const Post = ({id, title, summary, date, slug, content, index}) =>{
 
-    console.log()
+    const location = useLocation()
+   
+    const { pathname } = location;
+    const isPost = pathname.indexOf('/post/') !== -1;
+
+    
+    const postLink = isPost ? `/blog` : `/post/${id}/${slug}`
+
+
     return (
         <Article key={id} id={`${slug}-${id}`}>
             <PostBody>
@@ -21,17 +30,22 @@ const Post = ({id, title, summary, date, slug, index}) =>{
                 <PostDate>
                     {moment(date).fromNow()}
                 </PostDate>
-                <PostSummary>
+                <PostSummary key={`${id}-summary`}>
                     {summary}
                 </PostSummary>
+                {isPost && 
+                    <PostSummary key={`${id}-content`}>
+                        {content}
+                    </PostSummary>
+                }
                 <Link
-                    to={`/post/${id}/${slug}`}
+                    to={postLink}
                     key={`${index}-${slug}`}
                     textAlign="right"
                     ml="auto"
                     width="fit-content"
                 >
-                    Read More
+                    {isPost ? "Back" : "Read More"}
                 </Link>
             </PostBody>
 

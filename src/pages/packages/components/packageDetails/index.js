@@ -30,8 +30,6 @@ const PackageDetails = ({id}) => {
         direction: 0
     })
 
-    console.log(page)
-    
     const {
         details,
         name,

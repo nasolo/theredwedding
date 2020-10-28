@@ -1,44 +1,35 @@
 import React from 'react'
-import Container from '../../elements/container'
-import { useSelector, shallowEqual, useDispatch } from 'react-redux'
-import { blogPageData } from './redux/selectors'
-import BackgoundImage from './style/BackgoundImage'
+import {
+    BrowserRouter as Router,
+    Route,
+    Switch,
+
+  } from 'react-router-dom';
 import PageContainer from './style/pageContainer'
-import Row from '../../elements/row'
-import DateSelector from './components/calender'
-import Col from '../../elements/col'
-import PostList from './components/postList'
-import { selectPostDate } from './redux/actions'
-import { bindActionCreators } from 'redux'
+import PostListRouteComponent from './components/routes/list';
+import PostRouteComponent from './components/routes/post';
+import RedirectToMainBlog from './components/routes/redirect';
+
+
 
 const Blog = props => {
 
-    const { 
-        background,
-        selectedDates,
-        posts,
-        pages
-    } = useSelector(state => blogPageData(state), shallowEqual)
-
-    
-    const dispatch = useDispatch()
-    const selecteDate = bindActionCreators(selectPostDate, dispatch) 
-
-    const onDateChange = date => selecteDate(date)
-
     return (
         <PageContainer>
-            <BackgoundImage src={background}/>
-                <Container className="position-relative">
-                    <Row mb="3rem">
-                        <Col cols="12" lg="4">
-                            <DateSelector onDateChange={onDateChange} selectedDates={selectedDates}/>
-                        </Col>
-                        <Col cols="12" lg="8">
-                            <PostList posts={posts} />
-                        </Col>
-                    </Row>
-                </Container>
+            <Router>
+                <Switch>
+                    <Route path="/blog">
+                        <PostListRouteComponent />
+                    </Route>
+
+                    <Route path="/post/:id/:slug">
+                        <PostRouteComponent />
+                    </Route>
+                    
+                    <Route render={RedirectToMainBlog}/>
+
+                </Switch>
+            </Router>
         </PageContainer>
     )
 }

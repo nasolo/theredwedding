@@ -6,7 +6,11 @@ import {Switch, useLocation, Route, Redirect } from 'react-router-dom'
 
  const AnimatedRoutes = ({
     children,
-    initial = false
+    initial = false,
+    redirect = {
+      path: '/',
+      route: '/home'
+    }
   }) => {
 
     const location = useLocation()
@@ -14,8 +18,8 @@ import {Switch, useLocation, Route, Redirect } from 'react-router-dom'
     return (
       <AnimatePresence initial={initial} custom={location}>
         <Switch location={location} key={location.pathname}>
-          <Route exact path="/">
-                  <Redirect to="/home" />
+          <Route exact path={redirect.path}>
+                  <Redirect to={redirect.route} />
           </Route>
           {children}
         </Switch>

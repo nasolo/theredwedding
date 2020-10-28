@@ -5,7 +5,11 @@ import ResetButton from './style/resetButton'
 import ResetWrapper from './style/resetDatesWrapper'
 import ResetText from './style/resetText'
 import Icon from '../../../../components/icon'
+import PostTile from '../../style/title'
 import ReactCalender from './style/reactCalender'
+
+
+
 const ResetDates = ({reset}) => {
     return (
         <ResetWrapper>
@@ -25,6 +29,16 @@ const DateSelector = ({onDateChange, selectedDates, ...rest},) => {
     return (
     
         <Wrapper>
+
+            <PostTile
+                as="h3"
+                color="white"
+                textAlign={{_:"center", lg:"left"}}
+            
+            >
+                Select dates
+            </PostTile>
+
             <ReactCalender 
                 onChange={onDateChange}
                 value={selectedDates}

@@ -66,6 +66,13 @@
             "to": "/terms",
             "order": 8,
             "visible": false
+        },
+        {
+            "id": "post",
+            "page": "post",
+            "to": "/post/:id/:slug",
+            "order": 9,
+            "visible": false
         }
     ],
     
