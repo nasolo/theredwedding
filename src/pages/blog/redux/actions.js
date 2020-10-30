@@ -8,7 +8,8 @@ const {
     PENDING,
     ERROR,
     SUCCESS,
-    FILTER_POSTS_BY_DATE
+    FILTER_POSTS_BY_DATE,
+    SET_ACTIVE_POST
 } = blogConstants
 
 const {
@@ -34,6 +35,7 @@ const mockPosts = Array(20)
 
 
 export const fetchBlogData = createAction(PENDING)
+export const setActivePost = createAction(SET_ACTIVE_POST)
 export const selectPostDate = createAction(FILTER_POSTS_BY_DATE)
 export const fetchError = createAction(ERROR)
 export const receiveBlogData = createAction(SUCCESS, json => ({
@@ -50,5 +52,6 @@ export default {
     fetchBlogData,
     fetchError,
     receiveBlogData,
-    selectPostDate
+    selectPostDate,
+    setActivePost
 }

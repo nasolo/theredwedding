@@ -1,5 +1,6 @@
 import blogConstants from "./constants";
-import {fetchBlogData, fetchError, receiveBlogData} from './actions'
+import {fetchBlogData, fetchError, receiveBlogData, setActivePost} from './actions'
+import { bindActionCreators } from "redux";
 
 
 const {
@@ -22,3 +23,5 @@ export const BLOG_API_CONFIG = {
         }
     }
 }
+
+export const updatePostId = dispatch => bindActionCreators(setActivePost, dispatch)

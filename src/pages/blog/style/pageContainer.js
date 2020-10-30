@@ -7,6 +7,7 @@ const PageContainer = styled(Box).attrs(props =>({
 }))`
 
     height: 100vh;
+    width: 100%;
     overflow: hidden; 
     position: relative;
     display: flex;

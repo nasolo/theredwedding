@@ -123,7 +123,8 @@ const appInitialState = {
       apiErrorMsg: null,
       route: "/route",
       selectedDates: null,
-      posts: []
+      posts: [],
+      activePostId: null
     }
 
     

@@ -3,7 +3,8 @@ import {
     fetchBlogData,
     fetchError,
     receiveBlogData,
-    selectPostDate
+    selectPostDate,
+    setActivePost
 } from './actions'
 import appInitialState from '../../../root/initialState'
 
@@ -44,6 +45,13 @@ const blog = createReducer(appInitialState.blog, {
             blog.selectedDates = action.payload
 
             return blog
+        }
+    ),
+    [setActivePost]: createNextState(
+        (post, action) => {
+            post.activePostId = action.payload
+
+            return post
         }
     )
 

@@ -24,7 +24,11 @@ export const blogPageData = createSelector(
             ...blogPostData,
             posts: filteredPosts
         }
-
-
     }
+)
+
+
+export const selectedPost  = createSelector(
+    [getAllBlogIngo],
+    ({activePostId, posts}) => activePostId === null ? posts : posts.find(post => post.id === activePostId)
 )

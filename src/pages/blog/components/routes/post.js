@@ -1,37 +1,56 @@
-import React from 'react'
-import { shallowEqual, useSelector } from "react-redux"
-import { useParams } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { shallowEqual, useDispatch, useSelector } from "react-redux"
+import { matchPath, Route, useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom'
 
-import Col from "../../../../elements/col"
-import Container from "../../../../elements/container"
-import Row from "../../../../elements/row"
+
+import { updatePostId } from '../../redux/actionCreators'
+import { selectedPost } from '../../redux/selectors'
 
 import BackgoundImage from "../../style/BackgoundImage"
+import PageContainer from '../../style/pageContainer'
 
 import Post from '../postList/components/post'
+import RedirectToMainBlog from './redirect'
 
 const PostRouteComponent = props => {
 
+    const history = useHistory()
+    const dispatch = useDispatch()
+    const setPostId = updatePostId(dispatch)
 
-    const { id, slug } = useParams()
+    const match = useRouteMatch({
+        path: '/post/:id/:slug',
+        strict: true,
+        sensitive: true
+      });
 
-    
-    const filterPostById = useSelector(state => state.blog.posts.find(post => post.id === id))
+      useEffect(() => {
+        if(match === null) return 
+        const isPost = match.path.includes('/post')
+        const { params: { id } } = match
 
-    console.log(id, slug)
+        if(isPost && id){
+            setPostId(id)
+        } else {
+            history.push('/blog')
+        }
+      }, [match])
+
+
+      const getPost = useSelector(state => selectedPost(state), shallowEqual)
 
     return (
-        <>
-            <BackgoundImage src={filterPostById.background}/>
-            <Container className="position-relative">
-            <Row mb="3rem">
-                <Col cols="12">
-                    <Post {...filterPostById}/>
-                </Col>
-            </Row>
-            </Container>
-        </>
+        
+        <PageContainer className="post">
+            <Route exact path="/post/">
+                <RedirectToMainBlog />
+            </Route>
+            <BackgoundImage />
+                <Post {...getPost} />
+        </PageContainer>
+
     )
 } 
+
 
 export default PostRouteComponent

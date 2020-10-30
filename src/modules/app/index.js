@@ -17,6 +17,7 @@ import { useEffect } from 'react'
 import { fetchAppApi } from './redux/actionCreators'
 import { AnimatedRoutes } from '../../components/routeTransitions'
 import variants from './routeAnimations'
+import PostRouteComponent from '../../pages/blog/components/routes/post'
 
 
 const AppContainer = (props) => {
@@ -32,7 +33,6 @@ const AppContainer = (props) => {
         contact,
         blog,
         terms,
-
         direction
     } = useSelector(state => routes(state), shallowEqual)
 
@@ -100,6 +100,10 @@ const AppContainer = (props) => {
 
                     <Blog contents={props.blog} path={blog.to} variants={variants} />
 
+                }
+
+                {
+                    <PostRouteComponent variants={variants}/>
                 }
 
             </AnimatedRoutes>
