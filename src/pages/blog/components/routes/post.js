@@ -1,18 +1,18 @@
 import React, { useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
-import { matchPath, Route, useHistory, useLocation, useParams, useRouteMatch } from 'react-router-dom'
+import { Route, useHistory, useRouteMatch } from 'react-router-dom'
+import Frame from '../../../../elements/Frame'
 
 
 import { updatePostId } from '../../redux/actionCreators'
 import { selectedPost } from '../../redux/selectors'
 
-import BackgoundImage from "../../style/BackgoundImage"
 import PageContainer from '../../style/pageContainer'
 
 import Post from '../postList/components/post'
 import RedirectToMainBlog from './redirect'
 
-const PostRouteComponent = props => {
+const PostRouteComponent = ({ variants }, props) => {
 
     const history = useHistory()
     const dispatch = useDispatch()
@@ -23,10 +23,11 @@ const PostRouteComponent = props => {
         strict: true,
         sensitive: true
       });
+      const isPost = match && match.path.includes('/post')
 
       useEffect(() => {
         if(match === null) return 
-        const isPost = match.path.includes('/post')
+        
         const { params: { id } } = match
 
         if(isPost && id){
@@ -39,16 +40,27 @@ const PostRouteComponent = props => {
 
       const getPost = useSelector(state => selectedPost(state), shallowEqual)
 
+      if(isPost && getPost === undefined){
+            return <RedirectToMainBlog />
+      }
+
     return (
         
-        <PageContainer className="post">
-            <Route exact path="/post/">
-                <RedirectToMainBlog />
-            </Route>
-            <BackgoundImage />
-                <Post {...getPost} />
-        </PageContainer>
-
+            <PageContainer className="post">
+                <Frame
+                    variants={variants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                >
+                <Route exact path="/post/">
+                    <RedirectToMainBlog />
+                </Route>
+               
+                    <Post {...getPost} />
+            </Frame>
+            </PageContainer>
+        
     )
 } 
 
