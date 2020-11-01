@@ -7,7 +7,7 @@ import About from './style/about'
 import Contact from './style/contact'
 import Info from './style/info'
 import Blog from './style/blog'
-
+import Post from './style/post'
 
 import { routes } from './redux/selectors'
 
@@ -18,6 +18,7 @@ import { fetchAppApi } from './redux/actionCreators'
 import { AnimatedRoutes } from '../../components/routeTransitions'
 import variants from './routeAnimations'
 import PostRouteComponent from '../../pages/blog/components/routes/post'
+
 
 
 const AppContainer = (props) => {
@@ -33,6 +34,7 @@ const AppContainer = (props) => {
         contact,
         blog,
         terms,
+        post,
         direction
     } = useSelector(state => routes(state), shallowEqual)
 
@@ -103,7 +105,9 @@ const AppContainer = (props) => {
                 }
 
                 {
-                    <PostRouteComponent variants={variants}/>
+                    post &&
+
+                    <Post contents={props.post} path={post.to} variants={variants}/>
                 }
 
             </AnimatedRoutes>

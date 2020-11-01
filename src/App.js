@@ -24,6 +24,7 @@ import { ThemeProvider } from 'styled-components';
 import GlobalStyle from './bootstrap/globalStyle/globalStyle';
 import MainNavigation from './modules/header';
 import Blog from './pages/blog';
+import PostRouteComponent from './pages/blog/components/routes/post';
 
 
 
@@ -43,6 +44,7 @@ function App() {
         contact={<Contact/>}
         info={<TermsOfUse/>}
         blog={<Blog/>}
+        post={<PostRouteComponent />}
       />
 </Router>
       </ThemeProvider>

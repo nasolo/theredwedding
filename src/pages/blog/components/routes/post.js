@@ -40,26 +40,11 @@ const PostRouteComponent = ({ variants }, props) => {
 
       const getPost = useSelector(state => selectedPost(state), shallowEqual)
 
-      if(isPost && getPost === undefined){
-            return <RedirectToMainBlog />
-      }
-
     return (
         
-            <PageContainer className="post">
-                <Frame
-                    variants={variants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                >
-                <Route exact path="/post/">
-                    <RedirectToMainBlog />
-                </Route>
-               
-                    <Post {...getPost} />
-            </Frame>
-            </PageContainer>
+        <PageContainer className="post">
+                <Post {...getPost} />
+        </PageContainer>
         
     )
 } 
