@@ -8,6 +8,7 @@ className: `volume-controls`
     vertical-align: center;
     margin: auto;
     height: 100%;
+    
 
     
 `

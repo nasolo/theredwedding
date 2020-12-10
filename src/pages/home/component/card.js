@@ -81,7 +81,7 @@ const SliderContent = ({id, url, title, header, subtitle, text}) =>{
        return (
         <Card as={motion.div} className="text-white rounded-0 h-100 justify-content-end flex-column" key={id} >
             <ImgOverlay src={url}/>
-            <Card.Body flex={"0 0 auto"} marginBottom="3rem" maxWidth={["100%", "100%", "80%"]}>
+            <Card.Body flex={"0 0 auto"} marginBottom="3rem">
                 <Container>
                     <Card.Subtitle
                         className="mb-2" 

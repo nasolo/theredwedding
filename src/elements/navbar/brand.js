@@ -27,7 +27,7 @@ const Brand = styled(Box).attrs(props =>({
 
 }))`
 
-
+    padding-top: 0;
 
 
 `

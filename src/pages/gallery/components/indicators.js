@@ -1,29 +1,31 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
-import { setActiveId } from '../redux/actions'
-import { bindActionCreators } from 'redux'
+
 import IndicatorWrapper from '../style/indicatorWrapper'
+
 import Chevron from '../../../elements/chevron'
 import Indicator from '../style/indicator'
+import { activeVideo } from '../../../components/video/selectors'
+import { shallowEqual, useSelector } from 'react-redux'
 
 
-const Indicators = ({indicatorsPerPage, pageItems, activeMedia, next, prev, dispatch}) => {
-
-    
-
-
+    const Indicators = ({indicatorsPerPage, pageItems, activeMedia, next, prev, dispatch}) => {
     
     const { id } = activeMedia
 
     const handleIndicator = (active, itemId) => !active && dispatch({id: itemId})
 
+    const {
+        playing
+    } = useSelector(state => activeVideo(state), shallowEqual)
+
+    console.log("playing", playing)
+
     return (
-        <IndicatorWrapper totalItems={indicatorsPerPage} lg={12} >                          
+        <IndicatorWrapper totalItems={indicatorsPerPage} lg={12} playing={playing}>                          
             <Chevron 
                 icon="leftChevron" 
-                position="absolute" 
-                left="7%" 
-                maxHeight={["2rem",null, "3rem"]}
+               
+                
                 onClick={()=>dispatch({type: 'prev'})}
                 display="inline" 
             />
@@ -31,7 +33,7 @@ const Indicators = ({indicatorsPerPage, pageItems, activeMedia, next, prev, disp
                 {pageItems !== undefined && pageItems.map(item => {
                 let active = item.id === id
 
-                console.log(id, active)
+                
                     
                 return (
                     <Indicator 
@@ -46,9 +48,8 @@ const Indicators = ({indicatorsPerPage, pageItems, activeMedia, next, prev, disp
             <Chevron 
                 display="inline" 
                 icon="rightChevron" 
-                position="absolute" 
-                right="7%"  
-                maxHeight={["2rem",null, "3rem"]} 
+              
+                
                 onClick={()=>dispatch({type: 'next'})}
             />
     </IndicatorWrapper>

@@ -9,6 +9,7 @@ import Col from '../../elements/col'
 import FullScreenImage from '../../elements/imagePlaceholder'
 import Newsletter from './component/newsletter'
 import Indicators from './component/indicators'
+import CommentsWrapper from './style/commentsWrapper'
 
 
 
@@ -33,32 +34,25 @@ const Testimonials = props => {
        ...testimonies[activeIndex]
    }
   
+
+   console.log(currentPageItems)
    
     return (
         <Container fluid className="h-100 d-flex flex-column"> 
             <FullScreenImage src={bg} backgroundPosition="center center"/>
-    
-                   <Container fluid 
-                        className="d-flex flex-column"
-                        overflow='hidden'
-                        height="100%"
-                    >
-                        <Comments quotes={testimonies} getCarouselInfo={setCarouselData}/>
-                   
-                    <Row className="flex-column bg-transparent" margin={{_:"auto", sm: "3rem auto", lg: "auto"}}>
-                    <Col className="d-flex justify-content-center">
-                      <Indicators items={currentPageItems} dispatch={handleIndicatorsAndChevrons} activeQuote={activeQuote}/>
-                    </Col>
-                </Row>
-                </Container>
+                <CommentsWrapper>
+                   <Row className=" w-100">
+                       <Col cols="12" margin="auto auto" minHeight="15rem">
+                            <Comments quotes={testimonies} getCarouselInfo={setCarouselData}/>
+                        </Col>0
+                    </Row>
+                </CommentsWrapper>
 
             <Row className=" d-lg-none align-self-end mb-0 mt-0 vw-100">
                     <Col className="bg-white">
                         <Newsletter/>
                     </Col>
-                </Row>
-            
-
+            </Row>
        </Container>
     )
 }
@@ -67,3 +61,11 @@ export default Testimonials
 
 
  // <Indicators quotes={testimonies} activeId={activeQuoteId} onClick={(card)=>dispatch(setActiveQuoteId(card))}/>
+
+ /*
+
+ <Col cols="12"  display="flex" marginTop="10rem" className="justify-content-center">
+                            <Indicators quotes={currentPageItems} dispatch={handleIndicatorsAndChevrons} activeQuote={activeQuote}/>
+                        </Col>
+
+*/

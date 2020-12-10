@@ -25,6 +25,7 @@ const Navbarnav = styled(Box).attrs(props => ({
 
 overflow: hidden;
 width: 100%;
+padding: 0;
 ${variants}
 
 `

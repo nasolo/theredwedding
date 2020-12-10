@@ -18,11 +18,10 @@ const handleIcon = ({rightChevron, leftChevron}) => {
 
 
 const mediaQueries = ({theme}) =>css({
-    [theme.mediaQueries.xl]: {
-        display: "inline"
-    },
+    
     [theme.mediaQueries.lg]: {
-        display: "inline"
+        display: "inline",
+        maxHeight: "3rem"
     }
 })
 
@@ -63,10 +62,10 @@ const Chevron = styled(Box).attrs(props =>({
         position: props.position ? props.position : "relative"
     })};
 
-    width: 100%;
+    
     z-index: 1;
-    margin: auto;
-   
+    margin: auto 1rem;
+    max-height: 1.5rem;
     ${mediaQueries};
     ${ handleChevronDirection };
 

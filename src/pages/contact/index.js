@@ -43,9 +43,7 @@ const Contact = ({submitSucceeded, ...props}) => {
 
     return (
         <PageWrapper>
-
             <ChatNavigation />
-
             <ContentWrapper ContentBackground={background}>
             <Container>
                 <Router>
@@ -57,9 +55,7 @@ const Contact = ({submitSucceeded, ...props}) => {
                 </Router>
             </Container>
             </ContentWrapper>
-            <Container 
-                className="d-none d-lg-block w-100"
-            >
+            <Container className="d-none d-lg-block w-100">
                 <Footer notice={copyrightNotice} copyrightLinks={copyright} social={social}/>
             </Container>
         </PageWrapper>

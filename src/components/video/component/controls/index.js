@@ -58,8 +58,8 @@ const Controls = ({player}) => {
       }, [screenfull.isFullscreen])
 
 
-     return (
-        <ControlsWrapper>
+       return (
+        <ControlsWrapper playing={playing}>
           
           <LeftControls>
                 <Icon
@@ -68,6 +68,8 @@ const Controls = ({player}) => {
                     height={[".75rem", "1rem"]}
                     fill="white" 
                     onClick={(id) =>handlePlayPause(id)}
+                    margin="auto .50rem auto"
+                    
                 />
             <TimeDisplay>
                 <Duration seconds={duration * played} className="mr-3"/>
@@ -93,25 +95,24 @@ const Controls = ({player}) => {
         <RightControls 
             as={motion.div}
             display="flex"
-           
             onMouseLeave={() => expand === true && setExpand()}
         >
             
             <Icon 
                 icon={`${muted ? "mute" : "volume"}`}
-               
                 padding="0 .50rem"
-                
-                height="1rem" 
+                margin="auto"
+                height="1.5rem" 
                 fill="white"
                 key="volume_btn"
                 display="inline-block"
-               zIndex="1000"
+                zIndex="1000"
                 onMouseEnter={() => expand === false && setExpand()}
                 onClick={()=>handleToggleMuted(id)}
             />    
             <VolumeControls
                 as={motion.div}
+                margin="auto"
                 onHoverEnd={() => expand === true && setExpand()}
                 variants={volumeControlVariants}
                 initial="hidden"
@@ -120,7 +121,7 @@ const Controls = ({player}) => {
             >
             <Seek
                     key="volume_handler"
-                   
+                   margin="auto"
                     width="100%"
                     value={volume}
                     min={0}
@@ -138,17 +139,15 @@ const Controls = ({player}) => {
         animate={`${expand ? 'hidden' : 'visible'}`}
     >
         <Icon 
-                icon="expand"
-                height="1rem" 
-                fill="white"
-                key="fullscreen_btn"
-                paddingRight="1rem"
-                paddingLeft="1rem"
-                onClick={() =>screenfull.request(findDOMNode(player))}
+            icon="expand"
+            height="1rem" 
+            fill="white"
+            key="fullscreen_btn"
+            pr="1rem"
+            onClick={() =>screenfull.request(findDOMNode(player))}
                 
         />
         <Popover data="Select star to favorite images you love">
-                
             <Icon 
                 icon="tools"  
                 height="1rem" 

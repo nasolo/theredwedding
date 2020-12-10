@@ -33,7 +33,6 @@ function App() {
   <ThemeProvider theme={mainTheme}>
     <GlobalStyle />
 <Router>
-
     <MainNavigation />
       <AppContainer
         home={<Home/>}
@@ -47,7 +46,7 @@ function App() {
         post={<PostRouteComponent />}
       />
 </Router>
-      </ThemeProvider>
+</ThemeProvider>
   
 
     

@@ -71,12 +71,26 @@ const mainTheme = {
           ]
       },
       radii: [".25em", ".50em", ".75em", "1rem", "2rem", '100%'],
+      navLinks:{
+        lg: {
+          fontSize: "1rem !important"
+        },
+        md: {
+          fontSize: ".75rem !important"
+        },
+        sm: {
+          fontSize: ".50rem !important"
+        }
+      },
       buttons:{
         dotted: {
           backgroundColor: 'rgba(0,0,0,.6)',
+          padding: '.75rem .5rem',
           border: '1px dotted white',
-          borderRadius: '8px',
+          borderRadius: '.15rem',
           textAlign: 'center',
+          color: 'white',
+          textTransform: 'uppercase'
         },
         grey:{
           color: "white",

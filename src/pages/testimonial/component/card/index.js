@@ -6,6 +6,7 @@ import Buttons from '../../../../elements/buttons'
 import { useDispatch } from 'react-redux'
 import Carousel from '../../../../modules/carousel'
 import { Link } from 'react-router-dom'
+import Container from 'react-bootstrap/Container'
 
 
 const variants = {
@@ -45,15 +46,16 @@ const RenderQuote = ({quote, id, media, name, subTitle}) => {
 
   return(
         <>
-            <Quote key={`quote-${id}`}>{quote}</Quote>
-            <Card className="text-white border-0 text-center align-items-center" key={`quote-card-${id}`}>
-                <Card.Body className="bg-transparent" key={`quote-body-${id}`}>
-                    <Card.Title text={name} as="h3" className="mb-2 w-100" fontWeight="500"/>
-                    <Card.Text text={subTitle}/>
-                    <Buttons as={Link} to={mediaLink} variant="dotted" className="mt-3 mb-3">View Media</Buttons>
-                </Card.Body>
-            </Card>
+          <Quote key={`quote-${id}`}>{quote}</Quote>
+          <Card className="text-white border-0 text-center align-items-center" key={`quote-card-${id}`}>
+              <Card.Body className="bg-transparent " key={`quote-body-${id}`} width={{_:"100%", lg: "50%"}}>
+                  <Card.Title text={name} as="h6" className="mb-2 w-100" fontWeight="500"/>
+                  <Card.Text text={subTitle}/>
+                  <Buttons as={Link} to={mediaLink} variant="dotted" className="mt-3 mb-3">View Media</Buttons>
+              </Card.Body>
+          </Card>
         </>
+        
   )
 }
 
@@ -63,12 +65,13 @@ const Comments = ({quotes, getCarouselInfo, ...rest}) => {
     const handleCarouselData = (data) => getCarouselInfo(data)
 
     return (
-      <Carousel fullscreen getCarouselInfo={handleCarouselData}>
-        {quotes.map((quote, index) => (
-            <RenderQuote {...quote} key={`quote-${index}`}/>
-        ))}
-      </Carousel>
-  
+     
+        <Carousel fullscreen getCarouselInfo={handleCarouselData}>
+          {quotes.map((quote, index) => (
+              <RenderQuote {...quote} key={`quote-${index}`}/>
+          ))}
+        </Carousel>
+     
     )
 }
 

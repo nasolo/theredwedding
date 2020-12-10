@@ -80,27 +80,32 @@
             {
                 "site": "instogram", 
                 "to": "https://www.instagram.com/", 
-                "icon": "instogram"
+                "icon": "instogram",
+                "order": 10
             },
             {
                 "site": "facebook", 
                 "to": "https://www.facebook.com/", 
-                "icon": "facebook"
+                "icon": "facebook",
+                "order": 11
             },
             {
                 "site": "youtube", 
                 "to": "https://www.youtube.com/", 
-                "icon": "youtube"
+                "icon": "youtube",
+                "order": 12
             },
             {
                 "site": "pintrest", 
                 "to": "https://www.pintrest.com/", 
-                "icon": "pintrest"
+                "icon": "pintrest",
+                "order": 13
             },
             {
                 "site": "twitter", 
                 "to": "https://www.twitter.com/", 
-                "icon": "twitter"
+                "icon": "twitter",
+                "order": 14
             }
         ]
 }

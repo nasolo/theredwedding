@@ -48,5 +48,5 @@ TagsInput.defaultProps ={
 backgroundColor: ["white", null, null, "transparent"],
 border: ["none", null, null, "1px dotted gainsboro"],
 boxShadow:  ["0 0 5px", null, null, "none"],
-maxWidth: ["100%", "75%", "50%", "100%"]
+
 }

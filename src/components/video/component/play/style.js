@@ -14,7 +14,7 @@ export const Wrapper = styled(Box).attrs(props =>({
     max-width: 12rem;
     align-self: center;
     z-index: 100;
-
+    position: absolute;
 `
 
 
@@ -25,7 +25,7 @@ export const PlayContainer = styled(Box).attrs(props =>({
     height: 100%;
     width: 100%;
     
-    background-color: ${({theme}) => theme.colors.blacks[7] || "rgba(0, 0, 0, 0.3)"};
+    //background-color: ${({theme}) => theme.colors.blacks[7] || "rgba(0, 0, 0, 0.3)"};
     border-radius: 100%;
     display: flex;
     align-items: center;

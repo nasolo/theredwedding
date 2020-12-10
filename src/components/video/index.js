@@ -95,7 +95,7 @@ const VideoPlayer = ({videoUrl, id, poster, player}) => {
         
           {!poster &&
             <PlayButton
-            playing={playerConfig && playerConfig.playing}
+              playing={playerConfig && playerConfig.playing}
               onClick={() =>actions.handlePlayPause(id)}
               poster={poster}
             />

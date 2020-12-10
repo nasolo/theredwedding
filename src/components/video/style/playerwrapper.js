@@ -15,12 +15,13 @@ import Box from "../../../elements/Box";
 
 .react-player__shadow{
       display: ${({light}) => light ? "none" : "inline"};
-      background-color: ${({theme}) => theme.colors.blacks[7] || "rgba(0, 0, 0, 0.3)"} !important;
+      //background-color: ${({theme}) => theme.colors.blacks[7] || "rgba(0, 0, 0, 0.3)"} !important;
       height: 100% !important;
       width: 100% !important;
       max-height: 12rem !important;
       max-width: 12rem !important;
       border-radius: 100% !important;
+      background: none !important;
 }
 
 

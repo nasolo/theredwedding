@@ -23,7 +23,6 @@ const ShareGalleryIcons = (shareIcons) =>(
 )
 
 const ShareGallery = ({shareIcons}) => {
-    
     return (
         <ShareIconsWrapper lg={12}>
             <Popover data="Select star to favorite images you love">

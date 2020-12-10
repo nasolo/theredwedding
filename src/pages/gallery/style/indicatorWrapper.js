@@ -17,12 +17,12 @@ const mediaQueries = ({ mediaQueries }, totalItems) =>css({
 
 const IndicatorWrapper = styled(Box).attrs(props =>({
     as: motion.div,
-    className: "Indicator-wrapper"
+    className: `Indicator-wrapper container-lg ${props.playing && `d-none`} `
 }))`
     
     ${ComposeBoxHelper}
     display: ${props => props.display ? props.display : "flex"};
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 2rem auto;
     max-height: 2rem;
@@ -30,8 +30,7 @@ const IndicatorWrapper = styled(Box).attrs(props =>({
     width: 100%;
     flex: 1 1 auto;
     flex-direction: row;
-    position: absolute;
-    bottom: 5%;
+   
  
     ${({theme, totalItems}) => mediaQueries(theme, totalItems)};
 `

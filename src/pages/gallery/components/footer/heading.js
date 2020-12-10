@@ -1,6 +1,6 @@
 import React from 'react'
 import FooterHeading from '../../style/footerHeading'
-import Col from 'react-bootstrap/Col'
+import Col from '../../../../elements/col'
 import Icon from '../../../../components/icon'
 
 const Heading = ({isDesktop, variants, onClick}) => (
@@ -10,9 +10,11 @@ const Heading = ({isDesktop, variants, onClick}) => (
         variants={isDesktop && {...variants}}
         whileHover={{cursor: "pointer"}}
     >
-        <Col xs={1} className="mt-auto mb-0 pt-3 mr-3">
-            <Icon icon="wrong" height="2rem" width="1rem" onClick={() => onClick()}/></Col>
-        <Col xs={12}>Gallery Filter</Col>
+         <Col cols={9} pt="1rem">Gallery Filter</Col>
+        <Col cols={2} pt=".75rem">
+            <Icon icon="wrong" height="2rem" width="1rem" onClick={() => onClick()}/>
+        </Col>
+       
     </FooterHeading>
 
 )

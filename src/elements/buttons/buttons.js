@@ -25,8 +25,3 @@ const Buttons = styled(Box).attrs(props =>({
 
 
 export default Buttons
-
-
-Buttons.defaultProps = {
-    maxWidth: ["100%", "75%", "50%", "100%"]
-}

@@ -11,8 +11,9 @@ const RightControls = styled(Box).attrs(props =>({
     overflow: hidden;
     text-align: left;
     vertical-align: center;
-    flex: 1 1 auto;
-    max-width: 30%;
+    border-left: 1px dotted white;
+    
+    
    
 
 `

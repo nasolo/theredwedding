@@ -6,17 +6,6 @@ import { motion } from 'framer-motion'
 
 
 
-const maxWidth =()=>({
-    fluid: "fluid",
-    maxWidth: {
-        _:  "100vw",
-        sm: "100vw",
-        md: "100vw",
-        lg: "80vw"
-        
-    }
-})
-
 
 const backgroundColor=()=>({
     bg: {
@@ -29,7 +18,7 @@ const backgroundColor=()=>({
 
 
 const Footer = styled(motion.div).attrs({
-    className: "galleryFooter container-fluid"
+    className: "galleryFooter container"
 })`
     ${ComposeBoxHelper}
     z-index: 1;
@@ -43,7 +32,7 @@ const Footer = styled(motion.div).attrs({
 `
 
 const mediaQueries = {
-    ...maxWidth(),
+    
     ...backgroundColor()
 }
 

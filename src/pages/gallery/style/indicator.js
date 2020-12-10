@@ -16,15 +16,14 @@ const Indicator = styled(Box).attrs(props =>({
    
 }))`
 
-        max-width: ${({totalIndicatorsPerPage}) => `calc((100vw / ${totalIndicatorsPerPage ? totalIndicatorsPerPage : 6}) - 6%)`};
+        //max-width: ${({totalIndicatorsPerPage}) => `calc((100vw / ${totalIndicatorsPerPage ? totalIndicatorsPerPage : 6}) - 6%)`};
         margin: 0 .30em;
         height: 100%;
-        width: 100%;
+        //width: 100%;
         background-color: ${({active, theme}) => active ? theme.colors.whites[10] : theme.colors.greys[9]};
         border-radius: 0;
         z-index: 1;
-        flex-flow: 1;
-        flex-shrink: 10;
+        flex: 1 1 10%;
         &:focus{
             outline: none;
         }

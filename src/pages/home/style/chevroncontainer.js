@@ -11,7 +11,7 @@ const ChevronContainer = styled(Box).attrs({
     z-index: 2000;
     top: calc(50% - 6rem);
     margin: auto;
-    max-width: 80%;
+   
   
     
 

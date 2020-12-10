@@ -18,6 +18,7 @@ const Logo = styled(Box).attrs(props =>({
     className: 'navbar-logo'
 }))`
 
+
 ${mediaQueries};
 
 `

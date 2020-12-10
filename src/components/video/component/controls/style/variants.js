@@ -4,7 +4,7 @@ export const volumeControlVariants = {
     visible:{
         opacity: 1,
         width: "100%",
-        display: "inline",
+        display: "flex",
         transition: { delay: .3, duration: .5, type: "tween" }
     },
     hidden: {

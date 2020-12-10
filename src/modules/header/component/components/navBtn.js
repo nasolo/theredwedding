@@ -17,11 +17,11 @@ const ContactBtns = props => {
 
     return(
         <Wrapper className="row" hide={hideButtons}>
-                <NavList.Link  key="quote-link" href="/home" className="col">
+                <NavList.Link  key="quote-link" href="/home" className="col" variant="md">
                     GET A QUOTE now
                 </NavList.Link>
         
-                <NavList.Link  key="key-link" href="/home" className="col">
+                <NavList.Link  key="key-link" href="/home" className="col" variant="md">
                     <Icon icon="person" height={"1.35rem"} pr=".5rem" fill="white"/>
                     CHAT live
                 </NavList.Link>

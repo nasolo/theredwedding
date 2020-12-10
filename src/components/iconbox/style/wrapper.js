@@ -17,7 +17,7 @@ const mediaQueries =({mediaQueries})=>css({
 },
     [mediaQueries.md]: {
         [`p`]: {
-            fontSize: "1rem !important",
+            fontSize: ".75rem !important",
 
     }
 }
@@ -41,7 +41,7 @@ const Wrapper = styled(Box).attrs({
      p{
         font-weight: 600;
         text-align: center;
-        font-size: .65em;
+        font-size: .50em;
         margin-top: auto !important;
         margin-bottom: auto !important;
         

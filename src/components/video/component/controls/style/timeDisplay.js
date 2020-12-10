@@ -11,6 +11,7 @@ const TimeDisplay = styled(Box).attrs(props => ({
     padding: 0 5px;
     white-space: nowrap;
     line-height: 35px;
+    margin: auto 0;
 
 `
 

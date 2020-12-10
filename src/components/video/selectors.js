@@ -1,3 +1,4 @@
+import { create } from "lodash"
 import { createSelector } from "reselect"
 
 
@@ -14,7 +15,7 @@ const getPlayerConfig = createSelector(
     }
 )
 
-const activeVideo = createSelector(
+export const activeVideo = createSelector(
     selectPlayerConfig,
     (media) => {
         const { activeVideo } = media

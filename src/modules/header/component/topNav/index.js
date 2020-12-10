@@ -23,7 +23,7 @@ const TopNavigation = ({links, brand, isOpen, toggle}) => {
             <Navbar.Collapse flexWrap="nowrap">
                 <Navbar.NavbarNav variant="justify-left">
                     <NavList links={links} fill/>
-                    <NavText text="(312-857-3187)" className="nav-link nav-item" color="white" fontWeight="700"/>
+                    <NavText text="(312-857-3187)" className="nav-link nav-item" color="white" fontWeight="700" order="10"/>
                 </Navbar.NavbarNav>
             </Navbar.Collapse>
              

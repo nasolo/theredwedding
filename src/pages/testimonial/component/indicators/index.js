@@ -6,7 +6,7 @@ const Indicators = ({quotes, activeQuote, dispatch, ...rest}) => {
 
     const shouldRenderQuotes = quotes !== undefined
 
-    
+    console.log(quotes)
 
     const { id } = activeQuote
 

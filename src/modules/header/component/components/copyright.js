@@ -10,6 +10,7 @@ const Copyright = ({text, isOpen}) => (
 
     <InnerWrapper 
         textAlign="left" 
+        order="99"
         height="auto" 
         className="w-100" 
         as={motion.div} 

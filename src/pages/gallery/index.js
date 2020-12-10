@@ -57,7 +57,7 @@ const Gallery = props => {
     const [externalMedia, setExternalMedia] = useState(false)
     const [carouselData, setcarouselData] = useState({})
     const isDesktop = useWindowSize().width <= 990
-    const indicatorsPerPage = isDesktop ? 4 : 8
+    const indicatorsPerPage = isDesktop ? 5 : 8
     const Controls = VideoPlayer.Controls
     const makeGetAllMediaData = useMemo(allMediaData, [])
     
@@ -70,10 +70,6 @@ const Gallery = props => {
     setPageItem,
     handleIndicatorsAndChevrons
   } = carouselData
-
-
-  console.log(externalMedia)
-
   
  //Extract gallery Data from selector
     const { 
