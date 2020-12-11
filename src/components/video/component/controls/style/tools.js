@@ -5,10 +5,11 @@ const ToolsControls = styled(Box).attrs(props =>({
     className: "tools-controls"
 }))`
 
-    flex: 1 1 100%;
+    flex: 1 1;
     overflow: hidden;
-    margin: auto;
-    border-left: 1px dotted white;
+    display: flex;
+    justify-content: flex-start;
+    
     
 
 

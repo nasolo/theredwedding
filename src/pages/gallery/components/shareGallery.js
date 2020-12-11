@@ -4,6 +4,7 @@ import Popover from '../../../components/popover'
 import Icon from '../../../components/icon'
 import IconBoxWrapper from '../style/iconBoxWrapper'
 import IconBox from '../../../components/iconbox'
+import Favourite from '../../../components/favourites'
 
 const ShareIcon = ({icon}) => (
     <Icon icon={icon} height="2rem" pr={10} fill="rgba(204,204,204,.7)"/>
@@ -25,9 +26,7 @@ const ShareGalleryIcons = (shareIcons) =>(
 const ShareGallery = ({shareIcons}) => {
     return (
         <ShareIconsWrapper lg={12}>
-            <Popover data="Select star to favorite images you love">
-                <ShareIcon icon="star"/>
-            </Popover>
+            <Favourite />
             <Popover data={ShareGalleryIcons(shareIcons)}>
                <ShareIcon icon="paperplane"/>
             </Popover>

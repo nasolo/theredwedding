@@ -3,6 +3,7 @@ import { AnimatePresence } from "framer-motion";
 import ResizeObserver from "resize-observer-polyfill";
 import React, { useState } from "react";
 import PopoverBox from './popover'
+import Wrapper from "./style/toggleWrapper";
 
 const Arrow = props => (
     <svg width={14} height={6} {...props}>
@@ -106,9 +107,9 @@ const Popover = props => {
                   )}
           >
         {({ triggerRef, isOpen }) => (
-           <span ref={triggerRef} onClick = {toggle}>
+           <Wrapper {...props} ref={triggerRef} onClick = {toggle}>
              {props.children}
-           </span>
+           </Wrapper>
         )}
 
         </ToggleLayer>

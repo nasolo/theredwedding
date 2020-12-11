@@ -19,7 +19,7 @@ export const volumeControlVariants = {
 export const toolsVariants = {
     visible:{
         opacity: 1,
-        display: "inline"
+        
     },
     hidden: {
         opacity: 0,

@@ -101,11 +101,13 @@ const Controls = ({player}) => {
             <Icon 
                 icon={`${muted ? "mute" : "volume"}`}
                 padding="0 .50rem"
-                margin="auto"
-                height="1.5rem" 
+                margin="auto .50rem"
+                height="1.1rem" 
                 fill="white"
                 key="volume_btn"
                 display="inline-block"
+                borderLeft="1px dotted white"
+                borderRight="1px dotted white"
                 zIndex="1000"
                 onMouseEnter={() => expand === false && setExpand()}
                 onClick={()=>handleToggleMuted(id)}
@@ -140,19 +142,21 @@ const Controls = ({player}) => {
     >
         <Icon 
             icon="expand"
-            height="1rem" 
+            height="1rem"
+            margin="auto .5rem"
             fill="white"
+            borderRight="1px dotted white"
             key="fullscreen_btn"
             pr="1rem"
             onClick={() =>screenfull.request(findDOMNode(player))}
-                
         />
-        <Popover data="Select star to favorite images you love">
+        <Popover data="Select star to favorite images you love" margin="auto .5rem">
             <Icon 
                 icon="tools"  
                 height="1rem" 
                 fill="white"
                 key="volume_btn"
+                
             />
             </Popover>
 </ToolsControls>

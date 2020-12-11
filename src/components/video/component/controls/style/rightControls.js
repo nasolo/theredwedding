@@ -1,6 +1,12 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import Box from "../../../../../elements/Box"
 
+const RightControlsMediaQueries = ({theme}) =>css`
+    ${theme.mediaQueries.lg}{
+        flex: 0 0 20%;
+    }
+
+`
 
 const RightControls = styled(Box).attrs(props =>({
     className: `right-controls`
@@ -11,7 +17,8 @@ const RightControls = styled(Box).attrs(props =>({
     overflow: hidden;
     text-align: left;
     vertical-align: center;
-    border-left: 1px dotted white;
+    
+    flex: 0 0 30%;
     
     
    
