@@ -11,15 +11,29 @@ const {
 
 
 const fetchFavourites = createAction(PENDING)
-const errorMedia = createAction(ERROR)
-const receiveMedia = createAction(SUCCESS, function prepare(json){
+const errorFavoutires = createAction(ERROR)
+const receiveFavoutires = createAction(SUCCESS, function prepare(json){
     return{ 
         payload: {
         receivedAt: Date.now(),
         id: nanoid(),
-        userFavourites: json.map(fav =>({
-            [fav.id]: {...fav}
+        favourites: json.map(fav =>({
+            [`${fav.id || nanoid()}`]: {...fav}
         }))
         }
     }
 })
+
+export const addFavourite = createAction(ADD_FAVOURITE)
+export const removeFavourite = createAction(REMOVE_FAVOURITE)
+
+
+const allActions = {
+    fetchFavourites,
+    errorFavoutires,
+    receiveFavoutires,
+    addFavourite,
+    removeFavourite
+}
+
+export default allActions

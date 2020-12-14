@@ -23,10 +23,10 @@ const ShareGalleryIcons = (shareIcons) =>(
     </IconBoxWrapper>
 )
 
-const ShareGallery = ({shareIcons}) => {
+const ShareGallery = ({shareIcons, activeMedia}) => {
     return (
         <ShareIconsWrapper lg={12}>
-            <Favourite />
+            <Favourite activeMedia={activeMedia} />
             <Popover data={ShareGalleryIcons(shareIcons)}>
                <ShareIcon icon="paperplane"/>
             </Popover>

@@ -73,7 +73,6 @@ const receiveMedia = createAction(SUCCESS, function prepare(json){
 export const setActiveId = createAction(SET_ACTIVE_ID)
 
 const allActions = {
-    
         fetchMedia,
         errorMedia,
         receiveMedia,

@@ -125,9 +125,18 @@ const appInitialState = {
       selectedDates: null,
       posts: [],
       activePostId: null
+    },
+    favourites:{
+      api: {
+        id: null,
+        isFetching: false,
+        lastUpdate: null,
+        didInValidate: false,
+        apiErrorMsg: null,
+        route:"/favourites"
+      },
+      favourites:[]
     }
-
-    
 }
 
 export default appInitialState

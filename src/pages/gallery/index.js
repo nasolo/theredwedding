@@ -97,8 +97,8 @@ const Gallery = props => {
               display="flex"
               marginBottom="1rem"
             >
-           <ShareGallery shareIcons={shareIcons}/>
-           {shouldRenderVideoControls && <Controls player={player}/>}
+           <ShareGallery shareIcons={shareIcons} activeMedia={activeMedia}/>
+            {shouldRenderVideoControls && <Controls player={player}/>}
           </Container>
           
            <Indicators 

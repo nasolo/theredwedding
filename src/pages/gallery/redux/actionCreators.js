@@ -17,7 +17,6 @@ const {
         setFilterButtonInActive,
         addUserTags,
         removeUserTags
-        
     } = allActions
 
 export const FETCH_GALLERY_CONFIG = {

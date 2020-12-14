@@ -43,8 +43,6 @@ const testimonials = createReducer(appInitialState.testimonials, {
         [setActiveQuoteId]: createNextState(
             (testimonies, action)=>{
                 const { id, position, direction} = action.payload
-                console.log(action.payload)
-
                 testimonies.activeQuoteId = id
                 testimonies.activeIndex = position
                 testimonies.direction = direction
