@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from "react-redux"
 import { Route, useHistory, useRouteMatch } from 'react-router-dom'
-import Frame from '../../../../elements/Frame'
+
 
 
 import { updatePostId } from '../../redux/actionCreators'
@@ -10,7 +10,9 @@ import { selectedPost } from '../../redux/selectors'
 import PageContainer from '../../style/pageContainer'
 
 import Post from '../postList/components/post'
-import RedirectToMainBlog from './redirect'
+import BackgoundImage from '../../style/BackgoundImage';
+import Container from '../../../../elements/container';
+import RedirectToMainBlog from './redirect';
 
 const PostRouteComponent = ({ variants }, props) => {
 
@@ -40,13 +42,24 @@ const PostRouteComponent = ({ variants }, props) => {
 
       const getPost = useSelector(state => selectedPost(state), shallowEqual)
 
-    return (
+     const renderPost = () => {
+         if(!getPost){
+             return <RedirectToMainBlog />
+         } else {
+             return (
+                <PageContainer className="post">
+                    <BackgoundImage key={`post-${getPost.id}`}src={getPost.background}/>
+                    <Container>
+                        <Post {...getPost} />
+                    </Container>
+                </PageContainer>
+             )
+         }
+     }
+
         
-        <PageContainer className="post">
-                <Post {...getPost} />
-        </PageContainer>
-        
-    )
+     return renderPost()  
+
 } 
 
 

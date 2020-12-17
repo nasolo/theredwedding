@@ -22,6 +22,7 @@ import Indicators from './components/indicators';
 import PageFooter from './components/footer';
 import ReactPlayer from 'react-player'
 import { useLocation } from 'react-router-dom'
+import CreateIcon from '../../components/reactShare/hocs/createIcon'
 
 
 
@@ -99,6 +100,7 @@ const Gallery = props => {
             >
            <ShareGallery shareIcons={shareIcons} activeMedia={activeMedia}/>
             {shouldRenderVideoControls && <Controls player={player}/>}
+            
           </Container>
           
            <Indicators 
@@ -112,6 +114,7 @@ const Gallery = props => {
             />
 
            <PageFooter isDesktop={isDesktop}/>
+           
                    
       </SlideContainer>
     )

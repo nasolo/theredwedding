@@ -1,4 +1,5 @@
 import React from 'react'
+import { variant } from 'styled-system'
 import styled from 'styled-components'
 import Box from '../../elements/Box'
 import ICON from './icons'
@@ -24,9 +25,27 @@ const Icon = styled(Box).attrs(props =>({
     onClick: props.onClick
     
 }))`
+
+    ${variant({
+        prop: 'size',
+        variants: {
+            small: {
+                height: ".75rem",
+            },
+            medium: {
+                height: "1rem",
+            },
+            large: {
+                height: "2rem",
+            }
+        }
+    })};
+
     ${({rotate}) => rotate && {transform: `rotate(${rotate}deg)`}}
     cursor: pointer;
     overflow: visible;
+
+
 
 `
 
@@ -34,7 +53,6 @@ Icon.defaultProps={
     
     display: 'inline-block',
     fontStyle: 'normal',
-  
     icon: "wrong"
     
 }
